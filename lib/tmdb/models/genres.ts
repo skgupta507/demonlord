@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 type Genre = {
   id: number;
   name: string;

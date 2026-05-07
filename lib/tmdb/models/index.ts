@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export * from './collections';
 export * from './combined-credits';
 export * from './credits';

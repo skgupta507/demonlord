@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { axiosClient, GetGenresResponse, Language } from '@/lib/tmdb';
 
 export const genres = async (type: 'movie' | 'tv', language: Language) => {

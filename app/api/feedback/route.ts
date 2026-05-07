@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // Feedback endpoint stub — drizzle/neon removed, Firebase used instead.
 import { NextResponse } from 'next/server';
 export async function POST() {

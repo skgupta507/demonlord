@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { format } from 'date-fns';
 import Image from 'next/image';
 import { Image as LucideImage } from 'lucide-react';

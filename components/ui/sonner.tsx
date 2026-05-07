@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 
 import { useTheme } from 'next-themes';

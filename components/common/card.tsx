@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { format } from 'date-fns';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -28,16 +29,15 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
 
       {/* Scanline overlay */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
-          backgroundImage:
-            'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.5) 2px, rgba(255,255,255,0.5) 3px)',
+          backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.5) 2px, rgba(255,255,255,0.5) 3px)',
         }}
       />
 
       {/* Grid overlay */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage: `linear-gradient(hsl(350 100% 58%) 1px, transparent 1px), linear-gradient(90deg, hsl(350 100% 58%) 1px, transparent 1px)`,
           backgroundSize: '80px 80px',
@@ -49,8 +49,9 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
       {/* Content */}
-      <div className="absolute inset-0 flex items-end px-6 pb-10 md:px-10">
-        <div className="flex max-w-xl flex-col gap-3">
+      <div className="absolute inset-0 flex items-end pb-10 px-6 md:px-10">
+        <div className="flex flex-col gap-3 max-w-xl">
+
           {/* Type + year badge */}
           <div className="flex items-center gap-2">
             <span
@@ -68,8 +69,8 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
               </span>
             )}
             {show.vote_average > 0 && (
-              <div className="flex items-center gap-1 border border-[hsl(350_100%_58%/0.3)] bg-black/50 px-1.5 py-0.5">
-                <Star size={8} className="fill-current text-[hsl(350_100%_58%)]" />
+              <div className="flex items-center gap-1 bg-black/50 border border-[hsl(350_100%_58%/0.3)] px-1.5 py-0.5">
+                <Star size={8} className="text-[hsl(350_100%_58%)] fill-current" />
                 <span
                   className="text-[0.6rem] text-[hsl(350_100%_62%)]"
                   style={{ fontFamily: 'Share Tech Mono, monospace' }}
@@ -82,7 +83,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
 
           {/* Title */}
           <h2
-            className="text-3xl leading-tight font-black tracking-wide text-white uppercase md:text-5xl"
+            className="text-3xl font-black uppercase tracking-wide text-white leading-tight md:text-5xl"
             style={{ fontFamily: 'Orbitron, monospace', textShadow: '0 0 30px rgba(0,0,0,0.8)' }}
           >
             {title}
@@ -90,7 +91,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
 
           {/* Overview */}
           <p
-            className="line-clamp-2 max-w-lg text-sm leading-relaxed text-white/70"
+            className="line-clamp-2 text-sm leading-relaxed text-white/70 max-w-lg"
             style={{ fontFamily: 'Rajdhani, sans-serif' }}
           >
             {show.overview}
@@ -106,7 +107,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
             </Link>
             <Link href={`/${type}/${show.id}`}>
               <button
-                className="flex items-center gap-2 border border-white/20 px-4 py-2 text-[0.65rem] tracking-widest text-white/70 transition-all hover:border-white/40 hover:text-white"
+                className="flex items-center gap-2 border border-white/20 px-4 py-2 text-[0.65rem] tracking-widest text-white/70 hover:border-white/40 hover:text-white transition-all"
                 style={{ fontFamily: 'Share Tech Mono, monospace' }}
               >
                 <Info size={11} />
@@ -118,7 +119,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
       </div>
 
       {/* Corner HUD decorations */}
-      <div className="pointer-events-none absolute top-4 right-4 flex flex-col items-end gap-1">
+      <div className="absolute top-4 right-4 flex flex-col items-end gap-1 pointer-events-none">
         <div
           className="text-[0.55rem] tracking-widest text-white/30"
           style={{ fontFamily: 'Share Tech Mono, monospace' }}
@@ -126,7 +127,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
           NEURAL_CINEMA // LIVE
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="h-1 w-1 animate-pulse rounded-full bg-[hsl(350_100%_58%)]" />
+          <div className="h-1 w-1 rounded-full bg-[hsl(350_100%_58%)] animate-pulse" />
           <span
             className="text-[0.55rem] tracking-widest text-[hsl(350_100%_58%)]"
             style={{ fontFamily: 'Share Tech Mono, monospace' }}

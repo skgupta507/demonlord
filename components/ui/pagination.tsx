@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import * as React from 'react';
 import { ChevronLeftIcon, ChevronRightIcon, DotsHorizontalIcon } from '@radix-ui/react-icons';
 

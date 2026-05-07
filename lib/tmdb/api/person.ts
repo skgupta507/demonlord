@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Language, PersonDetails, PersonWithMediaType, axiosClient } from '..';
 import { CombinedCredits, CombinedCreditsResponse } from '@/lib/tmdb';
 import { formatCombinedCredit } from '@/lib/tmdb/utils/format-combined-credit';

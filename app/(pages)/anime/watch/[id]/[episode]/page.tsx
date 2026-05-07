@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import AnimePlayerClient from '@/components/containers/anime/player-client';
 import WatchContainer from '@/components/containers/anime/watch';
 import Link from 'next/link';
@@ -12,10 +13,10 @@ export default async function Watch({
   const ep = episode.match(/(\d+)/)?.[1] ?? '1';
 
   return (
-    <div className="mx-auto max-w-5xl space-y-5 px-4 pt-6 pb-12">
+    <div className="mx-auto max-w-5xl px-4 pt-6 pb-12 space-y-5">
       <Link
         href={`/anime/${id}`}
-        className="inline-flex items-center gap-2 text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] uppercase transition-colors hover:text-[var(--neon-pink)]"
+        className="inline-flex items-center gap-2 text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] hover:text-[var(--neon-pink)] transition-colors uppercase"
         style={{ fontFamily: 'Share Tech Mono, monospace' }}
       >
         <ArrowLeft size={10} /> Back to Info

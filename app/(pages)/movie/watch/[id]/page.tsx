@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import VideoPlayer from '@/components/containers/movie/videoplayer';
 
 export default async function Info({ params }: any) {

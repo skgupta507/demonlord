@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { headers } from 'next/headers';
 import { auth } from '@/lib/auth';
 import { NextRequest, NextResponse } from 'next/server';

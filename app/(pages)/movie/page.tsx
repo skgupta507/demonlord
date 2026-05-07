@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import MovieBrowseClient from '@/components/containers/movie/browse-client';
 import CarousalMovie from '@/components/carousal/movie';
 

@@ -1,14 +1,10 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { auth, db, firebaseConfigured } from './config';
 
 // Lazy-import firebase/auth to avoid crashing when config missing
-type User = {
-  uid: string;
-  email: string | null;
-  displayName: string | null;
-  photoURL: string | null;
-};
+type User = { uid: string; email: string | null; displayName: string | null; photoURL: string | null };
 
 interface AuthContextType {
   user: User | null;
@@ -24,16 +20,10 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType>({
-  user: null,
-  loading: false,
-  configured: false,
-  signInWithGoogle: async () => {},
-  signInWithEmail: async () => {},
-  signUpWithEmail: async () => {},
-  sendMagicLink: async () => {},
-  resetPassword: async () => {},
-  signOut: async () => {},
-  error: null,
+  user: null, loading: false, configured: false,
+  signInWithGoogle: async () => {}, signInWithEmail: async () => {},
+  signUpWithEmail: async () => {}, sendMagicLink: async () => {},
+  resetPassword: async () => {}, signOut: async () => {}, error: null,
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -42,19 +32,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!firebaseConfigured || !auth) {
-      setLoading(false);
-      return;
-    }
+    if (!firebaseConfigured || !auth) { setLoading(false); return; }
 
     // Dynamically import firebase/auth
     import('firebase/auth').then(({ onAuthStateChanged }) => {
       const unsub = onAuthStateChanged(auth!, (u) => {
-        setUser(
-          u
-            ? { uid: u.uid, email: u.email, displayName: u.displayName, photoURL: u.photoURL }
-            : null,
-        );
+        setUser(u ? { uid: u.uid, email: u.email, displayName: u.displayName, photoURL: u.photoURL } : null);
         setLoading(false);
       });
       return unsub;
@@ -67,7 +50,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (email) {
           signInWithEmailLink(auth, email, window.location.href)
             .then(() => localStorage.removeItem('emailForSignIn'))
-            .catch((e) => setError(e.message));
+            .catch(e => setError(e.message));
         }
       }
     });
@@ -84,40 +67,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     requireConfig();
     setError(null);
     const { GoogleAuthProvider, signInWithPopup } = await import('firebase/auth');
-    await signInWithPopup(auth!, new GoogleAuthProvider()).catch((e) => {
-      setError(e.message);
-      throw e;
-    });
+    await signInWithPopup(auth!, new GoogleAuthProvider()).catch(e => { setError(e.message); throw e; });
   };
 
   const signInWithEmail = async (email: string, password: string) => {
     requireConfig();
     setError(null);
     const { signInWithEmailAndPassword } = await import('firebase/auth');
-    await signInWithEmailAndPassword(auth!, email, password).catch((e) => {
-      setError(e.message);
-      throw e;
-    });
+    await signInWithEmailAndPassword(auth!, email, password).catch(e => { setError(e.message); throw e; });
   };
 
   const signUpWithEmail = async (email: string, password: string) => {
     requireConfig();
     setError(null);
     const { createUserWithEmailAndPassword } = await import('firebase/auth');
-    await createUserWithEmailAndPassword(auth!, email, password).catch((e) => {
-      setError(e.message);
-      throw e;
-    });
+    await createUserWithEmailAndPassword(auth!, email, password).catch(e => { setError(e.message); throw e; });
   };
 
   const sendMagicLink = async (email: string) => {
     requireConfig();
     setError(null);
     const { sendSignInLinkToEmail } = await import('firebase/auth');
-    const actionCodeSettings = {
-      url: `${window.location.origin}/auth/magic`,
-      handleCodeInApp: true,
-    };
+    const actionCodeSettings = { url: `${window.location.origin}/auth/magic`, handleCodeInApp: true };
     await sendSignInLinkToEmail(auth!, email, actionCodeSettings);
     localStorage.setItem('emailForSignIn', email);
   };
@@ -126,10 +97,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     requireConfig();
     setError(null);
     const { sendPasswordResetEmail } = await import('firebase/auth');
-    await sendPasswordResetEmail(auth!, email).catch((e) => {
-      setError(e.message);
-      throw e;
-    });
+    await sendPasswordResetEmail(auth!, email).catch(e => { setError(e.message); throw e; });
   };
 
   const signOut = async () => {
@@ -139,20 +107,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        loading,
-        configured: firebaseConfigured,
-        signInWithGoogle,
-        signInWithEmail,
-        signUpWithEmail,
-        sendMagicLink,
-        resetPassword,
-        signOut,
-        error,
-      }}
-    >
+    <AuthContext.Provider value={{
+      user, loading, configured: firebaseConfigured,
+      signInWithGoogle, signInWithEmail, signUpWithEmail,
+      sendMagicLink, resetPassword, signOut, error,
+    }}>
       {children}
     </AuthContext.Provider>
   );

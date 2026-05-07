@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const STORAGE_KEY = 'recentSearches';
 
 type RecentSearch = {

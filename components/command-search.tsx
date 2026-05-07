@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { anilist } from '@/lib/anilist';
 

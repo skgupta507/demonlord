@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export type Image = {
   aspect_ratio: number;
   file_path: string;

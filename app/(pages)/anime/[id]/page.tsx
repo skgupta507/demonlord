@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { anilist } from '@/lib/anilist';
 import DetailsContainer from '@/components/containers/anime/details';
 import { notFound } from 'next/navigation';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function Loading() {

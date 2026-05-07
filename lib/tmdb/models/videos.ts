@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export type Video = {
   id: string;
   iso_639_1: string;

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { JSX } from 'react/jsx-runtime';
 
 const Checkered = () => (

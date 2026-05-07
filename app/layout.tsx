@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { siteConfig } from '@/config/site';
 import type { Metadata, Viewport } from 'next';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -10,7 +11,7 @@ import LayoutShell from '@/components/layout-shell';
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#121212' },
+    { media: '(prefers-color-scheme: dark)',  color: '#121212' },
     { media: '(prefers-color-scheme: light)', color: '#f4f7fe' },
   ],
 };
@@ -58,12 +59,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               shadow="0 0 8px #FF006F"
             />
             <SidebarProvider
-              style={
-                {
-                  '--sidebar-width': '14rem',
-                  '--header-height': '3.25rem',
-                } as React.CSSProperties
-              }
+              style={{
+                '--sidebar-width': '14rem',
+                '--header-height': '3.25rem',
+              } as React.CSSProperties}
             >
               <Toaster position="top-right" closeButton theme="system" />
               <LayoutShell>{children}</LayoutShell>

@@ -1,9 +1,10 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { anilist } from '@/lib/anilist';
-import { Star, ImageIcon, AlertCircle } from 'lucide-react';
+import { Star, AlertCircle } from 'lucide-react';
 
 type FeatureType = 'recent' | 'popular' | 'trending';
 
@@ -21,75 +22,64 @@ export default function FeaturedAnime({ featureType }: { featureType: FeatureTyp
     };
     fetchers[featureType]()
       .then(setItems)
-      .catch(() => setError('Failed to load anime from AniList'))
+      .catch(() => setError('Failed to load from AniList'))
       .finally(() => setLoading(false));
   }, [featureType]);
 
   if (loading)
     return (
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <div key={i} className="aspect-[2/3] animate-pulse border border-white/5 bg-white/5" />
+      <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div key={i} className="space-y-2">
+            <div className="aspect-[2/3] rounded-xl bg-[hsl(var(--muted))] animate-pulse" />
+            <div className="h-3 rounded bg-[hsl(var(--muted))] animate-pulse w-3/4" />
+          </div>
         ))}
       </div>
     );
 
   if (error)
     return (
-      <div className="flex flex-col items-center gap-3 border border-[#FF006F]/20 bg-[#FF006F]/5 py-12">
-        <AlertCircle size={20} className="text-[#FF006F]" />
-        <span
-          className="text-[0.6rem] tracking-widest text-[#FF006F]"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}
-        >
-          {error}
-        </span>
+      <div className="flex flex-col items-center gap-3 py-16 rounded-2xl border border-red-500/20 bg-red-500/5">
+        <AlertCircle size={24} className="text-red-400" />
+        <span className="text-sm text-red-400">{error}</span>
       </div>
     );
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+    <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
       {items.map((item) => {
         const title = item.title?.english || item.title?.romaji || 'Unknown';
         const img = item.coverImage?.extraLarge || item.coverImage?.large;
         const score = item.averageScore ? item.averageScore / 10 : 0;
-
         return (
-          <Link key={item.id} href={`/anime/${item.id}`} className="group">
-            <div className="relative aspect-[2/3] overflow-hidden border border-white/8 transition-all duration-300 group-hover:border-[#BD00FF]/50">
+          <Link key={item.id} href={`/anime/${item.id}`} className="group space-y-2">
+            <div className="relative aspect-[2/3] rounded-xl overflow-hidden border border-[hsl(var(--border))] group-hover:border-[var(--neon-purple)] transition-all duration-300">
               {img ? (
-                <Image
-                  fill
-                  src={img}
-                  alt={title}
-                  sizes="200px"
-                  className="object-cover brightness-90 transition-transform duration-500 group-hover:scale-105"
-                />
+                <Image fill src={img} alt={title} sizes="180px"
+                  className="object-cover brightness-95 group-hover:brightness-100 group-hover:scale-105 transition-all duration-500" />
               ) : (
-                <div className="flex h-full items-center justify-center bg-white/5">
-                  <ImageIcon size={20} className="text-white/20" />
-                </div>
+                <div className="flex h-full items-center justify-center bg-[hsl(var(--muted))] text-2xl">⚡</div>
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
               {score > 0 && (
-                <div className="absolute top-1.5 right-1.5 flex items-center gap-1 border border-[#BD00FF]/40 bg-black/80 px-1.5 py-0.5">
-                  <Star size={8} className="fill-current text-[#BD00FF]" />
-                  <span
-                    className="text-[0.6rem] text-[#BD00FF]"
-                    style={{ fontFamily: 'Share Tech Mono, monospace' }}
-                  >
+                <div className="absolute top-1.5 right-1.5 flex items-center gap-0.5 bg-black/75 backdrop-blur-sm rounded-full px-1.5 py-0.5">
+                  <Star size={8} className="text-yellow-400 fill-yellow-400" />
+                  <span className="text-[0.55rem] text-yellow-300 font-bold" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
                     {score.toFixed(1)}
                   </span>
                 </div>
               )}
-              <div className="absolute inset-x-0 bottom-0 translate-y-full p-2 transition-transform duration-300 group-hover:translate-y-0">
-                <p
-                  className="truncate text-xs font-semibold text-white"
-                  style={{ fontFamily: 'Rajdhani, sans-serif' }}
-                >
-                  {title}
+            </div>
+            <div className="space-y-0.5 px-0.5">
+              <p className="text-xs font-medium leading-tight line-clamp-2 group-hover:text-[var(--neon-purple)] transition-colors"
+                style={{ fontFamily: 'Rajdhani, sans-serif', fontWeight: 600 }}>
+                {title}
+              </p>
+              {item.format && (
+                <p className="text-[0.6rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  {item.format.replace(/_/g, ' ')}
                 </p>
-              </div>
+              )}
             </div>
           </Link>
         );

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { WithMediaType } from '@/lib/tmdb/utils/with_media_type';
 import { MovieWithMediaType } from './movie';
 import { TvSerieWithMediaType } from './tv-series';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { MainNavItem, SidebarNavItem } from '@/types';
 
 interface MobileConfig {

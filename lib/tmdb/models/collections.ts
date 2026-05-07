@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Movie } from './movie';
 
 export type Collection = {

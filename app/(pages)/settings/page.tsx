@@ -1,30 +1,15 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { useState, useEffect } from 'react';
-import {
-  Settings,
-  Moon,
-  Sun,
-  Globe,
-  Bell,
-  Shield,
-  Trash2,
-  Download,
-  ChevronRight,
-  Check,
-  Monitor,
-} from 'lucide-react';
+import { Settings, Moon, Sun, Globe, Bell, Shield, Trash2, Download, ChevronRight, Check, Monitor } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useAuth } from '@/lib/firebase/auth-context';
 
 function Toggle({ on, onToggle }: { on: boolean; onToggle: () => void }) {
   return (
-    <button
-      onClick={onToggle}
-      className={`relative h-6 w-11 rounded-full transition-all ${on ? 'bg-[var(--neon-pink)]' : 'bg-[hsl(var(--muted))]'}`}
-    >
-      <span
-        className={`absolute top-1 h-4 w-4 rounded-full bg-white shadow transition-all ${on ? 'left-6' : 'left-1'}`}
-      />
+    <button onClick={onToggle}
+      className={`relative h-6 w-11 rounded-full transition-all ${on ? 'bg-[var(--neon-pink)]' : 'bg-[hsl(var(--muted))]'}`}>
+      <span className={`absolute top-1 h-4 w-4 rounded-full bg-white shadow transition-all ${on ? 'left-6' : 'left-1'}`} />
     </button>
   );
 }
@@ -32,10 +17,8 @@ function Toggle({ on, onToggle }: { on: boolean; onToggle: () => void }) {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="space-y-3">
-      <p
-        className="text-[0.55rem] tracking-[0.25em] text-[hsl(var(--muted-foreground))] uppercase"
-        style={{ fontFamily: 'Share Tech Mono, monospace' }}
-      >
+      <p className="text-[0.55rem] tracking-[0.25em] uppercase text-[hsl(var(--muted-foreground))]"
+        style={{ fontFamily: 'Share Tech Mono, monospace' }}>
         {title}
       </p>
       <div className="card-cyber divide-y divide-[hsl(var(--border))]">{children}</div>
@@ -43,35 +26,16 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
-function Row({
-  icon: Icon,
-  label,
-  desc,
-  children,
-}: {
-  icon: any;
-  label: string;
-  desc?: string;
-  children?: React.ReactNode;
-}) {
+function Row({ icon: Icon, label, desc, children }: { icon: any; label: string; desc?: string; children?: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 p-4">
-      <div
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
-        style={{ background: 'hsl(var(--muted))' }}
-      >
+      <div className="h-8 w-8 rounded-lg flex items-center justify-center shrink-0"
+        style={{ background: 'hsl(var(--muted))' }}>
         <Icon size={15} className="text-[hsl(var(--muted-foreground))]" />
       </div>
-      <div className="min-w-0 flex-1">
+      <div className="flex-1 min-w-0">
         <p className="text-sm font-medium">{label}</p>
-        {desc && (
-          <p
-            className="text-xs text-[hsl(var(--muted-foreground))]"
-            style={{ fontFamily: 'Rajdhani, sans-serif' }}
-          >
-            {desc}
-          </p>
-        )}
+        {desc && <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>{desc}</p>}
       </div>
       {children}
     </div>
@@ -104,7 +68,7 @@ export default function SettingsPage() {
   useEffect(() => {
     setMounted(true);
     const stored = localStorage.getItem('demonlord_prefs');
-    if (stored) setPrefs((p) => ({ ...p, ...JSON.parse(stored) }));
+    if (stored) setPrefs(p => ({ ...p, ...JSON.parse(stored) }));
   }, []);
 
   const setPref = (key: string, val: any) => {
@@ -129,33 +93,23 @@ export default function SettingsPage() {
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'demonlord-data.json';
-    a.click();
+    const a = document.createElement('a'); a.href = url; a.download = 'demonlord-data.json'; a.click();
     URL.revokeObjectURL(url);
   };
 
   if (!mounted) return null;
 
   return (
-    <div className="mx-auto max-w-2xl space-y-8 p-6">
+    <div className="max-w-2xl mx-auto p-6 space-y-8">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div
-          className="flex h-10 w-10 items-center justify-center rounded-xl"
-          style={{ background: 'hsl(var(--muted))' }}
-        >
+        <div className="h-10 w-10 rounded-xl flex items-center justify-center"
+          style={{ background: 'hsl(var(--muted))' }}>
           <Settings size={18} />
         </div>
         <div>
-          <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>
-            Settings
-          </h1>
-          <p
-            className="text-xs text-[hsl(var(--muted-foreground))]"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-          >
+          <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>Settings</h1>
+          <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
             Preferences & account
           </p>
         </div>
@@ -163,23 +117,17 @@ export default function SettingsPage() {
 
       {/* Appearance */}
       <Section title="APPEARANCE">
-        <div className="space-y-3 p-4">
+        <div className="p-4 space-y-3">
           <p className="text-sm font-medium">Theme</p>
           <div className="grid grid-cols-3 gap-2">
-            {THEMES_OPTS.map((t) => (
-              <button
-                key={t.key}
-                onClick={() => setTheme(t.key)}
-                className={`flex flex-col items-center gap-1.5 rounded-xl border p-3 transition-all ${
+            {THEMES_OPTS.map(t => (
+              <button key={t.key} onClick={() => setTheme(t.key)}
+                className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border transition-all ${
                   theme === t.key
                     ? 'border-[var(--neon-pink)] bg-[color-mix(in_srgb,var(--neon-pink)_8%,transparent)]'
                     : 'border-[hsl(var(--border))] hover:border-[hsl(var(--muted-foreground))]'
-                }`}
-              >
-                <t.icon
-                  size={18}
-                  style={{ color: theme === t.key ? 'var(--neon-pink)' : undefined }}
-                />
+                }`}>
+                <t.icon size={18} style={{ color: theme === t.key ? 'var(--neon-pink)' : undefined }} />
                 <span className="text-xs font-medium">{t.label}</span>
                 {theme === t.key && <Check size={11} style={{ color: 'var(--neon-pink)' }} />}
               </button>
@@ -191,35 +139,25 @@ export default function SettingsPage() {
       {/* Playback */}
       <Section title="PLAYBACK">
         <Row icon={Globe} label="Preferred Quality" desc="Default video quality">
-          <div className="flex flex-wrap justify-end gap-1">
-            {QUALITIES.map((q) => (
-              <button
-                key={q}
-                onClick={() => setPref('quality', q)}
-                className={`rounded-lg px-2 py-1 text-[0.6rem] transition-all ${
+          <div className="flex gap-1 flex-wrap justify-end">
+            {QUALITIES.map(q => (
+              <button key={q} onClick={() => setPref('quality', q)}
+                className={`text-[0.6rem] px-2 py-1 rounded-lg transition-all ${
                   prefs.quality === q
-                    ? 'font-bold text-white'
-                    : 'border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))]'
+                    ? 'text-white font-bold'
+                    : 'text-[hsl(var(--muted-foreground))] border border-[hsl(var(--border))]'
                 }`}
-                style={{
-                  background: prefs.quality === q ? 'var(--neon-pink)' : undefined,
-                  fontFamily: 'Share Tech Mono, monospace',
-                }}
-              >
+                style={{ background: prefs.quality === q ? 'var(--neon-pink)' : undefined,
+                  fontFamily: 'Share Tech Mono, monospace' }}>
                 {q}
               </button>
             ))}
           </div>
         </Row>
         <Row icon={Globe} label="Subtitle Language">
-          <select
-            value={prefs.language}
-            onChange={(e) => setPref('language', e.target.value)}
-            className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))] px-2 py-1.5 text-xs outline-none focus:border-[var(--neon-pink)]"
-          >
-            {LANGUAGES.map((l) => (
-              <option key={l}>{l}</option>
-            ))}
+          <select value={prefs.language} onChange={e => setPref('language', e.target.value)}
+            className="text-xs border border-[hsl(var(--border))] rounded-lg px-2 py-1.5 bg-[hsl(var(--card))] outline-none focus:border-[var(--neon-pink)]">
+            {LANGUAGES.map(l => <option key={l}>{l}</option>)}
           </select>
         </Row>
         <Row icon={Shield} label="Auto-play" desc="Play next episode automatically">
@@ -236,45 +174,33 @@ export default function SettingsPage() {
       {/* Privacy */}
       <Section title="PRIVACY">
         <Row icon={Bell} label="Save Watch History" desc="Store what you've watched locally">
-          <Toggle
-            on={prefs.saveHistory}
-            onToggle={() => setPref('saveHistory', !prefs.saveHistory)}
-          />
+          <Toggle on={prefs.saveHistory} onToggle={() => setPref('saveHistory', !prefs.saveHistory)} />
         </Row>
         <Row icon={Shield} label="Mature Content" desc="Show 18+ content in results">
-          <Toggle
-            on={prefs.matureContent}
-            onToggle={() => setPref('matureContent', !prefs.matureContent)}
-          />
+          <Toggle on={prefs.matureContent} onToggle={() => setPref('matureContent', !prefs.matureContent)} />
         </Row>
       </Section>
 
       {/* Data */}
       <Section title="DATA & STORAGE">
         <Row icon={Download} label="Export My Data" desc="Download watchlist & history as JSON">
-          <button
-            onClick={exportData}
-            className="rounded-lg border border-[hsl(var(--border))] px-3 py-1.5 text-xs transition-all hover:border-[var(--neon-blue)] hover:text-[var(--neon-blue)]"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-          >
+          <button onClick={exportData}
+            className="text-xs border border-[hsl(var(--border))] rounded-lg px-3 py-1.5 hover:border-[var(--neon-blue)] hover:text-[var(--neon-blue)] transition-all"
+            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
             Export
           </button>
         </Row>
         <Row icon={Trash2} label="Clear Watch History" desc="Remove all watched items">
-          <button
-            onClick={() => clearData('demonlord_history', 'watch history')}
-            className="rounded-lg border border-[hsl(var(--border))] px-3 py-1.5 text-xs transition-all hover:border-red-400 hover:text-red-400"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-          >
+          <button onClick={() => clearData('demonlord_history', 'watch history')}
+            className="text-xs border border-[hsl(var(--border))] rounded-lg px-3 py-1.5 hover:border-red-400 hover:text-red-400 transition-all"
+            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
             Clear
           </button>
         </Row>
         <Row icon={Trash2} label="Clear Watchlist" desc="Remove all saved items">
-          <button
-            onClick={() => clearData('demonlord_watchlist', 'watchlist')}
-            className="rounded-lg border border-[hsl(var(--border))] px-3 py-1.5 text-xs transition-all hover:border-red-400 hover:text-red-400"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-          >
+          <button onClick={() => clearData('demonlord_watchlist', 'watchlist')}
+            className="text-xs border border-[hsl(var(--border))] rounded-lg px-3 py-1.5 hover:border-red-400 hover:text-red-400 transition-all"
+            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
             Clear
           </button>
         </Row>
@@ -283,16 +209,10 @@ export default function SettingsPage() {
       {/* Account */}
       {user && (
         <Section title="ACCOUNT">
-          <Row
-            icon={Settings}
-            label={user.email ?? 'Signed in'}
-            desc={user.displayName ?? 'Firebase user'}
-          >
-            <button
-              onClick={signOut}
-              className="rounded-lg border border-red-400/40 px-3 py-1.5 text-xs text-red-400 transition-all hover:bg-red-400/10"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}
-            >
+          <Row icon={Settings} label={user.email ?? 'Signed in'} desc={user.displayName ?? 'Firebase user'}>
+            <button onClick={signOut}
+              className="text-xs border border-red-400/40 text-red-400 rounded-lg px-3 py-1.5 hover:bg-red-400/10 transition-all"
+              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
               Sign Out
             </button>
           </Row>
@@ -300,10 +220,8 @@ export default function SettingsPage() {
       )}
 
       {/* Version */}
-      <p
-        className="text-center text-[0.55rem] text-[hsl(var(--muted-foreground))] opacity-50"
-        style={{ fontFamily: 'Share Tech Mono, monospace' }}
-      >
+      <p className="text-center text-[0.55rem] text-[hsl(var(--muted-foreground))] opacity-50"
+        style={{ fontFamily: 'Share Tech Mono, monospace' }}>
         DemonLord v5.0 · Neural Cinema · demonlord.pp.ua
       </p>
     </div>

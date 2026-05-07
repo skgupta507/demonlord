@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * ScreenScape API Client
  * Docs: https://screenscapeapi.dev/dashboard/docs

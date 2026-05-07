@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { VariantProps, cva } from 'class-variance-authority';
@@ -29,7 +30,8 @@ const loaderVariants = cva('animate-spin text-primary', {
 });
 
 interface SpinnerContentProps
-  extends VariantProps<typeof spinnerVariants>, VariantProps<typeof loaderVariants> {
+  extends VariantProps<typeof spinnerVariants>,
+    VariantProps<typeof loaderVariants> {
   className?: string;
   children?: React.ReactNode;
 }

@@ -1,14 +1,11 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { useState, useEffect } from 'react';
 import { Bookmark, BookmarkCheck } from 'lucide-react';
 
 interface Item {
-  id: string;
-  title: string;
-  type: 'movie' | 'tv' | 'anime';
-  poster?: string;
-  rating?: number;
-  year?: string;
+  id: string; title: string; type: 'movie' | 'tv' | 'anime';
+  poster?: string; rating?: number; year?: string;
 }
 
 export default function AddToWatchlistButton({ item }: { item: Item }) {
@@ -32,12 +29,10 @@ export default function AddToWatchlistButton({ item }: { item: Item }) {
   };
 
   return (
-    <button
-      onClick={toggle}
+    <button onClick={toggle}
       className={`btn-outline flex items-center gap-2 transition-all ${
         saved ? 'border-[var(--neon-pink)] text-[var(--neon-pink)]' : ''
-      }`}
-    >
+      }`}>
       {saved ? <BookmarkCheck size={14} /> : <Bookmark size={14} />}
       {saved ? 'Saved' : 'Watchlist'}
     </button>

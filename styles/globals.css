@@ -1,5 +1,5 @@
-@import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+@import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -36,98 +36,25 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
-  }
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
+  @keyframes accordion-down { from{height:0} to{height:var(--radix-accordion-content-height)} }
+  @keyframes accordion-up { from{height:var(--radix-accordion-content-height)} to{height:0} }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
   @keyframes glitch-1 {
-    0%,
-    100% {
-      clip-path: inset(0 0 97% 0);
-      transform: translate(-3px, 0);
-    }
-    33% {
-      clip-path: inset(45% 0 40% 0);
-      transform: translate(3px, 0);
-    }
-    66% {
-      clip-path: inset(80% 0 5% 0);
-      transform: translate(-2px, 0);
-    }
+    0%,100%{clip-path:inset(0 0 97% 0);transform:translate(-3px,0)}
+    33%{clip-path:inset(45% 0 40% 0);transform:translate(3px,0)}
+    66%{clip-path:inset(80% 0 5% 0);transform:translate(-2px,0)}
   }
   @keyframes glitch-2 {
-    0%,
-    100% {
-      clip-path: inset(55% 0 30% 0);
-      transform: translate(3px, 0);
-    }
-    33% {
-      clip-path: inset(10% 0 75% 0);
-      transform: translate(-3px, 0);
-    }
-    66% {
-      clip-path: inset(70% 0 15% 0);
-      transform: translate(2px, 0);
-    }
+    0%,100%{clip-path:inset(55% 0 30% 0);transform:translate(3px,0)}
+    33%{clip-path:inset(10% 0 75% 0);transform:translate(-3px,0)}
+    66%{clip-path:inset(70% 0 15% 0);transform:translate(2px,0)}
   }
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  @keyframes slide-up { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fade-in { from{opacity:0} to{opacity:1} }
   @keyframes neon-border {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+    0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
   }
-  @keyframes spin-slow {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
+  @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 }
 
 /* ══════════════════════════════════════
@@ -135,19 +62,19 @@
    Rive-inspired: very dark bg, clean
    ══════════════════════════════════════ */
 :root {
-  --background: 0 0% 7%; /* rgb(18,18,18) — very dark like Rive */
+  --background: 0 0% 7%;          /* rgb(18,18,18) — very dark like Rive */
   --foreground: 0 0% 92%;
   --card: 0 0% 10%;
   --card-foreground: 0 0% 90%;
   --popover: 0 0% 9%;
   --popover-foreground: 0 0% 90%;
-  --primary: 327 100% 50%; /* neon pink */
+  --primary: 327 100% 50%;        /* neon pink */
   --primary-foreground: 0 0% 100%;
   --secondary: 0 0% 13%;
   --secondary-foreground: 0 0% 85%;
   --muted: 0 0% 13%;
   --muted-foreground: 0 0% 48%;
-  --accent: 192 100% 50%; /* electric blue */
+  --accent: 192 100% 50%;         /* electric blue */
   --accent-foreground: 0 0% 5%;
   --destructive: 0 95% 60%;
   --destructive-foreground: 0 0% 100%;
@@ -167,12 +94,12 @@
   --sidebar-ring: 327 100% 50%;
 
   /* Neon palette */
-  --neon-pink: #ff006f;
-  --neon-blue: #00d4ff;
-  --neon-yellow: #f9f002;
-  --neon-purple: #bd00ff;
-  --neon-green: #39ff14;
-  --neon-gold: #ffd700; /* Rive's gold accent */
+  --neon-pink:   #FF006F;
+  --neon-blue:   #00D4FF;
+  --neon-yellow: #F9F002;
+  --neon-purple: #BD00FF;
+  --neon-green:  #39FF14;
+  --neon-gold:   #FFD700;          /* Rive's gold accent */
 }
 
 /* Explicit .dark mirrors :root so toggling works */
@@ -204,12 +131,12 @@
   --sidebar-accent-foreground: 0 0% 88%;
   --sidebar-border: 0 0% 15%;
   --sidebar-ring: 327 100% 50%;
-  --neon-pink: #ff006f;
-  --neon-blue: #00d4ff;
-  --neon-yellow: #f9f002;
-  --neon-purple: #bd00ff;
-  --neon-green: #39ff14;
-  --neon-gold: #ffd700;
+  --neon-pink:   #FF006F;
+  --neon-blue:   #00D4FF;
+  --neon-yellow: #F9F002;
+  --neon-purple: #BD00FF;
+  --neon-green:  #39FF14;
+  --neon-gold:   #FFD700;
 }
 
 /* ══════════════════════════════════════
@@ -217,7 +144,7 @@
    Rive's light: #f4f7fe background
    ══════════════════════════════════════ */
 .light {
-  --background: 220 33% 97%; /* Rive: #f4f7fe */
+  --background: 220 33% 97%;      /* Rive: #f4f7fe */
   --foreground: 222 30% 8%;
   --card: 0 0% 100%;
   --card-foreground: 222 30% 8%;
@@ -244,25 +171,19 @@
   --sidebar-accent-foreground: 222 30% 12%;
   --sidebar-border: 220 14% 88%;
   --sidebar-ring: 327 100% 44%;
-  --neon-pink: #cc0055;
-  --neon-blue: #006ea0;
-  --neon-yellow: #a07800;
-  --neon-purple: #7000aa;
-  --neon-green: #156600;
-  --neon-gold: #b8860b;
+  --neon-pink:   #CC0055;
+  --neon-blue:   #006EA0;
+  --neon-yellow: #A07800;
+  --neon-purple: #7000AA;
+  --neon-green:  #156600;
+  --neon-gold:   #B8860B;
 }
 
 /* ══════════════════════════════════════
    BASE RESET
    ══════════════════════════════════════ */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
   @apply bg-background text-foreground;
@@ -288,23 +209,14 @@ body::before {
 /* ══════════════════════════════════════
    TYPOGRAPHY
    ══════════════════════════════════════ */
-.font-display {
-  font-family: var(--font-display) !important;
-}
-.font-cyber {
-  font-family: var(--font-mono) !important;
-}
+.font-display { font-family: var(--font-display) !important; }
+.font-cyber   { font-family: var(--font-mono) !important; }
 
 /* ══════════════════════════════════════
    GRADIENT TEXT
    ══════════════════════════════════════ */
 .gradient-cyber {
-  background: linear-gradient(
-    90deg,
-    var(--neon-pink) 0%,
-    var(--neon-purple) 45%,
-    var(--neon-blue) 100%
-  );
+  background: linear-gradient(90deg, var(--neon-pink) 0%, var(--neon-purple) 45%, var(--neon-blue) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -411,78 +323,37 @@ body::before {
 /* ══════════════════════════════════════
    SCROLLBAR — hidden like Rive
    ══════════════════════════════════════ */
-::-webkit-scrollbar {
-  width: 0;
-  display: none;
-}
+::-webkit-scrollbar { width: 0; display: none; }
 
 /* ══════════════════════════════════════
    SELECTION + FOCUS
    ══════════════════════════════════════ */
-::selection {
-  background: hsl(var(--primary) / 0.2);
-}
-*:focus-visible {
-  outline: 2px solid hsl(var(--ring));
-  outline-offset: 2px;
-  border-radius: 2px;
-}
+::selection { background: hsl(var(--primary) / 0.2); }
+*:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 2px; border-radius: 2px; }
 
 /* ══════════════════════════════════════
    ANIMATION UTILITIES
    ══════════════════════════════════════ */
-.animate-float {
-  animation: float 5s ease-in-out infinite;
-}
-.animate-slide-up {
-  animation: slide-up 0.5s ease forwards;
-}
-.animate-fade-in {
-  animation: fade-in 0.4s ease forwards;
-}
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
-}
+.animate-float     { animation: float 5s ease-in-out infinite; }
+.animate-slide-up  { animation: slide-up 0.5s ease forwards; }
+.animate-fade-in   { animation: fade-in 0.4s ease forwards; }
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
 
 /* ══════════════════════════════════════
    LIGHT THEME TEXT OVERRIDES
    Fix white-on-white issues
    ══════════════════════════════════════ */
-.light .text-white\/30 {
-  color: rgba(0, 0, 0, 0.4) !important;
-}
-.light .text-white\/40 {
-  color: rgba(0, 0, 0, 0.5) !important;
-}
-.light .text-white\/50 {
-  color: rgba(0, 0, 0, 0.58) !important;
-}
-.light .text-white\/60 {
-  color: rgba(0, 0, 0, 0.68) !important;
-}
-.light .text-white\/70 {
-  color: rgba(0, 0, 0, 0.75) !important;
-}
-.light .text-white\/80 {
-  color: rgba(0, 0, 0, 0.82) !important;
-}
-.light .text-white {
-  color: rgba(0, 0, 0, 0.92) !important;
-}
-.light .border-white\/5 {
-  border-color: rgba(0, 0, 0, 0.06) !important;
-}
-.light .border-white\/8 {
-  border-color: rgba(0, 0, 0, 0.09) !important;
-}
-.light .border-white\/10 {
-  border-color: rgba(0, 0, 0, 0.12) !important;
-}
-.light .bg-white\/5 {
-  background-color: rgba(0, 0, 0, 0.03) !important;
-}
+.light .text-white\/30 { color: rgba(0,0,0,0.4) !important; }
+.light .text-white\/40 { color: rgba(0,0,0,0.5) !important; }
+.light .text-white\/50 { color: rgba(0,0,0,0.58) !important; }
+.light .text-white\/60 { color: rgba(0,0,0,0.68) !important; }
+.light .text-white\/70 { color: rgba(0,0,0,0.75) !important; }
+.light .text-white\/80 { color: rgba(0,0,0,0.82) !important; }
+.light .text-white     { color: rgba(0,0,0,0.92) !important; }
+.light .border-white\/5  { border-color: rgba(0,0,0,0.06) !important; }
+.light .border-white\/8  { border-color: rgba(0,0,0,0.09) !important; }
+.light .border-white\/10 { border-color: rgba(0,0,0,0.12) !important; }
+.light .bg-white\/5      { background-color: rgba(0,0,0,0.03) !important; }
 
 /* Dot grid lighter in light mode */
-.light body::before {
-  opacity: 0.15;
-}
+.light body::before { opacity: 0.15; }

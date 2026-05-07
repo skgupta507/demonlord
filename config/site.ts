@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {

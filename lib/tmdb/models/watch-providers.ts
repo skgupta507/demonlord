@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export type Flatrate = {
   display_priority: number;
   logo_path: string;

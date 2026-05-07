@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { tmdb } from '@/lib/tmdb';
 import CarousalCard from '@/components/carousal/card';
@@ -10,9 +11,7 @@ export default async function CarousalMovie() {
   } catch {
     return null;
   }
-
   if (!items.length) return null;
-
   return (
     <Carousel className="mb-10">
       <CarouselContent className="mx-auto flex w-full">

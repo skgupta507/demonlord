@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { axiosClient } from '..';
 import { GetVideosResponse } from '@/lib/tmdb';
 

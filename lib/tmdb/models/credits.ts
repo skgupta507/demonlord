@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export type Cast = {
   adult: boolean;
   gender: number;

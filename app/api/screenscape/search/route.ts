@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { NextRequest, NextResponse } from 'next/server';
 import { kmmovies, animesalt } from '@/lib/screenscape';
 
@@ -10,7 +11,10 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const [movies, anime] = await Promise.allSettled([kmmovies.search(q), animesalt.search(q)]);
+    const [movies, anime] = await Promise.allSettled([
+      kmmovies.search(q),
+      animesalt.search(q),
+    ]);
 
     return NextResponse.json({
       movies: movies.status === 'fulfilled' ? movies.value : null,

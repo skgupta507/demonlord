@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import type { PropsWithChildren } from 'react';
 import { HTMLAttributes } from 'react';
 

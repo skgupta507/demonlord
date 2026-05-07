@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { axiosClient } from '@/lib/tmdb/index';
 import { Language } from '@/lib/tmdb/models/language';
 

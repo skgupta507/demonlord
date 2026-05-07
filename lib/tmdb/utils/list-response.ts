@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export type ListResponse<T> = {
   page: number;
   results: T[];

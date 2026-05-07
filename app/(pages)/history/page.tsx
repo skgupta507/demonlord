@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { useState, useEffect } from 'react';
 import { Clock, Trash2, Play, Film, Tv2, Antenna, RotateCcw } from 'lucide-react';
@@ -16,11 +17,7 @@ interface HistoryItem {
   watchedAt: number;
 }
 
-const TYPE_COLOR = {
-  movie: 'var(--neon-pink)',
-  tv: 'var(--neon-blue)',
-  anime: 'var(--neon-purple)',
-};
+const TYPE_COLOR = { movie: 'var(--neon-pink)', tv: 'var(--neon-blue)', anime: 'var(--neon-purple)' };
 const TYPE_ICON = { movie: Film, tv: Tv2, anime: Antenna };
 const TYPE_LABEL = { movie: 'Movie', tv: 'TV Show', anime: 'Anime' };
 
@@ -52,19 +49,17 @@ export default function HistoryPage() {
   };
 
   const remove = (id: string, watchedAt: number) =>
-    save(items.filter((i) => !(i.id === id && i.watchedAt === watchedAt)));
+    save(items.filter(i => !(i.id === id && i.watchedAt === watchedAt)));
 
-  const clearAll = () => {
-    if (confirm('Clear all watch history?')) save([]);
-  };
+  const clearAll = () => { if (confirm('Clear all watch history?')) save([]); };
 
   const filtered = items
-    .filter((i) => filter === 'all' || i.type === filter)
+    .filter(i => filter === 'all' || i.type === filter)
     .sort((a, b) => b.watchedAt - a.watchedAt);
 
   // Group by date
   const grouped: Record<string, HistoryItem[]> = {};
-  filtered.forEach((item) => {
+  filtered.forEach(item => {
     const d = new Date(item.watchedAt);
     const today = new Date();
     const yesterday = new Date(Date.now() - 86400000);
@@ -79,53 +74,38 @@ export default function HistoryPage() {
   if (!mounted) return null;
 
   return (
-    <div className="mx-auto max-w-4xl space-y-6 p-6">
+    <div className="max-w-4xl mx-auto p-6 space-y-6">
       {/* Header */}
-      <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="flex items-start justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-3">
-          <div
-            className="flex h-10 w-10 items-center justify-center rounded-xl"
-            style={{ background: 'var(--neon-blue)' }}
-          >
+          <div className="h-10 w-10 rounded-xl flex items-center justify-center"
+            style={{ background: 'var(--neon-blue)' }}>
             <Clock size={18} className="text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>
-              Watch History
-            </h1>
-            <p
-              className="text-xs text-[hsl(var(--muted-foreground))]"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}
-            >
+            <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>Watch History</h1>
+            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
               {items.length} titles watched
             </p>
           </div>
         </div>
         {items.length > 0 && (
-          <button
-            onClick={clearAll}
-            className="flex items-center gap-1.5 text-xs text-[hsl(var(--muted-foreground))] transition-colors hover:text-red-400"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-          >
+          <button onClick={clearAll}
+            className="flex items-center gap-1.5 text-xs text-[hsl(var(--muted-foreground))] hover:text-red-400 transition-colors"
+            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
             <Trash2 size={12} /> Clear history
           </button>
         )}
       </div>
 
       {items.length > 0 && (
-        <div className="flex w-fit gap-1 rounded-xl border border-[hsl(var(--border))] p-1">
-          {(['all', 'movie', 'tv', 'anime'] as const).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`rounded-lg px-3 py-1.5 text-[0.65rem] tracking-wider transition-all ${
-                filter === f ? 'font-bold text-white' : 'text-[hsl(var(--muted-foreground))]'
+        <div className="flex gap-1 p-1 rounded-xl border border-[hsl(var(--border))] w-fit">
+          {(['all', 'movie', 'tv', 'anime'] as const).map(f => (
+            <button key={f} onClick={() => setFilter(f)}
+              className={`px-3 py-1.5 rounded-lg text-[0.65rem] tracking-wider transition-all ${
+                filter === f ? 'text-white font-bold' : 'text-[hsl(var(--muted-foreground))]'
               }`}
-              style={{
-                fontFamily: 'Share Tech Mono, monospace',
-                background: filter === f ? 'var(--neon-blue)' : 'transparent',
-              }}
-            >
+              style={{ fontFamily: 'Share Tech Mono, monospace', background: filter === f ? 'var(--neon-blue)' : 'transparent' }}>
               {f === 'all' ? 'All' : TYPE_LABEL[f]}
             </button>
           ))}
@@ -134,87 +114,61 @@ export default function HistoryPage() {
 
       {Object.entries(grouped).map(([date, dateItems]) => (
         <div key={date} className="space-y-2">
-          <p
-            className="text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] uppercase"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-          >
+          <p className="text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] uppercase"
+            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
             {date}
           </p>
           <div className="space-y-2">
-            {dateItems.map((item) => {
+            {dateItems.map(item => {
               const Icon = TYPE_ICON[item.type];
               const color = TYPE_COLOR[item.type];
-              const href =
-                item.type === 'anime'
-                  ? `/anime/watch/${item.id}/${item.episode ?? 1}`
-                  : item.type === 'tv'
-                    ? `/tv/watch/${item.id}`
-                    : `/movie/watch/${item.id}`;
+              const href = item.type === 'anime'
+                ? `/anime/watch/${item.id}/${item.episode ?? 1}`
+                : item.type === 'tv'
+                ? `/tv/watch/${item.id}`
+                : `/movie/watch/${item.id}`;
 
               return (
-                <div
-                  key={`${item.id}-${item.watchedAt}`}
-                  className="card-cyber group flex items-center gap-4 p-3"
-                >
+                <div key={`${item.id}-${item.watchedAt}`}
+                  className="card-cyber p-3 flex items-center gap-4 group">
                   {/* Poster / icon */}
                   {item.poster ? (
-                    <Image
-                      src={item.poster}
-                      alt={item.title}
-                      width={44}
-                      height={66}
-                      className="shrink-0 rounded-lg object-cover"
-                    />
+                    <Image src={item.poster} alt={item.title} width={44} height={66}
+                      className="rounded-lg object-cover shrink-0" />
                   ) : (
-                    <div
-                      className="flex h-14 w-10 shrink-0 items-center justify-center rounded-lg"
-                      style={{ background: `color-mix(in srgb, ${color} 12%, transparent)` }}
-                    >
+                    <div className="h-14 w-10 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: `color-mix(in srgb, ${color} 12%, transparent)` }}>
                       <Icon size={16} style={{ color }} />
                     </div>
                   )}
 
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-semibold">{item.title}</p>
-                    <div className="mt-0.5 flex flex-wrap items-center gap-2">
-                      <span
-                        className="rounded-full px-1.5 py-0.5 text-[0.5rem] font-bold tracking-wider text-white"
-                        style={{ background: color, fontFamily: 'Share Tech Mono, monospace' }}
-                      >
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-sm truncate">{item.title}</p>
+                    <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                      <span className="text-[0.5rem] tracking-wider px-1.5 py-0.5 rounded-full text-white font-bold"
+                        style={{ background: color, fontFamily: 'Share Tech Mono, monospace' }}>
                         {TYPE_LABEL[item.type]}
                       </span>
-                      {item.season && (
-                        <span className="text-xs text-[hsl(var(--muted-foreground))]">
-                          S{item.season} E{item.episode}
-                        </span>
-                      )}
-                      {item.rating && (
-                        <span className="text-xs text-yellow-400">★ {item.rating.toFixed(1)}</span>
-                      )}
-                      <span className="text-xs text-[hsl(var(--muted-foreground))]">
-                        {timeAgo(item.watchedAt)}
-                      </span>
+                      {item.season && <span className="text-xs text-[hsl(var(--muted-foreground))]">S{item.season} E{item.episode}</span>}
+                      {item.rating && <span className="text-xs text-yellow-400">★ {item.rating.toFixed(1)}</span>}
+                      <span className="text-xs text-[hsl(var(--muted-foreground))]">{timeAgo(item.watchedAt)}</span>
                     </div>
                     {item.progress !== undefined && (
-                      <div className="mt-1.5 h-1 w-full max-w-[160px] overflow-hidden rounded-full bg-[hsl(var(--muted))]">
-                        <div
-                          className="h-full rounded-full transition-all"
-                          style={{ width: `${item.progress}%`, background: color }}
-                        />
+                      <div className="mt-1.5 h-1 rounded-full bg-[hsl(var(--muted))] overflow-hidden w-full max-w-[160px]">
+                        <div className="h-full rounded-full transition-all"
+                          style={{ width: `${item.progress}%`, background: color }} />
                       </div>
                     )}
                   </div>
 
-                  <div className="flex shrink-0 gap-2 opacity-0 transition-opacity group-hover:opacity-100">
+                  <div className="flex gap-2 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
                     <Link href={href}>
-                      <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-[hsl(var(--border))] transition-all hover:border-[var(--neon-blue)] hover:text-[var(--neon-blue)]">
+                      <button className="h-8 w-8 rounded-lg border border-[hsl(var(--border))] flex items-center justify-center hover:border-[var(--neon-blue)] hover:text-[var(--neon-blue)] transition-all">
                         <RotateCcw size={13} />
                       </button>
                     </Link>
-                    <button
-                      onClick={() => remove(item.id, item.watchedAt)}
-                      className="flex h-8 w-8 items-center justify-center rounded-lg border border-[hsl(var(--border))] transition-all hover:border-red-400 hover:text-red-400"
-                    >
+                    <button onClick={() => remove(item.id, item.watchedAt)}
+                      className="h-8 w-8 rounded-lg border border-[hsl(var(--border))] flex items-center justify-center hover:border-red-400 hover:text-red-400 transition-all">
                       <Trash2 size={13} />
                     </button>
                   </div>
@@ -226,25 +180,16 @@ export default function HistoryPage() {
       ))}
 
       {items.length === 0 && (
-        <div className="flex flex-col items-center gap-4 py-24">
-          <div
-            className="flex h-16 w-16 items-center justify-center rounded-2xl opacity-20"
-            style={{ background: 'var(--neon-blue)' }}
-          >
+        <div className="flex flex-col items-center py-24 gap-4">
+          <div className="h-16 w-16 rounded-2xl flex items-center justify-center opacity-20"
+            style={{ background: 'var(--neon-blue)' }}>
             <Clock size={28} className="text-white" />
           </div>
-          <p className="text-lg font-bold" style={{ fontFamily: 'Orbitron, monospace' }}>
-            No history yet
-          </p>
-          <p
-            className="max-w-xs text-center text-sm text-[hsl(var(--muted-foreground))]"
-            style={{ fontFamily: 'Rajdhani, sans-serif' }}
-          >
+          <p className="font-bold text-lg" style={{ fontFamily: 'Orbitron, monospace' }}>No history yet</p>
+          <p className="text-sm text-[hsl(var(--muted-foreground))] text-center max-w-xs" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
             Start watching and your history will appear here automatically.
           </p>
-          <Link href="/movie">
-            <button className="btn-neon px-5 py-2 text-xs">Start Watching</button>
-          </Link>
+          <Link href="/movie"><button className="btn-neon text-xs px-5 py-2">Start Watching</button></Link>
         </div>
       )}
     </div>

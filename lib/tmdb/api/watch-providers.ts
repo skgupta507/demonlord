@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { axiosClient } from '..';
 import { Language } from '@/lib/tmdb';
 import { GetAvailableRegionsResponse, GetWatchProvidersResponse, WatchProviders } from '@/lib/tmdb';

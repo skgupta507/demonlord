@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useState, useEffect } from 'react';
 import { tmdb } from '@/lib/tmdb';
 import { anilist } from '@/lib/anilist';
@@ -9,10 +10,7 @@ export function useSearch(search: string, category: SearchCategory) {
   const [results, setResults] = useState<any>(null);
 
   useEffect(() => {
-    if (!search.trim() || search.length < 2) {
-      setResults(null);
-      return;
-    }
+    if (!search.trim() || search.length < 2) { setResults(null); return; }
 
     const delay = setTimeout(async () => {
       setIsLoading(true);

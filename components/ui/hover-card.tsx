@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';

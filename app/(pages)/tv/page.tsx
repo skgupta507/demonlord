@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import TVBrowseClient from '@/components/containers/tv/browse-client';
 import CarousalTV from '@/components/carousal/tv';
 

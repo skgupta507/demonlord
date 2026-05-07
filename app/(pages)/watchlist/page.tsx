@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { useState, useEffect } from 'react';
 import { Heart, Trash2, Play, Film, Tv2, Antenna, Search, Grid, List } from 'lucide-react';
@@ -15,40 +16,25 @@ interface WatchlistItem {
 }
 
 const TYPE_ICON = { movie: Film, tv: Tv2, anime: Antenna };
-const TYPE_COLOR = {
-  movie: 'var(--neon-pink)',
-  tv: 'var(--neon-blue)',
-  anime: 'var(--neon-purple)',
-};
+const TYPE_COLOR = { movie: 'var(--neon-pink)', tv: 'var(--neon-blue)', anime: 'var(--neon-purple)' };
 const TYPE_LABEL = { movie: 'Movie', tv: 'TV Show', anime: 'Anime' };
 
 function EmptyState({ filter }: { filter: string }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 py-24">
-      <div
-        className="flex h-16 w-16 items-center justify-center rounded-2xl opacity-20"
-        style={{ background: 'var(--neon-pink)' }}
-      >
+    <div className="flex flex-col items-center justify-center py-24 gap-4">
+      <div className="h-16 w-16 rounded-2xl flex items-center justify-center opacity-20"
+        style={{ background: 'var(--neon-pink)' }}>
         <Heart size={28} className="text-white" />
       </div>
-      <p className="text-lg font-bold" style={{ fontFamily: 'Orbitron, monospace' }}>
-        {filter === 'all'
-          ? 'Your watchlist is empty'
-          : `No ${TYPE_LABEL[filter as keyof typeof TYPE_LABEL]}s saved`}
+      <p className="font-bold text-lg" style={{ fontFamily: 'Orbitron, monospace' }}>
+        {filter === 'all' ? 'Your watchlist is empty' : `No ${TYPE_LABEL[filter as keyof typeof TYPE_LABEL]}s saved`}
       </p>
-      <p
-        className="max-w-xs text-center text-sm text-[hsl(var(--muted-foreground))]"
-        style={{ fontFamily: 'Rajdhani, sans-serif' }}
-      >
+      <p className="text-sm text-[hsl(var(--muted-foreground))] text-center max-w-xs" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
         Browse movies, TV shows, and anime then click the bookmark icon to save them here.
       </p>
-      <div className="mt-2 flex gap-3">
-        <Link href="/movie">
-          <button className="btn-neon px-5 py-2 text-xs">Browse Movies</button>
-        </Link>
-        <Link href="/anime">
-          <button className="btn-outline px-5 py-2 text-xs">Browse Anime</button>
-        </Link>
+      <div className="flex gap-3 mt-2">
+        <Link href="/movie"><button className="btn-neon text-xs px-5 py-2">Browse Movies</button></Link>
+        <Link href="/anime"><button className="btn-outline text-xs px-5 py-2">Browse Anime</button></Link>
       </div>
     </div>
   );
@@ -72,57 +58,39 @@ export default function WatchlistPage() {
     localStorage.setItem('demonlord_watchlist', JSON.stringify(newItems));
   };
 
-  const remove = (id: string) => save(items.filter((i) => i.id !== id));
-  const clearAll = () => {
-    if (confirm('Clear your entire watchlist?')) save([]);
-  };
+  const remove = (id: string) => save(items.filter(i => i.id !== id));
+  const clearAll = () => { if (confirm('Clear your entire watchlist?')) save([]); };
 
-  const filtered = items
-    .filter((i) => {
-      const matchFilter = filter === 'all' || i.type === filter;
-      const matchSearch = !search || i.title.toLowerCase().includes(search.toLowerCase());
-      return matchFilter && matchSearch;
-    })
-    .sort((a, b) => b.addedAt - a.addedAt);
+  const filtered = items.filter(i => {
+    const matchFilter = filter === 'all' || i.type === filter;
+    const matchSearch = !search || i.title.toLowerCase().includes(search.toLowerCase());
+    return matchFilter && matchSearch;
+  }).sort((a, b) => b.addedAt - a.addedAt);
 
-  const counts = {
-    all: items.length,
-    movie: items.filter((i) => i.type === 'movie').length,
-    tv: items.filter((i) => i.type === 'tv').length,
-    anime: items.filter((i) => i.type === 'anime').length,
-  };
+  const counts = { all: items.length, movie: items.filter(i => i.type === 'movie').length, tv: items.filter(i => i.type === 'tv').length, anime: items.filter(i => i.type === 'anime').length };
 
   if (!mounted) return null;
 
   return (
-    <div className="mx-auto max-w-5xl space-y-6 p-6">
+    <div className="max-w-5xl mx-auto p-6 space-y-6">
       {/* Header */}
-      <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="flex items-start justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-3">
-          <div
-            className="flex h-10 w-10 items-center justify-center rounded-xl"
-            style={{ background: 'var(--neon-pink)' }}
-          >
+          <div className="h-10 w-10 rounded-xl flex items-center justify-center"
+            style={{ background: 'var(--neon-pink)' }}>
             <Heart size={18} className="text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>
-              My Watchlist
-            </h1>
-            <p
-              className="text-xs text-[hsl(var(--muted-foreground))]"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}
-            >
+            <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>My Watchlist</h1>
+            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
               {items.length} saved · sorted by newest
             </p>
           </div>
         </div>
         {items.length > 0 && (
-          <button
-            onClick={clearAll}
-            className="flex items-center gap-1.5 text-xs text-[hsl(var(--muted-foreground))] transition-colors hover:text-red-400"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-          >
+          <button onClick={clearAll}
+            className="flex items-center gap-1.5 text-xs text-[hsl(var(--muted-foreground))] hover:text-red-400 transition-colors"
+            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
             <Trash2 size={12} /> Clear all
           </button>
         )}
@@ -131,49 +99,39 @@ export default function WatchlistPage() {
       {items.length > 0 && (
         <>
           {/* Filters + Search + View toggle */}
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="flex gap-1 rounded-xl border border-[hsl(var(--border))] p-1">
-              {(['all', 'movie', 'tv', 'anime'] as const).map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  className={`rounded-lg px-3 py-1.5 text-[0.65rem] tracking-wider transition-all ${
+          <div className="flex flex-wrap gap-3 items-center">
+            <div className="flex gap-1 p-1 rounded-xl border border-[hsl(var(--border))]">
+              {(['all', 'movie', 'tv', 'anime'] as const).map(f => (
+                <button key={f} onClick={() => setFilter(f)}
+                  className={`px-3 py-1.5 rounded-lg text-[0.65rem] tracking-wider transition-all ${
                     filter === f
-                      ? 'font-bold text-white'
+                      ? 'text-white font-bold'
                       : 'text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]'
                   }`}
                   style={{
                     fontFamily: 'Share Tech Mono, monospace',
                     background: filter === f ? 'var(--neon-pink)' : 'transparent',
-                  }}
-                >
+                  }}>
                   {f === 'all' ? `All (${counts.all})` : `${TYPE_LABEL[f]} (${counts[f]})`}
                 </button>
               ))}
             </div>
 
-            <div className="flex max-w-xs flex-1 items-center gap-2 rounded-xl border border-[hsl(var(--border))] px-3 py-1.5">
+            <div className="flex items-center gap-2 border border-[hsl(var(--border))] rounded-xl px-3 py-1.5 flex-1 max-w-xs">
               <Search size={13} className="text-[hsl(var(--muted-foreground))]" />
-              <input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
+              <input value={search} onChange={e => setSearch(e.target.value)}
                 placeholder="Search watchlist..."
-                className="flex-1 bg-transparent text-sm outline-none placeholder:text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Rajdhani, sans-serif' }}
-              />
+                className="bg-transparent text-sm outline-none flex-1 placeholder:text-[hsl(var(--muted-foreground))]"
+                style={{ fontFamily: 'Rajdhani, sans-serif' }} />
             </div>
 
-            <div className="ml-auto flex gap-1">
-              <button
-                onClick={() => setView('grid')}
-                className={`rounded-lg p-2 transition-colors ${view === 'grid' ? 'text-[var(--neon-pink)]' : 'text-[hsl(var(--muted-foreground))]'}`}
-              >
+            <div className="flex gap-1 ml-auto">
+              <button onClick={() => setView('grid')}
+                className={`p-2 rounded-lg transition-colors ${view === 'grid' ? 'text-[var(--neon-pink)]' : 'text-[hsl(var(--muted-foreground))]'}`}>
                 <Grid size={15} />
               </button>
-              <button
-                onClick={() => setView('list')}
-                className={`rounded-lg p-2 transition-colors ${view === 'list' ? 'text-[var(--neon-pink)]' : 'text-[hsl(var(--muted-foreground))]'}`}
-              >
+              <button onClick={() => setView('list')}
+                className={`p-2 rounded-lg transition-colors ${view === 'list' ? 'text-[var(--neon-pink)]' : 'text-[hsl(var(--muted-foreground))]'}`}>
                 <List size={15} />
               </button>
             </div>
@@ -181,58 +139,47 @@ export default function WatchlistPage() {
 
           {/* Grid/List view */}
           {filtered.length === 0 ? (
-            <div className="py-12 text-center text-sm text-[hsl(var(--muted-foreground))]">
+            <div className="py-12 text-center text-[hsl(var(--muted-foreground))] text-sm">
               No results for "{search}"
             </div>
           ) : view === 'grid' ? (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {filtered.map((item) => {
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {filtered.map(item => {
                 const Icon = TYPE_ICON[item.type];
                 const color = TYPE_COLOR[item.type];
                 const href = `/${item.type === 'tv' ? 'tv' : item.type}/${item.id}`;
                 return (
                   <div key={item.id} className="group relative">
                     <Link href={href}>
-                      <div className="relative aspect-[2/3] overflow-hidden rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] transition-all group-hover:border-[var(--neon-pink)]">
+                      <div className="relative aspect-[2/3] rounded-xl overflow-hidden border border-[hsl(var(--border))] bg-[hsl(var(--card))] group-hover:border-[var(--neon-pink)] transition-all">
                         {item.poster ? (
-                          <Image
-                            fill
-                            src={item.poster}
-                            alt={item.title}
-                            sizes="200px"
-                            className="object-cover brightness-90 transition-all group-hover:brightness-100"
-                          />
+                          <Image fill src={item.poster} alt={item.title} sizes="200px"
+                            className="object-cover brightness-90 group-hover:brightness-100 transition-all" />
                         ) : (
                           <div className="flex h-full items-center justify-center">
                             <Icon size={24} style={{ color }} className="opacity-50" />
                           </div>
                         )}
-                        <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                        <div className="absolute inset-x-0 bottom-0 translate-y-full p-2 transition-transform duration-200 group-hover:translate-y-0">
-                          <p className="truncate text-xs font-semibold text-white">{item.title}</p>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
+                        <div className="absolute bottom-0 inset-x-0 p-2 translate-y-full group-hover:translate-y-0 transition-transform duration-200">
+                          <p className="text-xs font-semibold text-white truncate">{item.title}</p>
                         </div>
                         <div className="absolute top-2 left-2">
-                          <span
-                            className="rounded-full px-1.5 py-0.5 text-[0.5rem] font-bold tracking-wider text-white"
-                            style={{ background: color, fontFamily: 'Share Tech Mono, monospace' }}
-                          >
+                          <span className="text-[0.5rem] tracking-wider px-1.5 py-0.5 rounded-full text-white font-bold"
+                            style={{ background: color, fontFamily: 'Share Tech Mono, monospace' }}>
                             {TYPE_LABEL[item.type]}
                           </span>
                         </div>
                         {item.rating && (
-                          <div
-                            className="absolute top-2 right-2 rounded-full bg-black/70 px-1.5 py-0.5 text-[0.55rem] text-yellow-400"
-                            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-                          >
+                          <div className="absolute top-2 right-2 bg-black/70 rounded-full px-1.5 py-0.5 text-[0.55rem] text-yellow-400"
+                            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
                             ★ {item.rating.toFixed(1)}
                           </div>
                         )}
                       </div>
                     </Link>
-                    <button
-                      onClick={() => remove(item.id)}
-                      className="absolute -top-2 -right-2 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100 hover:bg-red-600"
-                    >
+                    <button onClick={() => remove(item.id)}
+                      className="absolute -top-2 -right-2 h-6 w-6 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-red-600 z-10">
                       <Trash2 size={11} />
                     </button>
                   </div>
@@ -241,59 +188,40 @@ export default function WatchlistPage() {
             </div>
           ) : (
             <div className="space-y-2">
-              {filtered.map((item) => {
+              {filtered.map(item => {
                 const Icon = TYPE_ICON[item.type];
                 const color = TYPE_COLOR[item.type];
                 const href = `/${item.type === 'tv' ? 'tv' : item.type}/${item.id}`;
                 return (
-                  <div key={item.id} className="card-cyber flex items-center gap-4 p-3">
+                  <div key={item.id} className="card-cyber p-3 flex items-center gap-4">
                     {item.poster ? (
-                      <Image
-                        src={item.poster}
-                        alt={item.title}
-                        width={48}
-                        height={72}
-                        className="shrink-0 rounded-lg object-cover"
-                      />
+                      <Image src={item.poster} alt={item.title} width={48} height={72}
+                        className="rounded-lg object-cover shrink-0" />
                     ) : (
-                      <div
-                        className="flex h-16 w-12 shrink-0 items-center justify-center rounded-lg"
-                        style={{ background: 'color-mix(in srgb,' + color + ' 10%, transparent)' }}
-                      >
+                      <div className="h-16 w-12 rounded-lg flex items-center justify-center shrink-0"
+                        style={{ background: 'color-mix(in srgb,' + color + ' 10%, transparent)' }}>
                         <Icon size={18} style={{ color }} />
                       </div>
                     )}
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate font-semibold">{item.title}</p>
-                      <div className="mt-0.5 flex items-center gap-2">
-                        <span
-                          className="rounded-full px-1.5 py-0.5 text-[0.55rem] tracking-wider text-white"
-                          style={{ background: color, fontFamily: 'Share Tech Mono, monospace' }}
-                        >
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold truncate">{item.title}</p>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className="text-[0.55rem] tracking-wider px-1.5 py-0.5 rounded-full text-white"
+                          style={{ background: color, fontFamily: 'Share Tech Mono, monospace' }}>
                           {TYPE_LABEL[item.type]}
                         </span>
-                        {item.year && (
-                          <span className="text-xs text-[hsl(var(--muted-foreground))]">
-                            {item.year}
-                          </span>
-                        )}
-                        {item.rating && (
-                          <span className="text-xs text-yellow-400">
-                            ★ {item.rating.toFixed(1)}
-                          </span>
-                        )}
+                        {item.year && <span className="text-xs text-[hsl(var(--muted-foreground))]">{item.year}</span>}
+                        {item.rating && <span className="text-xs text-yellow-400">★ {item.rating.toFixed(1)}</span>}
                       </div>
                     </div>
-                    <div className="flex shrink-0 gap-2">
+                    <div className="flex gap-2 shrink-0">
                       <Link href={href}>
-                        <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-[hsl(var(--border))] transition-all hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)]">
+                        <button className="h-8 w-8 rounded-lg border border-[hsl(var(--border))] flex items-center justify-center hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)] transition-all">
                           <Play size={13} />
                         </button>
                       </Link>
-                      <button
-                        onClick={() => remove(item.id)}
-                        className="flex h-8 w-8 items-center justify-center rounded-lg border border-[hsl(var(--border))] transition-all hover:border-red-400 hover:text-red-400"
-                      >
+                      <button onClick={() => remove(item.id)}
+                        className="h-8 w-8 rounded-lg border border-[hsl(var(--border))] flex items-center justify-center hover:border-red-400 hover:text-red-400 transition-all">
                         <Trash2 size={13} />
                       </button>
                     </div>

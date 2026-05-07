@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
@@ -31,71 +32,51 @@ export default function Read() {
     }
   }, [chapter]);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  useEffect(() => { fetchData(); }, [fetchData]);
 
   return (
     <div className="min-h-screen">
       {/* Nav bar */}
-      <div className="sticky top-0 z-20 flex items-center justify-between border-b border-white/8 bg-[#080B14]/95 px-4 py-3 backdrop-blur-sm">
-        <Link
-          href={`/manga/info/${id}`}
-          className="flex items-center gap-2 text-[0.6rem] tracking-widest text-white/30 transition-colors hover:text-[#F9F002]"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}
-        >
+      <div className="sticky top-0 z-20 flex items-center justify-between px-4 py-3 border-b border-white/8 bg-[#080B14]/95 backdrop-blur-sm">
+        <Link href={`/manga/info/${id}`}
+          className="flex items-center gap-2 text-[0.6rem] tracking-widest text-white/30 hover:text-[#F9F002] transition-colors"
+          style={{ fontFamily: 'Share Tech Mono, monospace' }}>
           <ArrowLeft size={10} /> BACK TO INFO
         </Link>
-        <span
-          className="text-[0.55rem] tracking-widest text-white/30"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}
-        >
+        <span className="text-[0.55rem] tracking-widest text-white/30" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
           {decodeURIComponent(title || '')} · {lang?.toUpperCase()} · CH. {chapter?.slice(0, 8)}
         </span>
-        <span
-          className="text-[0.55rem] tracking-widest text-white/20"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}
-        >
+        <span className="text-[0.55rem] tracking-widest text-white/20" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
           {images.length} PAGES
         </span>
       </div>
 
       {loading && (
-        <div className="flex flex-col items-center justify-center gap-4 py-32">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#F9F002] border-t-transparent" />
-          <span
-            className="text-[0.6rem] tracking-widest text-white/30"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-          >
+        <div className="flex flex-col items-center justify-center py-32 gap-4">
+          <div className="h-8 w-8 border-2 border-[#F9F002] border-t-transparent rounded-full animate-spin" />
+          <span className="text-[0.6rem] tracking-widest text-white/30" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
             FETCHING CHAPTER...
           </span>
         </div>
       )}
 
       {error && (
-        <div className="flex flex-col items-center justify-center gap-4 py-32">
-          <span
-            className="text-[0.6rem] tracking-widest text-[#FF006F]"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-          >
+        <div className="flex flex-col items-center justify-center py-32 gap-4">
+          <span className="text-[0.6rem] tracking-widest text-[#FF006F]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
             FAILED TO LOAD CHAPTER — MangaDex may be unavailable
           </span>
-          <button onClick={fetchData} className="btn-neon text-xs">
-            RETRY
-          </button>
+          <button onClick={fetchData} className="btn-neon text-xs">RETRY</button>
         </div>
       )}
 
       {!loading && !error && (
-        <div className="mx-auto flex max-w-3xl flex-1 flex-col items-center gap-1 px-2 py-4">
+        <div className="flex flex-1 flex-col items-center py-4 gap-1 max-w-3xl mx-auto px-2">
           {images.map((src, i) => (
             <div key={i} className="relative w-full">
               <Image
-                src={src}
-                alt={`Page ${i + 1}`}
-                width={800}
-                height={1200}
-                className="h-auto w-full"
+                src={src} alt={`Page ${i + 1}`}
+                width={800} height={1200}
+                className="w-full h-auto"
                 unoptimized
                 priority={i < 3}
               />
@@ -103,10 +84,8 @@ export default function Read() {
           ))}
           {images.length > 0 && (
             <div className="flex items-center gap-3 py-8">
-              <span
-                className="text-[0.6rem] tracking-widest text-white/30"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}
-              >
+              <span className="text-[0.6rem] tracking-widest text-white/30"
+                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
                 END OF CHAPTER · {images.length} PAGES
               </span>
             </div>

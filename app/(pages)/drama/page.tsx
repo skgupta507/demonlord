@@ -1,17 +1,18 @@
+/* eslint-disable prettier/prettier */
 import Link from 'next/link';
 import { Tv, WifiOff, ArrowRight } from 'lucide-react';
 
 export default function DramaPage() {
   return (
-    <div className="relative flex min-h-[80vh] items-center justify-center overflow-hidden p-6">
+    <div className="relative min-h-[80vh] flex items-center justify-center overflow-hidden p-6">
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
           backgroundImage: `linear-gradient(hsl(280 100% 68%) 1px, transparent 1px), linear-gradient(90deg, hsl(280 100% 68%) 1px, transparent 1px)`,
           backgroundSize: '60px 60px',
         }}
       />
-      <div className="relative z-10 max-w-lg space-y-6 text-center">
+      <div className="relative z-10 max-w-lg text-center space-y-6">
         <div className="flex justify-center">
           <div className="relative border border-[hsl(280_100%_68%/0.3)] p-5">
             <WifiOff size={36} className="text-[hsl(280_100%_68%)]" />
@@ -20,29 +21,23 @@ export default function DramaPage() {
         </div>
         <div>
           <div
-            className="mb-2 text-[0.6rem] tracking-[0.3em] text-[hsl(280_100%_68%)] uppercase"
+            className="text-[0.6rem] tracking-[0.3em] text-[hsl(280_100%_68%)] uppercase mb-2"
             style={{ fontFamily: 'Share Tech Mono, monospace' }}
           >
             STATUS: NODE OFFLINE
           </div>
-          <h1
-            className="text-3xl font-black tracking-[0.1em] uppercase"
-            style={{ fontFamily: 'Orbitron, monospace' }}
-          >
+          <h1 className="text-3xl font-black tracking-[0.1em] uppercase" style={{ fontFamily: 'Orbitron, monospace' }}>
             DRAMA
           </h1>
         </div>
-        <div className="space-y-2 border border-[hsl(var(--border))] p-4 text-left">
+        <div className="border border-[hsl(var(--border))] p-4 text-left space-y-2">
           <div
             className="text-[0.55rem] tracking-widest text-[hsl(280_100%_68%)]"
             style={{ fontFamily: 'Share Tech Mono, monospace' }}
           >
             // INCIDENT REPORT
           </div>
-          <p
-            className="text-muted-foreground text-sm leading-relaxed"
-            style={{ fontFamily: 'Rajdhani, sans-serif' }}
-          >
+          <p className="text-sm text-muted-foreground leading-relaxed" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
             The Drama streaming node has been taken offline. Our previous provider
             <span className="text-foreground font-semibold"> Dramacool</span> is no longer available
             and no suitable replacement has been found. Check the archive for alternative sources.
@@ -56,7 +51,7 @@ export default function DramaPage() {
           </Link>
           <Link href="/">
             <button
-              className="text-muted-foreground hover:border-muted-foreground/50 border border-[hsl(var(--border))] px-5 py-2 text-[0.65rem] tracking-widest transition-colors"
+              className="border border-[hsl(var(--border))] px-5 py-2 text-[0.65rem] tracking-widest text-muted-foreground hover:border-muted-foreground/50 transition-colors"
               style={{ fontFamily: 'Share Tech Mono, monospace' }}
             >
               HOME BASE

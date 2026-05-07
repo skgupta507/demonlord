@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { data_types } from '@/types';
 
 const SaveToLocalStorage = (data: data_types) => {

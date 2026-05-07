@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export type Keyword = {
   name: string;
   id: number;

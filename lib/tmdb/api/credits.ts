@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { axiosClient, Credits, Language } from '@/lib/tmdb';
 
 export const credits = async (variant: 'movie' | 'tv', id: number, language: Language) => {

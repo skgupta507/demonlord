@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { axiosClient, GetKeywordsResponse } from '@/lib/tmdb';
 
 export const keywords = async (type: 'tv' | 'movie', id: number) => {

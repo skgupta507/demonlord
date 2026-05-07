@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { axiosClient, GetImagesResponse } from '@/lib/tmdb';
 
 export const images = async (variant: 'movie' | 'tv' | 'person', id: number) => {

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Crew } from './credits';
 
 export type GuestStar = {

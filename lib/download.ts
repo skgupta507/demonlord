@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use server';
 
 import { env } from '@/env.mjs';

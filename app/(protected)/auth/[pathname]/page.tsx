@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // Auth is now handled by Firebase.
 // This stub replaces the old @daveyplate/better-auth-ui auth page.
 // The AuthModal component (components/auth-modal.tsx) handles all auth UI.

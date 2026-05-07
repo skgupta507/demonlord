@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -25,54 +26,42 @@ export function SiteHeader() {
 
   return (
     <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b border-[hsl(var(--border))] px-4 lg:px-5">
+
       {isMobile ? (
-        <Link href="/" className="flex shrink-0 items-center gap-2">
-          <div
-            className="flex h-6 w-6 items-center justify-center rounded-md"
-            style={{ background: 'var(--neon-pink)' }}
-          >
+        <Link href="/" className="flex items-center gap-2 shrink-0">
+          <div className="h-6 w-6 rounded-md flex items-center justify-center"
+            style={{ background: 'var(--neon-pink)' }}>
             <Skull size={12} className="text-white" />
           </div>
-          <span
-            className="text-xs font-black tracking-widest text-[var(--neon-pink)]"
-            style={{ fontFamily: 'Orbitron, monospace' }}
-          >
+          <span className="text-xs font-black tracking-widest text-[var(--neon-pink)]"
+            style={{ fontFamily: 'Orbitron, monospace' }}>
             DL
           </span>
         </Link>
       ) : (
-        <SidebarTrigger className="rounded-md transition-colors hover:bg-[hsl(var(--muted))]" />
+        <SidebarTrigger className="rounded-md hover:bg-[hsl(var(--muted))] transition-colors" />
       )}
 
       {/* Live dot */}
-      <div className="ml-1 hidden items-center gap-1.5 md:flex">
-        <div
-          className="h-1.5 w-1.5 animate-pulse rounded-full"
-          style={{ background: 'var(--neon-green)' }}
-        />
-        <span className="text-[0.48rem] tracking-widest opacity-50" style={mono}>
-          LIVE
-        </span>
+      <div className="hidden md:flex items-center gap-1.5 ml-1">
+        <div className="h-1.5 w-1.5 rounded-full animate-pulse"
+          style={{ background: 'var(--neon-green)' }} />
+        <span className="text-[0.48rem] tracking-widest opacity-50" style={mono}>LIVE</span>
       </div>
 
       <div className="flex-1" />
 
       {/* Clock */}
       {mounted && (
-        <span
-          className="hidden text-[0.52rem] tracking-widest tabular-nums opacity-30 lg:block"
-          style={mono}
-        >
+        <span className="hidden lg:block text-[0.52rem] tracking-widest opacity-30 tabular-nums" style={mono}>
           {time}
         </span>
       )}
 
       {/* Search shortcut */}
-      <Link
-        href="/search"
-        className="hidden items-center gap-1.5 rounded-md border border-[hsl(var(--border))] px-2.5 py-1.5 text-[0.5rem] tracking-widest text-[hsl(var(--muted-foreground))] transition-all hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)] md:flex"
-        style={mono}
-      >
+      <Link href="/search"
+        className="hidden md:flex items-center gap-1.5 border border-[hsl(var(--border))] rounded-md px-2.5 py-1.5 text-[hsl(var(--muted-foreground))] hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)] transition-all text-[0.5rem] tracking-widest"
+        style={mono}>
         <Search size={10} /> SEARCH
       </Link>
 
@@ -80,7 +69,7 @@ export function SiteHeader() {
       {mounted && (
         <button
           onClick={() => setTheme(isDark ? 'light' : 'dark')}
-          className="flex h-8 w-8 items-center justify-center rounded-md border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] transition-all hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)]"
+          className="h-8 w-8 rounded-md border border-[hsl(var(--border))] flex items-center justify-center text-[hsl(var(--muted-foreground))] hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)] transition-all"
           aria-label="Toggle theme"
         >
           {isDark ? <Sun size={13} /> : <Moon size={13} />}

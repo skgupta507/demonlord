@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use server';
 export async function FetchAnimeInfo(data: any) {
   try {

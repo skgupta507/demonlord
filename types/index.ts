@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Icons } from '@/components/common/icons';
 import { Genre } from '@/lib/tmdb/utils/common';
 

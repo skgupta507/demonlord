@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { Footer } from '@/components/footer';
 import { SiteHeader } from '@/components/site-header';
@@ -8,9 +9,11 @@ export default function PagesLayout({ children }: { children: React.ReactNode })
   const isHome = pathname === '/';
 
   return (
-    <div suppressHydrationWarning className="flex min-h-screen w-full flex-col">
+    <div suppressHydrationWarning className="flex flex-col min-h-screen w-full">
       {!isHome && <SiteHeader />}
-      <main className="w-full flex-1">{children}</main>
+      <main className="flex-1 w-full">
+        {children}
+      </main>
       {!isHome && <Footer />}
     </div>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Language } from '@/lib/tmdb';
 import { axiosClient } from '../index';
 import { TvSerie, TvSerieDetails } from '@/lib/tmdb';

@@ -1,18 +1,8 @@
+/* eslint-disable prettier/prettier */
 import axios, { AxiosError } from 'axios';
 import {
-  collections,
-  credits,
-  genres,
-  images,
-  keywords,
-  languages,
-  movies,
-  search,
-  season,
-  tv,
-  videos,
-  watchProviders,
-  person,
+  collections, credits, genres, images, keywords, languages,
+  movies, search, season, tv, videos, watchProviders, person,
 } from '@/lib/tmdb/api';
 
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
@@ -39,7 +29,7 @@ axiosClient.interceptors.response.use(
     // Retry once on ECONNRESET / network errors
     if (!config._retry && (!error.response || error.code === 'ECONNRESET')) {
       config._retry = true;
-      await new Promise((r) => setTimeout(r, 500));
+      await new Promise(r => setTimeout(r, 500));
       return axiosClient(config);
     }
     handleAxiosError(error);
@@ -48,19 +38,8 @@ axiosClient.interceptors.response.use(
 );
 
 export const tmdb = {
-  collections,
-  credits,
-  genres,
-  images,
-  keywords,
-  languages,
-  movies,
-  search,
-  season,
-  tv,
-  videos,
-  watchProviders,
-  person,
+  collections, credits, genres, images, keywords, languages,
+  movies, search, season, tv, videos, watchProviders, person,
 };
 
 export * from './models';

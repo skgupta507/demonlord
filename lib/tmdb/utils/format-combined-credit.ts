@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import type { CombinedCredit, RawMovieCredit, RawTvSerieCredit } from '@/lib/tmdb';
 
 export const formatCombinedCredit = (credit: RawMovieCredit | RawTvSerieCredit): CombinedCredit => {

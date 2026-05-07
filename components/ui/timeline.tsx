@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { useMotionValueEvent, useScroll, useTransform, motion } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';

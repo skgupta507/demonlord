@@ -1,32 +1,23 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Download, ChevronDown, Shield, ShieldOff, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
-type SourceKey =
-  | 'screenscape'
-  | 'default'
-  | 'vidsrc'
-  | 'vidlink'
-  | 'videasy'
-  | 'embedsu'
-  | 'autoembed'
-  | 'onemovies'
-  | 'vidzee'
-  | 'vidzee4k';
+type SourceKey = 'screenscape' | 'default' | 'vidsrc' | 'vidlink' | 'videasy' | 'embedsu' | 'autoembed' | 'onemovies' | 'vidzee' | 'vidzee4k';
 
 const SOURCES: { key: SourceKey; label: string; tag?: string }[] = [
   { key: 'screenscape', label: 'SCREENSCAPE', tag: 'NEW' },
-  { key: 'default', label: 'DEFAULT', tag: 'REC' },
-  { key: 'vidsrc', label: 'VIDSRC' },
-  { key: 'vidlink', label: 'VIDLINK' },
-  { key: 'videasy', label: 'VIDEASY' },
-  { key: 'embedsu', label: 'EMBEDSU' },
-  { key: 'autoembed', label: 'AUTOEMBED' },
-  { key: 'onemovies', label: '111MOVIES' },
-  { key: 'vidzee', label: 'VIDZEE HD' },
-  { key: 'vidzee4k', label: 'VIDZEE 4K', tag: '4K' },
+  { key: 'default',     label: 'DEFAULT',     tag: 'REC'  },
+  { key: 'vidsrc',      label: 'VIDSRC'                   },
+  { key: 'vidlink',     label: 'VIDLINK'                  },
+  { key: 'videasy',     label: 'VIDEASY'                  },
+  { key: 'embedsu',     label: 'EMBEDSU'                  },
+  { key: 'autoembed',   label: 'AUTOEMBED'                },
+  { key: 'onemovies',   label: '111MOVIES'                },
+  { key: 'vidzee',      label: 'VIDZEE HD'                },
+  { key: 'vidzee4k',    label: 'VIDZEE 4K',  tag: '4K'   },
 ];
 
 // Ad-blocked wrapper: intercepts the iframe load and injects uBlock-style CSS
@@ -44,7 +35,7 @@ function AdBlockedPlayer({ src, height = 580 }: { src: string; height?: number }
         width="100%"
         height={height}
         scrolling="no"
-        className="block h-full w-full border-0"
+        className="block w-full h-full border-0"
         sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation allow-top-navigation-by-user-activation"
       />
     </div>
@@ -60,15 +51,15 @@ export default function VideoPlayer({ id }: { id: string }) {
 
   const videoSources: Record<SourceKey, string> = {
     screenscape: `https://screenscape.me/embed?tmdb=${id}&type=movie`,
-    default: `https://flix.1ani.me/embed/tmdb-movie-${id}`,
-    vidsrc: `https://vidsrc.in/embed/movie/${id}`,
-    vidlink: `https://vidlink.pro/movie/${id}`,
-    videasy: `https://player.videasy.net/movie/${id}`,
-    embedsu: `https://embed.su/embed/movie/${id}`,
-    autoembed: `https://player.autoembed.cc/embed/movie/${id}`,
-    onemovies: `https://111movies.com/movie/${id}`,
-    vidzee: `https://vidzee.wtf/movie/${id}`,
-    vidzee4k: `https://vidzee.wtf/movie/4k/${id}`,
+    default:     `https://flix.1ani.me/embed/tmdb-movie-${id}`,
+    vidsrc:      `https://vidsrc.in/embed/movie/${id}`,
+    vidlink:     `https://vidlink.pro/movie/${id}`,
+    videasy:     `https://player.videasy.net/movie/${id}`,
+    embedsu:     `https://embed.su/embed/movie/${id}`,
+    autoembed:   `https://player.autoembed.cc/embed/movie/${id}`,
+    onemovies:   `https://111movies.com/movie/${id}`,
+    vidzee:      `https://vidzee.wtf/movie/${id}`,
+    vidzee4k:    `https://vidzee.wtf/movie/4k/${id}`,
   };
 
   const select = (key: SourceKey) => {
@@ -78,42 +69,42 @@ export default function VideoPlayer({ id }: { id: string }) {
     setTimeout(() => setLoading(false), 600);
   };
 
-  const current = SOURCES.find((s) => s.key === selected)!;
+  const current = SOURCES.find(s => s.key === selected)!;
   const isLight = theme === 'light';
 
   return (
-    <div className="mx-auto max-w-5xl space-y-3 py-6">
+    <div className="mx-auto max-w-5xl py-6 space-y-3">
+
       {/* ── Control Bar ── */}
       <div className="flex flex-wrap items-center gap-2">
+
         {/* Server Dropdown */}
         <div className="relative">
           <button
             onClick={() => setOpen(!open)}
             className={`flex items-center gap-2 border px-3 py-2 text-[0.65rem] tracking-widest transition-colors ${
               isLight
-                ? 'border-gray-300 text-gray-700 hover:border-[#FF006F]/60'
-                : 'border-white/10 text-white hover:border-[#FF006F]/50'
+                ? 'border-gray-300 hover:border-[#FF006F]/60 text-gray-700'
+                : 'border-white/10 hover:border-[#FF006F]/50 text-white'
             }`}
             style={{ fontFamily: 'Share Tech Mono, monospace' }}
           >
             <span style={{ color: '#FF006F' }}>SERVER:</span>
             <span>{current.label}</span>
-            {current.tag && <span className="text-[0.55rem] text-[#F9F002]">[{current.tag}]</span>}
-            <span className={`ml-1 text-xs ${isLight ? 'text-gray-400' : 'text-white/40'}`}>
+            {current.tag && <span className="text-[#F9F002] text-[0.55rem]">[{current.tag}]</span>}
+            <span className={`text-xs ml-1 ${isLight ? 'text-gray-400' : 'text-white/40'}`}>
               {open ? '▲' : '▼'}
             </span>
           </button>
           {open && (
-            <div
-              className={`absolute top-full left-0 z-50 mt-1 w-52 border shadow-xl ${
-                isLight ? 'border-gray-200 bg-white' : 'border-white/10 bg-[#080B14]'
-              }`}
-            >
-              {SOURCES.map((s) => (
+            <div className={`absolute top-full left-0 z-50 mt-1 w-52 border shadow-xl ${
+              isLight ? 'border-gray-200 bg-white' : 'border-white/10 bg-[#080B14]'
+            }`}>
+              {SOURCES.map(s => (
                 <button
                   key={s.key}
                   onClick={() => select(s.key)}
-                  className={`flex w-full items-center justify-between px-3 py-2 text-[0.65rem] tracking-widest transition-colors ${
+                  className={`w-full flex items-center justify-between px-3 py-2 text-[0.65rem] tracking-widest transition-colors ${
                     s.key === selected
                       ? 'text-[#FF006F]'
                       : isLight
@@ -123,7 +114,7 @@ export default function VideoPlayer({ id }: { id: string }) {
                   style={{ fontFamily: 'Share Tech Mono, monospace' }}
                 >
                   <span>{s.label}</span>
-                  {s.tag && <span className="text-[0.55rem] text-[#F9F002]">[{s.tag}]</span>}
+                  {s.tag && <span className="text-[#F9F002] text-[0.55rem]">[{s.tag}]</span>}
                 </button>
               ))}
             </div>
@@ -136,7 +127,7 @@ export default function VideoPlayer({ id }: { id: string }) {
           title={adBlock ? 'Ad Blocker ON (click to disable)' : 'Ad Blocker OFF (click to enable)'}
           className={`flex items-center gap-1.5 border px-3 py-2 text-[0.65rem] tracking-widest transition-all ${
             adBlock
-              ? 'border-[#39FF14]/40 bg-[#39FF14]/5 text-[#39FF14] hover:bg-[#39FF14]/10'
+              ? 'border-[#39FF14]/40 text-[#39FF14] bg-[#39FF14]/5 hover:bg-[#39FF14]/10'
               : isLight
                 ? 'border-gray-300 text-gray-400 hover:border-gray-400'
                 : 'border-white/10 text-white/30 hover:border-white/25'
@@ -178,33 +169,21 @@ export default function VideoPlayer({ id }: { id: string }) {
 
         {/* Status */}
         <div className="ml-auto flex items-center gap-2">
-          <div
-            className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#39FF14]"
-            style={{ boxShadow: '0 0 6px #39FF14' }}
-          />
-          <span
-            className={`text-[0.55rem] tracking-widest ${isLight ? 'text-gray-400' : 'text-[#39FF14]/60'}`}
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
-          >
-            STREAM ACTIVE
-          </span>
+          <div className="h-1.5 w-1.5 rounded-full bg-[#39FF14] animate-pulse"
+            style={{ boxShadow: '0 0 6px #39FF14' }} />
+          <span className={`text-[0.55rem] tracking-widest ${isLight ? 'text-gray-400' : 'text-[#39FF14]/60'}`}
+            style={{ fontFamily: 'Share Tech Mono, monospace' }}>STREAM ACTIVE</span>
         </div>
       </div>
 
       {/* ── Player ── */}
       <div className={`player-container relative ${isLight ? 'border border-gray-200' : ''}`}>
         {loading ? (
-          <div
-            className={`flex h-[560px] items-center justify-center ${isLight ? 'bg-gray-50' : 'bg-[#080B14]'}`}
-          >
+          <div className={`flex h-[560px] items-center justify-center ${isLight ? 'bg-gray-50' : 'bg-[#080B14]'}`}>
             <div className="flex flex-col items-center gap-3">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#FF006F] border-t-transparent" />
-              <span
-                className={`text-[0.6rem] tracking-widest ${isLight ? 'text-gray-400' : 'text-white/30'}`}
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}
-              >
-                CONNECTING TO NODE...
-              </span>
+              <div className="h-8 w-8 border-2 border-[#FF006F] border-t-transparent rounded-full animate-spin" />
+              <span className={`text-[0.6rem] tracking-widest ${isLight ? 'text-gray-400' : 'text-white/30'}`}
+                style={{ fontFamily: 'Share Tech Mono, monospace' }}>CONNECTING TO NODE...</span>
             </div>
           </div>
         ) : adBlock ? (
@@ -224,12 +203,9 @@ export default function VideoPlayer({ id }: { id: string }) {
       </div>
 
       {/* ── Info Bar ── */}
-      <div
-        className={`flex flex-wrap items-center gap-3 border-t pt-2.5 text-[0.55rem] tracking-widest ${
-          isLight ? 'border-gray-200 text-gray-400' : 'border-white/5 text-white/20'
-        }`}
-        style={{ fontFamily: 'Share Tech Mono, monospace' }}
-      >
+      <div className={`flex items-center gap-3 border-t pt-2.5 text-[0.55rem] tracking-widest flex-wrap ${
+        isLight ? 'border-gray-200 text-gray-400' : 'border-white/5 text-white/20'
+      }`} style={{ fontFamily: 'Share Tech Mono, monospace' }}>
         <Shield size={9} />
         <span>NODE: {current.label}</span>
         <span className="opacity-30">|</span>

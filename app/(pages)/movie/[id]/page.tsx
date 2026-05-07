@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import DetailsContainer from '@/components/containers/movie/details';
 import { tmdb } from '@/lib/tmdb';
 

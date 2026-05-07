@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Poster } from '@/components/common/poster';
 import {
   Carousel,
