@@ -156,23 +156,35 @@ const DetailsContainer = async ({ data, id }: any) => {
             <h2 className="text-base font-bold flex items-center gap-2">
               <TrendingUp size={15} style={{ color: 'var(--neon-blue)' }} /> More Like This
             </h2>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+            <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
               {similar.map((s: any) => (
-                <Link key={s.id} href={`/tv/${s.id}`} className="group">
-                  <div className="relative aspect-[2/3] rounded-xl overflow-hidden border border-[hsl(var(--border))] group-hover:border-[var(--neon-blue)] transition-all duration-200">
+                <Link key={s.id} href={`/tv/${s.id}`} className="group space-y-1.5">
+                  <div className="relative aspect-[2/3] overflow-hidden border border-[hsl(var(--border))] group-hover:border-[var(--neon-blue)] transition-all duration-300">
                     {s.poster_path ? (
                       <Image fill src={`https://image.tmdb.org/t/p/w342${s.poster_path}`}
-                        alt={s.name} sizes="200px" className="object-cover brightness-90 group-hover:brightness-100 transition-all" />
+                        alt={s.name} sizes="180px"
+                        className="object-cover brightness-95 group-hover:brightness-100 group-hover:scale-105 transition-all duration-500" />
                     ) : (
                       <div className="flex h-full items-center justify-center bg-[hsl(var(--muted))] text-2xl">📺</div>
                     )}
-                    <div className="absolute bottom-0 inset-x-0 p-2 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-200 rounded-b-xl">
-                      <p className="text-xs font-semibold text-white truncate">{s.name}</p>
-                    </div>
                     {s.vote_average > 0 && (
-                      <div className="absolute top-2 right-2 bg-black/70 rounded-full px-1.5 py-0.5 text-[0.55rem] text-yellow-400">
-                        ★ {s.vote_average.toFixed(1)}
+                      <div className="absolute top-1.5 right-1.5 flex items-center gap-0.5 bg-black/75 backdrop-blur-sm rounded-full px-1.5 py-0.5">
+                        <Star size={8} className="text-yellow-400 fill-yellow-400" />
+                        <span className="text-[0.55rem] text-yellow-300 font-bold" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                          {s.vote_average.toFixed(1)}
+                        </span>
                       </div>
+                    )}
+                  </div>
+                  <div className="space-y-0.5 px-0.5">
+                    <p className="text-xs font-medium leading-tight line-clamp-2 group-hover:text-[var(--neon-blue)] transition-colors"
+                      style={{ fontFamily: 'Rajdhani, sans-serif', fontWeight: 600 }}>
+                      {s.name}
+                    </p>
+                    {s.first_air_date && (
+                      <p className="text-[0.6rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                        {s.first_air_date.slice(0, 4)}
+                      </p>
                     )}
                   </div>
                 </Link>

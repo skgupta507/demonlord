@@ -221,7 +221,7 @@ export default function AboutPage() {
             <div className="space-y-2">
               <p className="text-[0.55rem] tracking-[0.25em] uppercase text-[hsl(var(--muted-foreground))]"
                 style={{ fontFamily: 'Share Tech Mono, monospace' }}>BUILT BY</p>
-              <h2 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>Sunil Kumar Gupta</h2>
+              <h2 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>SK Gupta</h2>
               <p className="text-sm text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                 Developer, designer, and believer in free entertainment for everyone.
               </p>

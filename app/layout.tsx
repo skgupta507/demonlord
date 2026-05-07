@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { siteConfig } from '@/config/site';
 import type { Metadata, Viewport } from 'next';
+import localFont from 'next/font/local';
 import { ThemeProvider } from '@/components/theme-provider';
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from '@/components/ui/sonner';
@@ -8,6 +9,28 @@ import '@/styles/globals.css';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { Providers } from './providers';
 import LayoutShell from '@/components/layout-shell';
+
+/* ── Geist Sans ── */
+const geistSans = localFont({
+  src: [
+    { path: '../node_modules/geist/dist/fonts/geist-sans/Geist-Regular.woff2',   weight: '400', style: 'normal' },
+    { path: '../node_modules/geist/dist/fonts/geist-sans/Geist-Black.woff2',     weight: '900', style: 'normal' },
+    { path: '../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2',  weight: '100 900', style: 'normal' },
+  ],
+  variable: '--font-geist-sans',
+  display: 'swap',
+});
+
+/* ── Geist Mono ── */
+const geistMono = localFont({
+  src: [
+    { path: '../node_modules/geist/dist/fonts/geist-mono/GeistMono-Regular.woff2', weight: '400', style: 'normal' },
+    { path: '../node_modules/geist/dist/fonts/geist-mono/GeistMono-Black.woff2',   weight: '900', style: 'normal' },
+    { path: '../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2',weight: '100 900', style: 'normal' },
+  ],
+  variable: '--font-geist-mono',
+  display: 'swap',
+});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -37,8 +60,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth"
+      className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

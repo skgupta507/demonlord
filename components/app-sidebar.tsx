@@ -16,13 +16,13 @@ import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 
 const NAV_MAIN = [
-  { label: 'Home',     href: '/',       icon: Home,    exact: true },
-  { label: 'Search',   href: '/search', icon: Search               },
-  { label: 'Movies',   href: '/movie',  icon: Film                 },
-  { label: 'TV Shows', href: '/tv',     icon: Tv2                  },
-  { label: 'Anime',    href: '/anime',  icon: Antenna              },
-  { label: 'K-Drama',  href: '/drama',  icon: Tv                   },
-  { label: 'Manga',    href: '/manga',  icon: Book                 },
+  { label: 'Home',     href: '/home',    icon: Home                 },
+  { label: 'Search',   href: '/search',  icon: Search               },
+  { label: 'Movies',   href: '/movie',   icon: Film                 },
+  { label: 'TV Shows', href: '/tv',      icon: Tv2                  },
+  { label: 'Anime',    href: '/anime',   icon: Antenna              },
+  { label: 'K-Drama',  href: '/drama',   icon: Tv                   },
+  { label: 'Manga',    href: '/manga',   icon: Book                 },
 ];
 
 const NAV_SYSTEM = [
@@ -76,7 +76,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="hover:bg-transparent active:bg-transparent"
             >
-              <Link href="/" className="flex items-center gap-3">
+              <Link href="/home" className="flex items-center gap-3">
                 {/* Logo diamond */}
                 <div className="relative h-8 w-8 shrink-0 flex items-center justify-center rounded-lg"
                   style={{ background: 'var(--neon-pink)' }}>

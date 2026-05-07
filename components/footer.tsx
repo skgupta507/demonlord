@@ -1,27 +1,33 @@
 /* eslint-disable prettier/prettier */
 'use client';
 import Link from 'next/link';
-import { Skull, Github, Twitter, Instagram, MessageCircle, ExternalLink, Zap } from 'lucide-react';
+import { Skull, Github, Twitter, Instagram, MessageCircle, ExternalLink } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
+import OnlineUsers from '@/components/online-users';
 
-const NAV = [
-  { label: 'Movies',   href: '/movie' },
-  { label: 'TV Shows', href: '/tv'    },
-  { label: 'Anime',    href: '/anime' },
-  { label: 'Manga',    href: '/manga' },
+const STREAMS = [
+  { label: 'Movies',   href: '/movie'  },
+  { label: 'TV Shows', href: '/tv'     },
+  { label: 'Anime',    href: '/anime'  },
+  { label: 'Manga',    href: '/manga'  },
+  { label: 'K-Drama',  href: '/drama'  },
 ];
-const LEGAL = [
-  { label: 'About',   href: '/about'   },
-  { label: 'Privacy', href: '/privacy' },
-  { label: 'Terms',   href: '/terms'   },
-  { label: 'DMCA',    href: '/dmca'    },
+
+const COMPANY = [
+  { label: 'About',    href: '/about'   },
+  { label: 'Privacy',  href: '/privacy' },
+  { label: 'Terms',    href: '/terms'   },
+  { label: 'DMCA',     href: '/dmca'    },
+  { label: 'Settings', href: '/settings'},
 ];
+
 const NETWORK = [
-  { label: 'Arise Music', href: 'https://arise.pp.ua',    color: 'var(--neon-pink)'   },
-  { label: 'AnimeDex',    href: 'https://animedex.pp.ua', color: 'var(--neon-purple)' },
-  { label: 'Dramzy',      href: 'https://dramzy.qd.je',   color: 'var(--neon-green)'  },
+  { label: 'Arise Music', href: 'https://arise.pp.ua'    },
+  { label: 'AnimeDex',    href: 'https://animedex.pp.ua' },
+  { label: 'Dramzy',      href: 'https://dramzy.qd.je'   },
 ];
+
 const SOCIALS = [
   { icon: Github,        href: 'https://github.com/skgupta507',           label: 'GitHub'    },
   { icon: Twitter,       href: 'https://x.com/sk_gupta143',               label: 'X'         },
@@ -35,71 +41,62 @@ export const Footer = () => {
   useEffect(() => setMounted(true), []);
   const isLight = mounted && resolvedTheme === 'light';
 
-  const muted = isLight ? 'text-gray-500' : 'text-[hsl(var(--muted-foreground))]';
-  const border = `border-[hsl(var(--border))]`;
+  const bg    = isLight ? 'bg-white'                       : 'bg-[hsl(0_0%_5%)]';
+  const fg    = isLight ? 'text-gray-900'                  : 'text-white';
+  const muted = isLight ? 'text-gray-500'                  : 'text-[hsl(var(--muted-foreground))]';
+  const hover = isLight ? 'hover:text-gray-900'            : 'hover:text-white';
+  const bdr   = isLight ? 'border-gray-200'                : 'border-[hsl(var(--border))]';
+  const mono  = { fontFamily: 'var(--font-geist-mono)' } as const;
+  const sans  = { fontFamily: 'var(--font-geist-sans)'  } as const;
 
   return (
-    <footer className={`border-t ${border} mt-auto`}>
-      {/* Top gradient accent line matching hero */}
-      <div className="h-[2px] w-full"
-        style={{ background: 'linear-gradient(90deg, var(--neon-pink) 0%, var(--neon-purple) 35%, var(--neon-blue) 70%, var(--neon-green) 100%)' }} />
+    <footer className={`${bg} border-t ${bdr} mt-auto`}>
+      <div className="mx-auto max-w-6xl px-6 pt-14 pb-8 space-y-12">
 
-      <div className="mx-auto max-w-5xl px-6 pt-12 pb-8">
-        {/* Main grid — mirrors landing page sections layout */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 mb-12">
+        {/* ── Top: brand + columns ── */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
 
-          {/* Brand col — same skull+gradient as hero */}
-          <div className="space-y-5 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="h-9 w-9 rounded-xl flex items-center justify-center shadow-lg"
+          {/* Brand — 2 cols wide */}
+          <div className="lg:col-span-2 space-y-5">
+            <Link href="/home" className="flex items-center gap-2.5 w-fit">
+              <div className="h-9 w-9 rounded-xl flex items-center justify-center"
                 style={{ background: 'var(--neon-pink)' }}>
                 <Skull size={16} className="text-white" />
               </div>
-              <span className="font-black tracking-[0.12em] text-sm"
-                style={{ fontFamily: 'Orbitron, monospace', color: 'var(--neon-pink)' }}>
+              <span className={`font-black text-sm tracking-widest ${fg}`}
+                style={{ fontFamily: 'var(--font-geist-mono)', letterSpacing: '0.15em' }}>
                 DEMONLORD
               </span>
             </Link>
-            <p className={`text-xs leading-relaxed ${muted}`} style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-              Free streaming aggregator. No media hosted —
-              third-party links only. Built by{' '}
-              <a href="https://github.com/skgupta507" target="_blank" rel="noopener noreferrer"
-                className="font-semibold hover:underline" style={{ color: 'var(--neon-pink)' }}>
-                Sunil Kumar Gupta
-              </a>.
+
+            <p className={`text-sm leading-relaxed max-w-xs ${muted}`} style={sans}>
+              Free streaming aggregator for movies, TV shows, anime and manga.
+              No media hosted — third-party links only.
             </p>
-            {/* Live status — mirrors hero badge */}
-            <div className={`inline-flex items-center gap-2 border rounded-full px-3 py-1.5 text-[0.5rem] tracking-widest ${border}`}
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
-              <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: 'var(--neon-green)' }} />
-              <span style={{ color: 'var(--neon-green)' }}>ONLINE</span>
-              <span className={muted}>· Free Forever</span>
-            </div>
+
+            <OnlineUsers variant="badge" />
+
             {/* Socials */}
-            <div className="flex gap-2">
+            <div className="flex items-center gap-2">
               {SOCIALS.map(s => (
                 <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer"
                   aria-label={s.label}
-                  className={`h-8 w-8 rounded-xl border ${border} flex items-center justify-center ${muted} hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)] transition-all hover:scale-110`}>
+                  className={`h-8 w-8 rounded-lg border ${bdr} flex items-center justify-center ${muted} ${hover} hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)] transition-all`}>
                   <s.icon size={14} strokeWidth={1.8} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Streams — mirrors feature cards section */}
+          {/* Streams */}
           <div className="space-y-4">
-            <p className="text-[0.5rem] tracking-[0.25em] uppercase font-semibold"
-              style={{ fontFamily: 'Share Tech Mono, monospace', color: 'var(--neon-pink)' }}>
-              STREAMS
-            </p>
-            <ul className="space-y-2.5">
-              {NAV.map(l => (
+            <p className={`text-xs font-semibold ${fg}`} style={mono}>Streams</p>
+            <ul className="space-y-3">
+              {STREAMS.map(l => (
                 <li key={l.href}>
                   <Link href={l.href}
-                    className={`text-sm ${muted} hover:text-[var(--neon-pink)] transition-colors flex items-center gap-1.5 group`}
-                    style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-                    <span className="h-px w-3 group-hover:w-5 transition-all" style={{ background: 'var(--neon-pink)' }} />
+                    className={`text-sm ${muted} ${hover} transition-colors`}
+                    style={sans}>
                     {l.label}
                   </Link>
                 </li>
@@ -107,63 +104,53 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Network — mirrors the network section on landing */}
+          {/* Company */}
           <div className="space-y-4">
-            <p className="text-[0.5rem] tracking-[0.25em] uppercase font-semibold"
-              style={{ fontFamily: 'Share Tech Mono, monospace', color: 'var(--neon-blue)' }}>
-              NETWORK
-            </p>
-            <ul className="space-y-2.5">
+            <p className={`text-xs font-semibold ${fg}`} style={mono}>Company</p>
+            <ul className="space-y-3">
+              {COMPANY.map(l => (
+                <li key={l.href}>
+                  <Link href={l.href}
+                    className={`text-sm ${muted} ${hover} transition-colors`}
+                    style={sans}>
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Network */}
+          <div className="space-y-4">
+            <p className={`text-xs font-semibold ${fg}`} style={mono}>Network</p>
+            <ul className="space-y-3">
               {NETWORK.map(l => (
                 <li key={l.href}>
                   <a href={l.href} target="_blank" rel="noopener noreferrer"
-                    className={`text-sm ${muted} hover:text-[hsl(var(--foreground))] transition-colors flex items-center gap-2 group`}
-                    style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-                    <span className="h-1.5 w-1.5 rounded-full shrink-0 transition-all group-hover:scale-125"
-                      style={{ background: l.color }} />
+                    className={`text-sm ${muted} ${hover} transition-colors inline-flex items-center gap-1.5 group`}
+                    style={sans}>
                     {l.label}
-                    <ExternalLink size={9} className="opacity-0 group-hover:opacity-60 transition-opacity" />
+                    <ExternalLink size={10} className="opacity-0 group-hover:opacity-50 transition-opacity" />
                   </a>
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Legal */}
-          <div className="space-y-4">
-            <p className="text-[0.5rem] tracking-[0.25em] uppercase font-semibold"
-              style={{ fontFamily: 'Share Tech Mono, monospace', color: 'hsl(var(--muted-foreground))' }}>
-              LEGAL
-            </p>
-            <ul className="space-y-2.5">
-              {LEGAL.map(l => (
-                <li key={l.href}>
-                  <Link href={l.href}
-                    className={`text-sm ${muted} hover:text-[hsl(var(--foreground))] transition-colors flex items-center gap-1.5 group`}
-                    style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-                    <span className="h-px w-3 group-hover:w-5 transition-all bg-[hsl(var(--muted-foreground))]" />
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
-        {/* Bottom bar — mirrors hero stats row */}
-        <div className={`pt-6 border-t ${border} flex flex-col sm:flex-row items-center justify-between gap-4`}>
-          <p className={`text-[0.5rem] tracking-widest uppercase ${muted}`}
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
-            © {new Date().getFullYear()} Demonlord · Neural Cinema · No media stored · Third-party links only
+        {/* ── Divider ── */}
+        <div className={`border-t ${bdr}`} />
+
+        {/* ── Bottom bar ── */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className={`text-xs ${muted}`} style={mono}>
+            © {new Date().getFullYear()} Demonlord. All rights reserved.
           </p>
-          {/* Neon dots — mirrors hero stats colours */}
-          <div className="flex items-center gap-2">
-            {['var(--neon-pink)', 'var(--neon-blue)', 'var(--neon-purple)', 'var(--neon-yellow)', 'var(--neon-green)'].map((c, i) => (
-              <div key={i} className="h-2 w-2 rounded-full transition-all hover:scale-150 cursor-default"
-                style={{ background: c }} />
-            ))}
-          </div>
+          <p className={`text-xs ${muted}`} style={mono}>
+            No media stored · Third-party links only
+          </p>
         </div>
+
       </div>
     </footer>
   );

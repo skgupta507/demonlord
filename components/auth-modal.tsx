@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useAuth } from '@/lib/firebase/auth-context';
 import { X, Mail, Lock, Zap, Eye, EyeOff, ArrowRight, AlertTriangle } from 'lucide-react';
 
@@ -16,8 +17,11 @@ export default function AuthModal({ open, onClose }: Props) {
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
+  const [mounted, setMounted] = useState(false);
 
-  if (!open) return null;
+  useEffect(() => { setMounted(true); }, []);
+
+  if (!open || !mounted) return null;
 
   const handle = async () => {
     if (!configured) return;
@@ -41,11 +45,11 @@ export default function AuthModal({ open, onClose }: Props) {
     signin: 'SIGN IN', signup: 'CREATE ACCOUNT', magic: 'MAGIC LINK', reset: 'RESET PASSWORD',
   };
 
-  return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+  const modal = (
+    <div className="fixed inset-0 flex items-center justify-center p-4" style={{ zIndex: 99999 }}>
       <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose} />
       <div className="relative w-full max-w-md border border-white/10 bg-[#080B14] overflow-hidden"
-        style={{ boxShadow: '0 0 60px rgba(255,0,111,0.15), 0 0 120px rgba(0,212,255,0.08)' }}>
+        style={{ zIndex: 100000, boxShadow: '0 0 60px rgba(255,0,111,0.15), 0 0 120px rgba(0,212,255,0.08)' }}>
         <div className="absolute top-0 left-0 right-0 h-[1px]"
           style={{ background: 'linear-gradient(90deg, transparent, #FF006F, #BD00FF, #00D4FF, transparent)' }} />
 
@@ -60,7 +64,6 @@ export default function AuthModal({ open, onClose }: Props) {
         </div>
 
         <div className="px-6 py-6 space-y-4">
-          {/* Not configured warning */}
           {!configured && (
             <div className="border border-[#F9F002]/30 bg-[#F9F002]/5 p-4 space-y-2">
               <div className="flex items-center gap-2">
@@ -134,10 +137,22 @@ export default function AuthModal({ open, onClose }: Props) {
           )}
 
           {(error || success) && (
-            <p className={`text-[0.6rem] ${error ? 'text-[#FF006F]' : 'text-[#39FF14]'}`}
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
-              {error || success}
-            </p>
+            <div className={`p-3 border text-[0.6rem] space-y-1 ${error ? 'border-[#FF006F]/30 bg-[#FF006F]/5' : 'border-[#39FF14]/30 bg-[#39FF14]/5'}`}>
+              <p className={error ? 'text-[#FF006F]' : 'text-[#39FF14]'}
+                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                {error || success}
+              </p>
+              {error?.includes('configuration-not-found') && (
+                <p className="text-white/40 text-[0.55rem]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                  Fix: In Firebase Console → Authentication → Sign-in method → enable Email/Password and Google providers.
+                </p>
+              )}
+              {error?.includes('auth/invalid-api-key') && (
+                <p className="text-white/40 text-[0.55rem]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                  Fix: Check your NEXT_PUBLIC_FIREBASE_API_KEY in .env — do not wrap in quotes.
+                </p>
+              )}
+            </div>
           )}
 
           {configured && (
@@ -180,4 +195,6 @@ export default function AuthModal({ open, onClose }: Props) {
       </div>
     </div>
   );
+
+  return createPortal(modal, document.body);
 }
