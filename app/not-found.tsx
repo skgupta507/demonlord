@@ -52,7 +52,7 @@ function DataStream() {
     <div className="space-y-1 text-left w-full max-w-sm">
       {lines.map((l, i) => (
         <div key={i} className="flex items-center gap-2 opacity-0 animate-[fadeIn_0.3s_ease_forwards]"
-          style={{ opacity: Math.max(0.1, 1 - i * 0.12), fontFamily: 'Share Tech Mono, monospace', fontSize: '0.6rem', letterSpacing: '0.08em' }}>
+          style={{ opacity: Math.max(0.1, 1 - i * 0.12), fontFamily: 'var(--font-geist-mono)', fontSize: '0.6rem', letterSpacing: '0.08em' }}>
           <span style={{ color: i === 0 ? '#FF006F' : 'rgba(255,255,255,0.3)' }}>
             {i === 0 ? '▶' : '·'}
           </span>
@@ -103,7 +103,7 @@ export default function NotFound() {
           {/* Behind layers for glitch effect */}
           <div className="absolute inset-0 text-[10rem] font-black leading-none tracking-tighter"
             style={{
-              fontFamily: 'Orbitron, monospace',
+              fontFamily: 'var(--font-geist-mono)',
               color: '#00D4FF',
               opacity: 0.4,
               animation: 'glitch-1 3s steps(2) infinite',
@@ -114,7 +114,7 @@ export default function NotFound() {
           </div>
           <div className="absolute inset-0 text-[10rem] font-black leading-none tracking-tighter"
             style={{
-              fontFamily: 'Orbitron, monospace',
+              fontFamily: 'var(--font-geist-mono)',
               color: '#BD00FF',
               opacity: 0.4,
               animation: 'glitch-2 2.5s steps(2) infinite',
@@ -126,7 +126,7 @@ export default function NotFound() {
           {/* Main */}
           <div className="text-[10rem] font-black leading-none tracking-tighter relative"
             style={{
-              fontFamily: 'Orbitron, monospace',
+              fontFamily: 'var(--font-geist-mono)',
               background: 'linear-gradient(180deg, #FF006F 0%, #BD00FF 60%, #00D4FF 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -142,10 +142,10 @@ export default function NotFound() {
           <GlitchText
             text="SIGNAL LOST"
             className="block text-2xl font-black tracking-[0.25em] text-white"
-            style={{ fontFamily: 'Orbitron, monospace' }}
+            style={{ fontFamily: 'var(--font-geist-mono)' }}
           />
           <p className="text-[0.6rem] tracking-[0.3em] uppercase"
-            style={{ fontFamily: 'Share Tech Mono, monospace', color: '#00D4FF', textShadow: '0 0 10px #00D4FF' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)', color: '#00D4FF', textShadow: '0 0 10px #00D4FF' }}>
             NODE DOES NOT EXIST IN THIS SECTOR
           </p>
         </div>
@@ -154,7 +154,7 @@ export default function NotFound() {
         <div className="border border-white/8 p-4 bg-black/40 w-full max-w-sm">
           <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/8">
             <div className="h-2 w-2 rounded-full bg-[#FF006F] animate-pulse" />
-            <span className="text-[0.5rem] tracking-widest text-white/30" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <span className="text-[0.5rem] tracking-widest text-white/30" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               NETRUNNER DIAGNOSTIC v4.2.1
             </span>
           </div>
@@ -171,7 +171,7 @@ export default function NotFound() {
           </Link>
         </div>
 
-        <p className="text-[0.55rem] tracking-widest text-white/20" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+        <p className="text-[0.55rem] tracking-widest text-white/20" style={{ fontFamily: 'var(--font-geist-mono)' }}>
           ERR_CODE: 404 · demonlord.pp.ua · NEURAL CINEMA
         </p>
       </div>

@@ -77,15 +77,15 @@ export default function AboutPage() {
             <Skull size={36} className="text-white" />
           </div>
           <div className="space-y-3">
-            <h1 className="text-4xl font-black tracking-tight md:text-6xl" style={{ fontFamily: 'Orbitron, monospace' }}>
+            <h1 className="text-4xl font-black tracking-tight md:text-6xl" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               DEMONLORD
             </h1>
             <p className="text-[0.65rem] tracking-[0.3em] text-[hsl(var(--muted-foreground))] uppercase"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               NEURAL CINEMA INTERFACE · v5.0 · FREE FOREVER
             </p>
             <p className="text-base text-[hsl(var(--muted-foreground))] max-w-lg mx-auto leading-relaxed"
-              style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+              style={{ fontFamily: 'var(--font-geist-sans)' }}>
               A free, open-source streaming aggregator that connects you to movies, TV shows,
               anime and manga without hosting a single byte of media.
             </p>
@@ -109,18 +109,18 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-4">
               <p className="text-[0.55rem] tracking-[0.25em] uppercase text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>OUR MISSION</p>
-              <h2 className="text-2xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>OUR MISSION</p>
+              <h2 className="text-2xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 Entertainment should be free.
               </h2>
               <p className="text-sm leading-relaxed text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.95rem' }}>
+                style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.95rem' }}>
                 DemonLord was built on a simple belief: great content shouldn&apos;t be locked behind
                 paywalls. We aggregate publicly available streams and present them in a beautiful,
                 fast, modern interface — no account needed, no credit card, no region locks.
               </p>
               <p className="text-sm leading-relaxed text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.95rem' }}>
+                style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.95rem' }}>
                 Think of us as a search engine for streaming — we find the streams, you watch them.
                 All media remains hosted by its original providers.
               </p>
@@ -141,14 +141,14 @@ export default function AboutPage() {
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <p className="text-[0.55rem] tracking-[0.25em] uppercase text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>TECH STACK</p>
-              <h2 className="text-2xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>Built with the best.</h2>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>TECH STACK</p>
+              <h2 className="text-2xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>Built with the best.</h2>
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               {TECH.map((t, i) => (
                 <div key={t.label} className="card-cyber p-4 flex items-center gap-4">
                   <span className="text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] w-24 shrink-0"
-                    style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                    style={{ fontFamily: 'var(--font-geist-mono)' }}>
                     {t.label.toUpperCase()}
                   </span>
                   <div className="flex-1 h-px bg-[hsl(var(--border))]" />
@@ -164,9 +164,9 @@ export default function AboutPage() {
           <div className="space-y-8">
             <div className="text-center space-y-2">
               <p className="text-[0.55rem] tracking-[0.25em] uppercase text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>NETWORK</p>
-              <h2 className="text-2xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>Our Sister Sites</h2>
-              <p className="text-sm text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>NETWORK</p>
+              <h2 className="text-2xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>Our Sister Sites</h2>
+              <p className="text-sm text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                 DemonLord is part of a growing network of free entertainment platforms.
               </p>
             </div>
@@ -185,7 +185,7 @@ export default function AboutPage() {
                           <h3 className="font-bold text-base">{p.name}</h3>
                           <a href={p.url} target="_blank" rel="noopener noreferrer"
                             className="text-xs flex items-center gap-1 hover:underline"
-                            style={{ color: p.color, fontFamily: 'Share Tech Mono, monospace' }}>
+                            style={{ color: p.color, fontFamily: 'var(--font-geist-mono)' }}>
                             {p.url.replace('https://', '')} <ExternalLink size={9} />
                           </a>
                         </div>
@@ -195,14 +195,14 @@ export default function AboutPage() {
                       </a>
                     </div>
                     <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed"
-                      style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.9rem' }}>
+                      style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.9rem' }}>
                       {p.desc}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {p.features.map(f => (
                         <span key={f} className="text-[0.55rem] tracking-wider border rounded-full px-2.5 py-1"
                           style={{ color: p.color, borderColor: `color-mix(in srgb, ${p.color} 30%, transparent)`,
-                            fontFamily: 'Share Tech Mono, monospace' }}>
+                            fontFamily: 'var(--font-geist-mono)' }}>
                           {f}
                         </span>
                       ))}
@@ -220,9 +220,9 @@ export default function AboutPage() {
             style={{ background: 'linear-gradient(135deg, color-mix(in srgb, var(--neon-pink) 5%, transparent), transparent)' }}>
             <div className="space-y-2">
               <p className="text-[0.55rem] tracking-[0.25em] uppercase text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>BUILT BY</p>
-              <h2 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>SK Gupta</h2>
-              <p className="text-sm text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>BUILT BY</p>
+              <h2 className="text-xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>SK Gupta</h2>
+              <p className="text-sm text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                 Developer, designer, and believer in free entertainment for everyone.
               </p>
             </div>

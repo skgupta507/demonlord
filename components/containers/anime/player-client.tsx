@@ -43,7 +43,7 @@ export default function AnimePlayerClient({ id, episode }: Props) {
         <div className="relative">
           <button onClick={() => setOpen(!open)}
             className="flex items-center gap-2 border border-[hsl(var(--border))] rounded-lg px-3 py-2 text-[0.65rem] tracking-wide hover:border-[var(--neon-purple)] transition-colors"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             <span className="text-[hsl(var(--muted-foreground))]">SERVER:</span>
             <span className="font-bold">{current.label}</span>
             {current.tag && <span className="text-[var(--neon-yellow)] text-[0.5rem]">[{current.tag}]</span>}
@@ -54,7 +54,7 @@ export default function AnimePlayerClient({ id, episode }: Props) {
               {SERVERS.map(s => (
                 <button key={s.key} onClick={() => select(s.key)}
                   className={`w-full flex items-center justify-between px-4 py-2.5 text-[0.65rem] hover:bg-[hsl(var(--muted))] transition-colors ${s.key === server ? 'text-[var(--neon-purple)]' : 'text-[hsl(var(--muted-foreground))]'}`}
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   <span>{s.label}</span>
                   {s.tag && <span className="text-[var(--neon-yellow)] text-[0.5rem]">[{s.tag}]</span>}
                 </button>
@@ -65,13 +65,13 @@ export default function AnimePlayerClient({ id, episode }: Props) {
         <button onClick={() => setAdBlock(!adBlock)}
           className={`flex items-center gap-1.5 border rounded-lg px-3 py-2 text-[0.65rem] transition-all ${
             adBlock ? 'border-[var(--neon-green)] text-[var(--neon-green)]' : 'border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))]'
-          }`} style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          }`} style={{ fontFamily: 'var(--font-geist-mono)' }}>
           {adBlock ? <Shield size={11} /> : <ShieldOff size={11} />}
           {adBlock ? 'ADBLOCK ON' : 'ADS'}
         </button>
         <Link href={`https://dl.vidsrc.vip/anime/${id}/${ep}`} target="_blank"
           className="flex items-center gap-1.5 border border-[hsl(var(--border))] rounded-lg px-3 py-2 text-[0.65rem] text-[hsl(var(--muted-foreground))] hover:border-[var(--neon-blue)] hover:text-[var(--neon-blue)] transition-all ml-auto"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          style={{ fontFamily: 'var(--font-geist-mono)' }}>
           <Download size={11} /> DOWNLOAD
         </Link>
       </div>
@@ -91,7 +91,7 @@ export default function AnimePlayerClient({ id, episode }: Props) {
         )}
       </div>
       <p className="text-[0.5rem] tracking-widest text-[hsl(var(--muted-foreground))]"
-        style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+        style={{ fontFamily: 'var(--font-geist-mono)' }}>
         SERVER: {current.label} · EP: {ep} · ADBLOCK: {adBlock ? 'ON' : 'OFF'}
       </p>
     </div>

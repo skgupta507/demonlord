@@ -44,15 +44,15 @@ export default function DmcaPage() {
           </FadeIn>
           <FadeIn delay={100}>
             <div className="space-y-3">
-              <h1 className="text-4xl font-black tracking-tight md:text-5xl" style={{ fontFamily: 'Orbitron, monospace' }}>
+              <h1 className="text-4xl font-black tracking-tight md:text-5xl" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 DMCA Policy
               </h1>
               <p className="text-[0.6rem] tracking-[0.25em] text-[hsl(var(--muted-foreground))] uppercase"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 Digital Millennium Copyright Act · Compliance Notice
               </p>
               <p className="text-sm text-[hsl(var(--muted-foreground))] max-w-xl mx-auto leading-relaxed"
-                style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                style={{ fontFamily: 'var(--font-geist-sans)' }}>
                 DemonLord respects intellectual property rights. We do not host any media files —
                 all streams are sourced from third-party providers. Valid DMCA notices are processed within 48 hours.
               </p>
@@ -69,7 +69,7 @@ export default function DmcaPage() {
             <AlertTriangle size={20} style={{ color: 'var(--neon-yellow)', flexShrink: 0, marginTop: 2 }} />
             <div className="space-y-1">
               <p className="font-bold text-sm">We do not host any content.</p>
-              <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+              <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                 DemonLord is a streaming aggregator. All media is hosted by external third-party services.
                 To remove content at the source, contact the actual hosting provider.
                 We can only remove links, not the underlying content.
@@ -81,7 +81,7 @@ export default function DmcaPage() {
         {/* Process steps */}
         <FadeIn delay={80}>
           <div className="space-y-6">
-            <h2 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>Takedown Process</h2>
+            <h2 className="text-xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>Takedown Process</h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {STEPS.map((s, i) => (
                 <div key={i} className="card-cyber p-5 space-y-3">
@@ -91,10 +91,10 @@ export default function DmcaPage() {
                       <s.icon size={15} style={{ color: 'var(--neon-yellow)' }} />
                     </div>
                     <span className="text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))]"
-                      style={{ fontFamily: 'Share Tech Mono, monospace' }}>STEP {i + 1}</span>
+                      style={{ fontFamily: 'var(--font-geist-mono)' }}>STEP {i + 1}</span>
                   </div>
                   <h3 className="font-bold text-sm">{s.title}</h3>
-                  <p className="text-xs text-[hsl(var(--muted-foreground))] leading-relaxed" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                  <p className="text-xs text-[hsl(var(--muted-foreground))] leading-relaxed" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                     {s.desc}
                   </p>
                 </div>
@@ -115,7 +115,7 @@ export default function DmcaPage() {
                 <CheckCircle size={15} style={{ color: 'var(--neon-green)' }} /> {s.title}
               </h2>
               <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed"
-                style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.9rem' }}>{s.content}</p>
+                style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.9rem' }}>{s.content}</p>
             </div>
           </FadeIn>
         ))}
@@ -124,7 +124,7 @@ export default function DmcaPage() {
           <div className="card-cyber p-6 text-center space-y-4"
             style={{ borderColor: 'color-mix(in srgb, var(--neon-yellow) 20%, transparent)' }}>
             <p className="text-sm font-bold">Ready to file a notice?</p>
-            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-sans)' }}>
               Contact us with your full DMCA takedown request. We respond within 48 hours.
             </p>
             <a href="https://github.com/skgupta507" target="_blank" rel="noopener noreferrer">
@@ -134,7 +134,7 @@ export default function DmcaPage() {
         </FadeIn>
 
         <Link href="/" className="inline-flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))] hover:text-[var(--neon-pink)] transition-colors"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          style={{ fontFamily: 'var(--font-geist-mono)' }}>
           <ArrowLeft size={12} /> Back to Home
         </Link>
       </div>

@@ -21,8 +21,8 @@ export default function MovieBrowseClient() {
           <Film size={16} className="text-white" />
         </div>
         <div>
-          <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>Movies</h1>
-          <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          <h1 className="text-xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>Movies</h1>
+          <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
             Powered by TMDB · Updated daily
           </p>
         </div>

@@ -11,7 +11,7 @@ export default function Loading() {
         </div>
         <span
           className="text-[0.6rem] tracking-[0.3em] text-muted-foreground animate-pulse uppercase"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}
+          style={{ fontFamily: 'var(--font-geist-mono)' }}
         >
           LOADING...
         </span>

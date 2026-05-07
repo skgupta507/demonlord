@@ -22,22 +22,22 @@ export default function DramaPage() {
         <div>
           <div
             className="text-[0.6rem] tracking-[0.3em] text-[hsl(280_100%_68%)] uppercase mb-2"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
+            style={{ fontFamily: 'var(--font-geist-mono)' }}
           >
             STATUS: NODE OFFLINE
           </div>
-          <h1 className="text-3xl font-black tracking-[0.1em] uppercase" style={{ fontFamily: 'Orbitron, monospace' }}>
+          <h1 className="text-3xl font-black tracking-[0.1em] uppercase" style={{ fontFamily: 'var(--font-geist-mono)' }}>
             DRAMA
           </h1>
         </div>
         <div className="border border-[hsl(var(--border))] p-4 text-left space-y-2">
           <div
             className="text-[0.55rem] tracking-widest text-[hsl(280_100%_68%)]"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
+            style={{ fontFamily: 'var(--font-geist-mono)' }}
           >
             {'// INCIDENT REPORT'}
           </div>
-          <p className="text-sm text-muted-foreground leading-relaxed" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+          <p className="text-sm text-muted-foreground leading-relaxed" style={{ fontFamily: 'var(--font-geist-sans)' }}>
             The Drama streaming node has been taken offline. Our previous provider
             <span className="text-foreground font-semibold"> Dramacool</span> is no longer available
             and no suitable replacement has been found. Check the archive for alternative sources.
@@ -52,7 +52,7 @@ export default function DramaPage() {
           <Link href="/">
             <button
               className="border border-[hsl(var(--border))] px-5 py-2 text-[0.65rem] tracking-widest text-muted-foreground hover:border-muted-foreground/50 transition-colors"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}
+              style={{ fontFamily: 'var(--font-geist-mono)' }}
             >
               HOME BASE
             </button>

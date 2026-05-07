@@ -53,7 +53,7 @@ const DetailsContainer = async ({ data, id }: any) => {
           </aside>
           <article className="flex flex-col gap-4 md:pt-32">
             <div className="flex flex-wrap items-center gap-2 text-xs text-[hsl(var(--muted-foreground))]"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {data.first_air_date && <span>{format(new Date(data.first_air_date), 'yyyy')}</span>}
               {data.number_of_seasons && <><span>·</span><span>{data.number_of_seasons}S</span></>}
               {data.number_of_episodes && <><span>·</span><span>{data.number_of_episodes}EP</span></>}
@@ -65,7 +65,7 @@ const DetailsContainer = async ({ data, id }: any) => {
                 <div className="flex items-center gap-1.5 rounded-full px-3 py-1"
                   style={{ background: 'color-mix(in srgb, var(--neon-blue) 12%, transparent)', border: '1px solid color-mix(in srgb, var(--neon-blue) 30%, transparent)' }}>
                   <Star size={11} style={{ color: 'var(--neon-blue)', fill: 'var(--neon-blue)' }} />
-                  <span className="text-sm font-bold" style={{ color: 'var(--neon-blue)', fontFamily: 'Share Tech Mono, monospace' }}>
+                  <span className="text-sm font-bold" style={{ color: 'var(--neon-blue)', fontFamily: 'var(--font-geist-mono)' }}>
                     {data.vote_average.toFixed(1)}</span>
                   <span className="text-xs text-[hsl(var(--muted-foreground))]">/ 10</span>
                 </div>
@@ -75,7 +75,7 @@ const DetailsContainer = async ({ data, id }: any) => {
               ))}
             </div>
             <p className="text-sm leading-relaxed text-[hsl(var(--muted-foreground))] max-w-2xl"
-              style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.95rem' }}>{data.overview}</p>
+              style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.95rem' }}>{data.overview}</p>
             {creator && (
               <p className="text-xs text-[hsl(var(--muted-foreground))]">
                 Created by <span className="font-semibold text-[hsl(var(--foreground))]">{creator.name}</span>
@@ -170,7 +170,7 @@ const DetailsContainer = async ({ data, id }: any) => {
                     {s.vote_average > 0 && (
                       <div className="absolute top-1.5 right-1.5 flex items-center gap-0.5 bg-black/75 backdrop-blur-sm rounded-full px-1.5 py-0.5">
                         <Star size={8} className="text-yellow-400 fill-yellow-400" />
-                        <span className="text-[0.55rem] text-yellow-300 font-bold" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                        <span className="text-[0.55rem] text-yellow-300 font-bold" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                           {s.vote_average.toFixed(1)}
                         </span>
                       </div>
@@ -178,11 +178,11 @@ const DetailsContainer = async ({ data, id }: any) => {
                   </div>
                   <div className="space-y-0.5 px-0.5">
                     <p className="text-xs font-medium leading-tight line-clamp-2 group-hover:text-[var(--neon-blue)] transition-colors"
-                      style={{ fontFamily: 'Rajdhani, sans-serif', fontWeight: 600 }}>
+                      style={{ fontFamily: 'var(--font-geist-sans)', fontWeight: 600 }}>
                       {s.name}
                     </p>
                     {s.first_air_date && (
-                      <p className="text-[0.6rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                      <p className="text-[0.6rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                         {s.first_air_date.slice(0, 4)}
                       </p>
                     )}

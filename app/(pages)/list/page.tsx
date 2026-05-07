@@ -18,10 +18,10 @@ export default function List() {
             <Heart size={16} className="text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-black tracking-wide" style={{ fontFamily: 'Orbitron, monospace' }}>
+            <h1 className="text-2xl font-black tracking-wide" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               My Library
             </h1>
-            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               Your saved content — watchlist, favourites & history
             </p>
           </div>
@@ -37,11 +37,11 @@ export default function List() {
             </div>
             <div>
               <h2 className="font-bold text-base">Watchlist</h2>
-              <p className="text-xs text-[hsl(var(--muted-foreground))] mt-1" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+              <p className="text-xs text-[hsl(var(--muted-foreground))] mt-1" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                 Movies and shows you want to watch later.
               </p>
             </div>
-            <span className="text-xs" style={{ color: 'var(--neon-pink)', fontFamily: 'Share Tech Mono, monospace' }}>
+            <span className="text-xs" style={{ color: 'var(--neon-pink)', fontFamily: 'var(--font-geist-mono)' }}>
               VIEW →
             </span>
           </div>
@@ -54,11 +54,11 @@ export default function List() {
             </div>
             <div>
               <h2 className="font-bold text-base">Watch History</h2>
-              <p className="text-xs text-[hsl(var(--muted-foreground))] mt-1" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+              <p className="text-xs text-[hsl(var(--muted-foreground))] mt-1" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                 Everything you&apos;ve watched recently.
               </p>
             </div>
-            <span className="text-xs" style={{ color: 'var(--neon-blue)', fontFamily: 'Share Tech Mono, monospace' }}>
+            <span className="text-xs" style={{ color: 'var(--neon-blue)', fontFamily: 'var(--font-geist-mono)' }}>
               VIEW →
             </span>
           </div>

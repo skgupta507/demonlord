@@ -87,7 +87,7 @@ export default function VideoPlayer({ id }: { id: string }) {
                 ? 'border-gray-300 hover:border-[#FF006F]/60 text-gray-700'
                 : 'border-white/10 hover:border-[#FF006F]/50 text-white'
             }`}
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
+            style={{ fontFamily: 'var(--font-geist-mono)' }}
           >
             <span style={{ color: '#FF006F' }}>SERVER:</span>
             <span>{current.label}</span>
@@ -111,7 +111,7 @@ export default function VideoPlayer({ id }: { id: string }) {
                         ? 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'
                         : 'text-white/40 hover:bg-white/5'
                   }`}
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}
                 >
                   <span>{s.label}</span>
                   {s.tag && <span className="text-[#F9F002] text-[0.55rem]">[{s.tag}]</span>}
@@ -132,7 +132,7 @@ export default function VideoPlayer({ id }: { id: string }) {
                 ? 'border-gray-300 text-gray-400 hover:border-gray-400'
                 : 'border-white/10 text-white/30 hover:border-white/25'
           }`}
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}
+          style={{ fontFamily: 'var(--font-geist-mono)' }}
         >
           {adBlock ? <Shield size={11} /> : <ShieldOff size={11} />}
           {adBlock ? 'ADBLOCK ON' : 'ADBLOCK OFF'}
@@ -147,7 +147,7 @@ export default function VideoPlayer({ id }: { id: string }) {
               ? 'border-gray-300 text-gray-500 hover:border-[#FF006F]/40 hover:text-[#FF006F]'
               : 'border-white/10 text-white/30 hover:border-[#F9F002]/40 hover:text-[#F9F002]'
           }`}
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}
+          style={{ fontFamily: 'var(--font-geist-mono)' }}
         >
           {isLight ? <Moon size={11} /> : <Sun size={11} />}
           {isLight ? 'DARK' : 'LIGHT'}
@@ -162,7 +162,7 @@ export default function VideoPlayer({ id }: { id: string }) {
               ? 'border-gray-300 text-gray-500 hover:border-[#00D4FF]/60 hover:text-[#00D4FF]'
               : 'border-white/10 text-white/30 hover:border-[#00D4FF]/40 hover:text-[#00D4FF]'
           }`}
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}
+          style={{ fontFamily: 'var(--font-geist-mono)' }}
         >
           <Download size={11} /> DOWNLOAD
         </Link>
@@ -172,7 +172,7 @@ export default function VideoPlayer({ id }: { id: string }) {
           <div className="h-1.5 w-1.5 rounded-full bg-[#39FF14] animate-pulse"
             style={{ boxShadow: '0 0 6px #39FF14' }} />
           <span className={`text-[0.55rem] tracking-widest ${isLight ? 'text-gray-400' : 'text-[#39FF14]/60'}`}
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>STREAM ACTIVE</span>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>STREAM ACTIVE</span>
         </div>
       </div>
 
@@ -183,7 +183,7 @@ export default function VideoPlayer({ id }: { id: string }) {
             <div className="flex flex-col items-center gap-3">
               <div className="h-8 w-8 border-2 border-[#FF006F] border-t-transparent rounded-full animate-spin" />
               <span className={`text-[0.6rem] tracking-widest ${isLight ? 'text-gray-400' : 'text-white/30'}`}
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>CONNECTING TO NODE...</span>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>CONNECTING TO NODE...</span>
             </div>
           </div>
         ) : adBlock ? (
@@ -205,7 +205,7 @@ export default function VideoPlayer({ id }: { id: string }) {
       {/* ── Info Bar ── */}
       <div className={`flex items-center gap-3 border-t pt-2.5 text-[0.55rem] tracking-widest flex-wrap ${
         isLight ? 'border-gray-200 text-gray-400' : 'border-white/5 text-white/20'
-      }`} style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+      }`} style={{ fontFamily: 'var(--font-geist-mono)' }}>
         <Shield size={9} />
         <span>NODE: {current.label}</span>
         <span className="opacity-30">|</span>

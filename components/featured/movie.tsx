@@ -74,7 +74,7 @@ export default function Featured({ featureType }: { featureType: FeatureType }) 
             {item.vote_average > 0 && (
               <div className="absolute top-1.5 right-1.5 flex items-center gap-0.5 bg-black/75 backdrop-blur-sm rounded-full px-1.5 py-0.5">
                 <Star size={8} className="text-yellow-400 fill-yellow-400" />
-                <span className="text-[0.55rem] text-yellow-300 font-bold" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                <span className="text-[0.55rem] text-yellow-300 font-bold" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   {item.vote_average.toFixed(1)}
                 </span>
               </div>
@@ -82,11 +82,11 @@ export default function Featured({ featureType }: { featureType: FeatureType }) 
           </div>
           <div className="space-y-0.5 px-0.5">
             <p className="text-xs font-medium leading-tight line-clamp-2 group-hover:text-[var(--neon-pink)] transition-colors"
-              style={{ fontFamily: 'Rajdhani, sans-serif', fontWeight: 600 }}>
+              style={{ fontFamily: 'var(--font-geist-sans)', fontWeight: 600 }}>
               {item.title}
             </p>
             {item.release_date && (
-              <p className="text-[0.6rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              <p className="text-[0.6rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {item.release_date.slice(0, 4)}
               </p>
             )}

@@ -18,9 +18,9 @@ export default async function MangaPage() {
         </div>
         <div>
           <h1 className="text-2xl font-black tracking-[0.15em] uppercase"
-            style={{ fontFamily: 'Orbitron, monospace' }}>MANGA</h1>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>MANGA</h1>
           <p className="text-[0.6rem] tracking-widest text-white/30 uppercase"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             POWERED BY ANILIST DATABASE
           </p>
         </div>
@@ -34,7 +34,7 @@ export default async function MangaPage() {
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="text-[0.6rem] tracking-[0.25em] text-[#F9F002]/70 uppercase"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {'// TRENDING MANGA'}
             </span>
             <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(249,240,2,0.3), transparent)' }} />
@@ -52,7 +52,7 @@ export default async function MangaPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="absolute bottom-0 inset-x-0 p-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                       <p className="text-xs font-semibold text-white truncate"
-                        style={{ fontFamily: 'Rajdhani, sans-serif' }}>{title}</p>
+                        style={{ fontFamily: 'var(--font-geist-sans)' }}>{title}</p>
                     </div>
                   </div>
                 </Link>

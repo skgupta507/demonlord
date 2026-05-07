@@ -26,10 +26,10 @@ function EmptyState({ filter }: { filter: string }) {
         style={{ background: 'var(--neon-pink)' }}>
         <Heart size={28} className="text-white" />
       </div>
-      <p className="font-bold text-lg" style={{ fontFamily: 'Orbitron, monospace' }}>
+      <p className="font-bold text-lg" style={{ fontFamily: 'var(--font-geist-mono)' }}>
         {filter === 'all' ? 'Your watchlist is empty' : `No ${TYPE_LABEL[filter as keyof typeof TYPE_LABEL]}s saved`}
       </p>
-      <p className="text-sm text-[hsl(var(--muted-foreground))] text-center max-w-xs" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+      <p className="text-sm text-[hsl(var(--muted-foreground))] text-center max-w-xs" style={{ fontFamily: 'var(--font-geist-sans)' }}>
         Browse movies, TV shows, and anime then click the bookmark icon to save them here.
       </p>
       <div className="flex gap-3 mt-2">
@@ -81,8 +81,8 @@ export default function WatchlistPage() {
             <Heart size={18} className="text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>My Watchlist</h1>
-            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <h1 className="text-xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>My Watchlist</h1>
+            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {items.length} saved · sorted by newest
             </p>
           </div>
@@ -90,7 +90,7 @@ export default function WatchlistPage() {
         {items.length > 0 && (
           <button onClick={clearAll}
             className="flex items-center gap-1.5 text-xs text-[hsl(var(--muted-foreground))] hover:text-red-400 transition-colors"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             <Trash2 size={12} /> Clear all
           </button>
         )}
@@ -109,7 +109,7 @@ export default function WatchlistPage() {
                       : 'text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]'
                   }`}
                   style={{
-                    fontFamily: 'Share Tech Mono, monospace',
+                    fontFamily: 'var(--font-geist-mono)',
                     background: filter === f ? 'var(--neon-pink)' : 'transparent',
                   }}>
                   {f === 'all' ? `All (${counts.all})` : `${TYPE_LABEL[f]} (${counts[f]})`}
@@ -122,7 +122,7 @@ export default function WatchlistPage() {
               <input value={search} onChange={e => setSearch(e.target.value)}
                 placeholder="Search watchlist..."
                 className="bg-transparent text-sm outline-none flex-1 placeholder:text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Rajdhani, sans-serif' }} />
+                style={{ fontFamily: 'var(--font-geist-sans)' }} />
             </div>
 
             <div className="flex gap-1 ml-auto">
@@ -166,13 +166,13 @@ export default function WatchlistPage() {
                         </div>
                         <div className="absolute top-2 left-2">
                           <span className="text-[0.5rem] tracking-wider px-1.5 py-0.5 rounded-full text-white font-bold"
-                            style={{ background: color, fontFamily: 'Share Tech Mono, monospace' }}>
+                            style={{ background: color, fontFamily: 'var(--font-geist-mono)' }}>
                             {TYPE_LABEL[item.type]}
                           </span>
                         </div>
                         {item.rating && (
                           <div className="absolute top-2 right-2 bg-black/70 rounded-full px-1.5 py-0.5 text-[0.55rem] text-yellow-400"
-                            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                            style={{ fontFamily: 'var(--font-geist-mono)' }}>
                             ★ {item.rating.toFixed(1)}
                           </div>
                         )}
@@ -207,7 +207,7 @@ export default function WatchlistPage() {
                       <p className="font-semibold truncate">{item.title}</p>
                       <div className="flex items-center gap-2 mt-0.5">
                         <span className="text-[0.55rem] tracking-wider px-1.5 py-0.5 rounded-full text-white"
-                          style={{ background: color, fontFamily: 'Share Tech Mono, monospace' }}>
+                          style={{ background: color, fontFamily: 'var(--font-geist-mono)' }}>
                           {TYPE_LABEL[item.type]}
                         </span>
                         {item.year && <span className="text-xs text-[hsl(var(--muted-foreground))]">{item.year}</span>}

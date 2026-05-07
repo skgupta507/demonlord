@@ -70,7 +70,7 @@ export default async function DetailsContainer({ data }: { data: any }) {
           <article className="flex flex-col gap-3 pt-2 md:pt-32">
             {/* Meta row */}
             <div className="flex flex-wrap items-center gap-2 text-[0.6rem] tracking-widest text-white/40 uppercase"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {data.format && <span className="border border-white/10 px-2 py-0.5">{data.format.replace(/_/g, ' ')}</span>}
               {data.episodes && <span className="flex items-center gap-1"><Tv size={9} />{data.episodes} EPS</span>}
               {data.duration && <span className="flex items-center gap-1"><Clock size={9} />{data.duration}MIN</span>}
@@ -83,16 +83,16 @@ export default async function DetailsContainer({ data }: { data: any }) {
             </div>
 
             <h1 className="text-2xl font-black tracking-wide uppercase md:text-4xl"
-              style={{ fontFamily: 'Orbitron, monospace', lineHeight: 1.1 }}>
+              style={{ fontFamily: 'var(--font-geist-mono)', lineHeight: 1.1 }}>
               {title}
             </h1>
             {data.title?.romaji && data.title?.english && (
-              <p className="text-[0.65rem] tracking-wide text-white/30" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              <p className="text-[0.65rem] tracking-wide text-white/30" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {data.title.romaji}
               </p>
             )}
             {data.title?.native && (
-              <p className="text-[0.6rem] text-white/20" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              <p className="text-[0.6rem] text-white/20" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {data.title.native}
               </p>
             )}
@@ -102,14 +102,14 @@ export default async function DetailsContainer({ data }: { data: any }) {
               {score && (
                 <div className="flex items-center gap-1.5 bg-[#BD00FF]/10 border border-[#BD00FF]/30 px-3 py-1.5">
                   <Star size={11} className="text-[#BD00FF] fill-current" />
-                  <span className="text-sm font-bold text-[#BD00FF]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>{score}</span>
+                  <span className="text-sm font-bold text-[#BD00FF]" style={{ fontFamily: 'var(--font-geist-mono)' }}>{score}</span>
                   <span className="text-xs text-white/30">/ 10</span>
                 </div>
               )}
               {data.popularity && (
                 <div className="flex items-center gap-1.5 border border-white/10 px-3 py-1.5">
                   <Users size={10} className="text-white/40" />
-                  <span className="text-xs text-white/40" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  <span className="text-xs text-white/40" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                     {data.popularity.toLocaleString()} fans
                   </span>
                 </div>
@@ -120,7 +120,7 @@ export default async function DetailsContainer({ data }: { data: any }) {
             <div className="flex flex-wrap gap-1.5">
               {genres.map((g: string) => (
                 <span key={g} className="border border-[#BD00FF]/20 bg-[#BD00FF]/5 px-2.5 py-0.5 text-[0.6rem] tracking-widest text-[#BD00FF]/70 uppercase"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   {g}
                 </span>
               ))}
@@ -128,13 +128,13 @@ export default async function DetailsContainer({ data }: { data: any }) {
 
             {/* Description */}
             <p className="max-w-2xl text-sm leading-relaxed text-white/60"
-              style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.95rem' }}>
+              style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.95rem' }}>
               {desc}
             </p>
 
             {/* Studio */}
             {studio && (
-              <p className="text-xs text-white/40" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+              <p className="text-xs text-white/40" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                 Studio: <span className="text-white/70 font-semibold">{studio}</span>
               </p>
             )}
@@ -171,8 +171,8 @@ export default async function DetailsContainer({ data }: { data: any }) {
             { label: 'SEASON', value: data.season ? `${data.season} ${startYear || ''}` : startYear || '—' },
           ].map(s => (
             <div key={s.label} className="border border-white/8 p-3 space-y-1">
-              <p className="text-[0.5rem] tracking-[0.2em] text-white/30 uppercase" style={{ fontFamily: 'Share Tech Mono, monospace' }}>{s.label}</p>
-              <p className="text-sm font-bold text-white/80" style={{ fontFamily: 'Rajdhani, sans-serif' }}>{s.value}</p>
+              <p className="text-[0.5rem] tracking-[0.2em] text-white/30 uppercase" style={{ fontFamily: 'var(--font-geist-mono)' }}>{s.label}</p>
+              <p className="text-sm font-bold text-white/80" style={{ fontFamily: 'var(--font-geist-sans)' }}>{s.value}</p>
             </div>
           ))}
         </div>
@@ -181,7 +181,7 @@ export default async function DetailsContainer({ data }: { data: any }) {
         {relations.length > 0 && (
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <span className="text-[0.6rem] tracking-[0.25em] text-[#BD00FF]/70 uppercase" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              <span className="text-[0.6rem] tracking-[0.25em] text-[#BD00FF]/70 uppercase" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {'// RELATED TITLES'}
               </span>
               <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(189,0,255,0.3), transparent)' }} />
@@ -200,8 +200,8 @@ export default async function DetailsContainer({ data }: { data: any }) {
                     )}
                     <div>
                       <p className="text-xs text-white/60 truncate max-w-[120px] group-hover:text-white/90 transition-colors"
-                        style={{ fontFamily: 'Rajdhani, sans-serif' }}>{relTitle}</p>
-                      <p className="text-[0.5rem] tracking-widest text-white/25" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                        style={{ fontFamily: 'var(--font-geist-sans)' }}>{relTitle}</p>
+                      <p className="text-[0.5rem] tracking-widest text-white/25" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                         {edge.relationType?.replace(/_/g, ' ')} · {edge.node.type}
                       </p>
                     </div>
@@ -217,13 +217,13 @@ export default async function DetailsContainer({ data }: { data: any }) {
           <div className="space-y-4">
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <span className="text-[0.6rem] tracking-[0.25em] text-[#BD00FF]/70 uppercase" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                <span className="text-[0.6rem] tracking-[0.25em] text-[#BD00FF]/70 uppercase" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   {'// MORE ANIME'}
                 </span>
                 <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(189,0,255,0.3), transparent)' }} />
               </div>
               <Link href="/anime" className="text-[0.55rem] tracking-widest text-[#BD00FF]/60 hover:text-[#BD00FF] transition-colors"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>VIEW ALL →</Link>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>VIEW ALL →</Link>
             </div>
             <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
               {related.map((item: any) => {
@@ -237,14 +237,14 @@ export default async function DetailsContainer({ data }: { data: any }) {
                       {item.averageScore > 0 && (
                         <div className="absolute top-1 right-1 flex items-center gap-0.5 bg-black/80 rounded-full px-1.5 py-0.5">
                           <Star size={7} className="text-yellow-400 fill-yellow-400" />
-                          <span className="text-[0.5rem] text-yellow-300 font-bold" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                          <span className="text-[0.5rem] text-yellow-300 font-bold" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                             {(item.averageScore / 10).toFixed(1)}
                           </span>
                         </div>
                       )}
                     </div>
                     <p className="text-[0.7rem] font-semibold leading-tight line-clamp-2 group-hover:text-[#BD00FF] transition-colors"
-                      style={{ fontFamily: 'Rajdhani, sans-serif' }}>{t}</p>
+                      style={{ fontFamily: 'var(--font-geist-sans)' }}>{t}</p>
                   </Link>
                 );
               })}

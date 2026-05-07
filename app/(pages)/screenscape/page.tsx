@@ -40,17 +40,17 @@ export default function ScreenScapePage() {
         />
       )}
       <div className="flex flex-col gap-1.5 min-w-0">
-        <p className="text-sm font-semibold truncate" style={{ fontFamily: 'Rajdhani, sans-serif', fontWeight: 600 }}>
+        <p className="text-sm font-semibold truncate" style={{ fontFamily: 'var(--font-geist-sans)', fontWeight: 600 }}>
           {item.title || item.name}
         </p>
         <div className="flex flex-wrap gap-1">
           {item.year && (
-            <span className="border border-[hsl(var(--border))] px-1.5 py-0.5 text-[0.55rem] tracking-widest text-muted-foreground" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <span className="border border-[hsl(var(--border))] px-1.5 py-0.5 text-[0.55rem] tracking-widest text-muted-foreground" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {item.year}
             </span>
           )}
           {item.quality && (
-            <span className="border border-[hsl(185_100%_48%/0.4)] px-1.5 py-0.5 text-[0.55rem] tracking-widest text-[hsl(185_100%_48%)]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <span className="border border-[hsl(185_100%_48%/0.4)] px-1.5 py-0.5 text-[0.55rem] tracking-widest text-[hsl(185_100%_48%)]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {item.quality}
             </span>
           )}
@@ -58,7 +58,7 @@ export default function ScreenScapePage() {
         {item.url && (
           <a href={item.url} target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-1 text-[0.6rem] tracking-widest text-[hsl(350_100%_58%)] hover:underline mt-auto"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
+            style={{ fontFamily: 'var(--font-geist-mono)' }}
           >
             <ExternalLink size={9} /> ACCESS
           </a>
@@ -79,10 +79,10 @@ export default function ScreenScapePage() {
             <Zap size={18} className="text-[hsl(60_100%_60%)]" />
           </div>
           <div>
-            <h1 className="text-2xl font-black tracking-[0.15em] uppercase" style={{ fontFamily: 'Orbitron, monospace' }}>
+            <h1 className="text-2xl font-black tracking-[0.15em] uppercase" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               SCREENSCAPE
             </h1>
-            <p className="text-[0.6rem] tracking-[0.2em] text-muted-foreground uppercase" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <p className="text-[0.6rem] tracking-[0.2em] text-muted-foreground uppercase" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               MULTI-PROVIDER CONTENT SEARCH NODE
             </p>
           </div>
@@ -91,7 +91,7 @@ export default function ScreenScapePage() {
         {/* Provider tags */}
         <div className="flex flex-wrap gap-2">
           {providers.map(p => (
-            <span key={p} className="border border-[hsl(var(--border))] px-2 py-0.5 text-[0.55rem] tracking-widest text-muted-foreground flex items-center gap-1" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <span key={p} className="border border-[hsl(var(--border))] px-2 py-0.5 text-[0.55rem] tracking-widest text-muted-foreground flex items-center gap-1" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               <Database size={8} /> {p}
             </span>
           ))}
@@ -101,7 +101,7 @@ export default function ScreenScapePage() {
       {/* Search input */}
       <div className="flex gap-0">
         <div className="flex flex-1 items-center border border-[hsl(var(--border))] hover:border-[hsl(350_100%_58%/0.4)] focus-within:border-[hsl(350_100%_58%/0.6)] transition-colors">
-          <span className="pl-4 text-[hsl(350_100%_58%)]" style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: '0.7rem' }}>&gt;_</span>
+          <span className="pl-4 text-[hsl(350_100%_58%)]" style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '0.7rem' }}>&gt;_</span>
           <input
             type="text"
             value={query}
@@ -109,14 +109,14 @@ export default function ScreenScapePage() {
             onKeyDown={e => e.key === 'Enter' && handleSearch()}
             placeholder="SEARCH QUERY..."
             className="flex-1 bg-transparent px-3 py-3 text-sm outline-none placeholder:text-muted-foreground/40 placeholder:tracking-widest"
-            style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: '0.8rem', letterSpacing: '0.05em' }}
+            style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '0.8rem', letterSpacing: '0.05em' }}
           />
         </div>
         <button
           onClick={handleSearch}
           disabled={loading}
           className="flex items-center gap-2 bg-[hsl(350_100%_58%)] px-5 py-3 text-white transition-all hover:bg-[hsl(350_100%_50%)] disabled:opacity-50"
-          style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: '0.65rem', letterSpacing: '0.2em' }}
+          style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '0.65rem', letterSpacing: '0.2em' }}
         >
           {loading ? (
             <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -129,7 +129,7 @@ export default function ScreenScapePage() {
       {/* Error */}
       {error && (
         <div className="border border-[hsl(0_85%_60%/0.4)] bg-[hsl(0_85%_60%/0.05)] p-4">
-          <span className="text-[0.65rem] tracking-widest text-[hsl(0_85%_60%)]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          <span className="text-[0.65rem] tracking-widest text-[hsl(0_85%_60%)]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
             ERROR: {error}
           </span>
         </div>
@@ -150,7 +150,7 @@ export default function ScreenScapePage() {
           {movies.length > 0 && (
             <section className="space-y-3">
               <div className="flex items-center gap-3">
-                <span className="text-[0.6rem] tracking-[0.25em] text-[hsl(350_100%_58%)] uppercase flex items-center gap-1" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                <span className="text-[0.6rem] tracking-[0.25em] text-[hsl(350_100%_58%)] uppercase flex items-center gap-1" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   <Film size={10} /> MOVIES & TV [{movies.length}]
                 </span>
                 <div className="flex-1 h-px bg-gradient-to-r from-[hsl(350_100%_58%/0.3)] to-transparent" />
@@ -163,7 +163,7 @@ export default function ScreenScapePage() {
           {anime.length > 0 && (
             <section className="space-y-3">
               <div className="flex items-center gap-3">
-                <span className="text-[0.6rem] tracking-[0.25em] text-[hsl(280_100%_68%)] uppercase flex items-center gap-1" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                <span className="text-[0.6rem] tracking-[0.25em] text-[hsl(280_100%_68%)] uppercase flex items-center gap-1" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   <Tv size={10} /> ANIME [{anime.length}]
                 </span>
                 <div className="flex-1 h-px bg-gradient-to-r from-[hsl(280_100%_68%/0.3)] to-transparent" />
@@ -176,7 +176,7 @@ export default function ScreenScapePage() {
           {movies.length === 0 && anime.length === 0 && !error && (
             <div className="flex flex-col items-center py-16 gap-3">
               <span className="text-4xl opacity-20">⚡</span>
-              <span className="text-[0.65rem] tracking-widest text-muted-foreground" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              <span className="text-[0.65rem] tracking-widest text-muted-foreground" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 NO SIGNALS FOUND FOR &quot;{query.toUpperCase()}&quot;
               </span>
             </div>

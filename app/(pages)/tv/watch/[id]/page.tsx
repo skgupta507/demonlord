@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import VideoPlayer from '@/components/containers/tv/videoplayer';
 import WatchTogether from '@/components/watch-together';
+import CommunityChat from '@/components/community-chat';
 import { tmdb } from '@/lib/tmdb';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -41,12 +42,12 @@ export default async function TVWatchPage({ params }: any) {
       <div className="flex items-center justify-between">
         <Link href={data ? `/tv/${id}` : '/tv'}
           className="inline-flex items-center gap-2 text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] hover:text-[var(--neon-blue)] transition-colors uppercase"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          style={{ fontFamily: 'var(--font-geist-mono)' }}>
           <ArrowLeft size={10} /> {data ? 'Back to Info' : 'Back to TV'}
         </Link>
         {data && (
           <span className="text-[0.55rem] tracking-widest text-[hsl(var(--muted-foreground))]"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             {data.first_air_date?.slice(0, 4)} · {seasons.length}S · {data.number_of_episodes}EP
           </span>
         )}
@@ -63,18 +64,18 @@ export default async function TVWatchPage({ params }: any) {
           )}
           <div>
             <h1 className="text-base font-black tracking-wide leading-tight"
-              style={{ fontFamily: 'Orbitron, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {data.name}
             </h1>
             <div className="flex items-center gap-2 mt-0.5">
               {data.vote_average > 0 && (
                 <span className="flex items-center gap-1 text-[0.55rem] text-[var(--neon-blue)]"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   <Star size={8} className="fill-current" /> {data.vote_average.toFixed(1)}
                 </span>
               )}
               <span className="text-[0.5rem] text-[hsl(var(--muted-foreground))] border border-[hsl(var(--border))] px-1.5 py-0.5"
-                style={{ fontFamily: 'Share Tech Mono, monospace', color: data.status === 'Returning Series' ? 'var(--neon-green)' : undefined }}>
+                style={{ fontFamily: 'var(--font-geist-mono)', color: data.status === 'Returning Series' ? 'var(--neon-green)' : undefined }}>
                 {data.status || 'TV SHOW'}
               </span>
             </div>
@@ -92,11 +93,11 @@ export default async function TVWatchPage({ params }: any) {
           <div className="space-y-4">
             <div className="border border-[hsl(var(--border))] p-4 space-y-3">
               <p className="text-[0.55rem] tracking-[0.2em] text-[var(--neon-blue)]/70 uppercase"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {'// OVERVIEW'}
               </p>
               <p className="text-sm leading-relaxed text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.95rem' }}>
+                style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.95rem' }}>
                 {data.overview}
               </p>
               {creator && (
@@ -110,19 +111,19 @@ export default async function TVWatchPage({ params }: any) {
             {seasons.length > 0 && (
               <div className="space-y-3">
                 <p className="text-[0.55rem] tracking-[0.2em] text-[var(--neon-blue)]/70 uppercase"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   {'// SEASONS'}
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
                   {seasons.slice(0, 8).map((s: any) => (
                     <div key={s.id} className="border border-[hsl(var(--border))] p-2.5 space-y-1 hover:border-[var(--neon-blue)]/40 transition-colors">
-                      <p className="text-[0.6rem] font-bold" style={{ fontFamily: 'Share Tech Mono, monospace', color: 'var(--neon-blue)' }}>
+                      <p className="text-[0.6rem] font-bold" style={{ fontFamily: 'var(--font-geist-mono)', color: 'var(--neon-blue)' }}>
                         S{String(s.season_number).padStart(2, '0')}
                       </p>
-                      <p className="text-xs text-[hsl(var(--muted-foreground))] truncate" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                      <p className="text-xs text-[hsl(var(--muted-foreground))] truncate" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                         {s.name}
                       </p>
-                      <p className="text-[0.55rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                      <p className="text-[0.55rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                         {s.episode_count} eps
                       </p>
                     </div>
@@ -135,7 +136,7 @@ export default async function TVWatchPage({ params }: any) {
             {topCast.length > 0 && (
               <div className="space-y-3">
                 <p className="text-[0.55rem] tracking-[0.2em] text-[var(--neon-blue)]/70 uppercase"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   {'// CAST'}
                 </p>
                 <div className="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8">
@@ -164,7 +165,7 @@ export default async function TVWatchPage({ params }: any) {
           <aside className="space-y-4">
             <div className="border border-[hsl(var(--border))] p-4 space-y-3">
               <p className="text-[0.55rem] tracking-[0.2em] text-[var(--neon-blue)]/70 uppercase"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {'// DETAILS'}
               </p>
               <div className="space-y-2">
@@ -178,8 +179,8 @@ export default async function TVWatchPage({ params }: any) {
                 ].map(d => (
                   <div key={d.label} className="flex items-center justify-between gap-2">
                     <span className="text-[0.5rem] tracking-widest text-[hsl(var(--muted-foreground))]"
-                      style={{ fontFamily: 'Share Tech Mono, monospace' }}>{d.label}</span>
-                    <span className="text-xs font-medium text-right" style={{ fontFamily: 'Rajdhani, sans-serif' }}>{d.value}</span>
+                      style={{ fontFamily: 'var(--font-geist-mono)' }}>{d.label}</span>
+                    <span className="text-xs font-medium text-right" style={{ fontFamily: 'var(--font-geist-sans)' }}>{d.value}</span>
                   </div>
                 ))}
               </div>
@@ -188,14 +189,14 @@ export default async function TVWatchPage({ params }: any) {
             <div className="space-y-2">
               <Link href={`/tv/${id}`}>
                 <button className="w-full flex items-center justify-center gap-2 border border-[hsl(var(--border))] py-2.5 text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] hover:border-[var(--neon-blue)] hover:text-[var(--neon-blue)] transition-all"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   <Info size={11} /> FULL INFO PAGE
                 </button>
               </Link>
               {trailer && (
                 <a href={`https://youtube.com/watch?v=${trailer.key}`} target="_blank" rel="noopener noreferrer">
                   <button className="w-full flex items-center justify-center gap-2 border border-[hsl(var(--border))] py-2.5 text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)] transition-all"
-                    style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                    style={{ fontFamily: 'var(--font-geist-mono)' }}>
                     <Play size={11} /> WATCH TRAILER
                   </button>
                 </a>
@@ -212,13 +213,13 @@ export default async function TVWatchPage({ params }: any) {
             <div className="flex items-center gap-3">
               <Tv2 size={14} style={{ color: 'var(--neon-blue)' }} />
               <span className="text-[0.6rem] tracking-[0.25em] text-[var(--neon-blue)]/70 uppercase"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {'// MORE LIKE THIS'}
               </span>
               <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(0,212,255,0.3), transparent)' }} />
             </div>
             <Link href="/tv" className="text-[0.55rem] tracking-widest text-[var(--neon-blue)]/50 hover:text-[var(--neon-blue)] transition-colors"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>VIEW ALL →</Link>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>VIEW ALL →</Link>
           </div>
           <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
             {similar.map((s: any) => (
@@ -237,7 +238,7 @@ export default async function TVWatchPage({ params }: any) {
                   {s.vote_average > 0 && (
                     <div className="absolute top-1 right-1 flex items-center gap-0.5 bg-black/80 rounded-full px-1.5 py-0.5">
                       <Star size={7} className="text-yellow-400 fill-yellow-400" />
-                      <span className="text-[0.5rem] text-yellow-300 font-bold" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                      <span className="text-[0.5rem] text-yellow-300 font-bold" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                         {s.vote_average.toFixed(1)}
                       </span>
                     </div>
@@ -245,9 +246,9 @@ export default async function TVWatchPage({ params }: any) {
                 </div>
                 <div className="px-0.5 space-y-0.5">
                   <p className="text-[0.7rem] font-semibold leading-tight line-clamp-2 group-hover:text-[var(--neon-blue)] transition-colors"
-                    style={{ fontFamily: 'Rajdhani, sans-serif' }}>{s.name}</p>
+                    style={{ fontFamily: 'var(--font-geist-sans)' }}>{s.name}</p>
                   {s.first_air_date && (
-                    <p className="text-[0.55rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                    <p className="text-[0.55rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                       {s.first_air_date.slice(0, 4)}
                     </p>
                   )}
@@ -260,6 +261,9 @@ export default async function TVWatchPage({ params }: any) {
 
       {/* Watch Together floating button */}
       <WatchTogether />
+
+      {/* Community Chat */}
+      <CommunityChat />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import VideoPlayer from '@/components/containers/movie/videoplayer';
 import WatchTogether from '@/components/watch-together';
+import CommunityChat from '@/components/community-chat';
 import { tmdb } from '@/lib/tmdb';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -42,12 +43,12 @@ export default async function MovieWatchPage({ params }: any) {
       <div className="flex items-center justify-between">
         <Link href={data ? `/movie/${id}` : '/movie'}
           className="inline-flex items-center gap-2 text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] hover:text-[var(--neon-pink)] transition-colors uppercase"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          style={{ fontFamily: 'var(--font-geist-mono)' }}>
           <ArrowLeft size={10} /> {data ? 'Back to Info' : 'Back to Movies'}
         </Link>
         {data && (
           <span className="text-[0.55rem] tracking-widest text-[hsl(var(--muted-foreground))]"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             {data.release_date?.slice(0, 4)} · {runtime || 'MOVIE'}
           </span>
         )}
@@ -64,19 +65,19 @@ export default async function MovieWatchPage({ params }: any) {
           )}
           <div>
             <h1 className="text-base font-black tracking-wide leading-tight"
-              style={{ fontFamily: 'Orbitron, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {data.title}
             </h1>
             <div className="flex items-center gap-2 mt-0.5">
               {data.vote_average > 0 && (
                 <span className="flex items-center gap-1 text-[0.55rem] text-[var(--neon-pink)]"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   <Star size={8} className="fill-current" /> {data.vote_average.toFixed(1)}
                 </span>
               )}
               {data.genres?.slice(0, 3).map((g: any) => (
                 <span key={g.id} className="text-[0.5rem] text-[hsl(var(--muted-foreground))] border border-[hsl(var(--border))] px-1.5 py-0.5"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>{g.name}</span>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>{g.name}</span>
               ))}
             </div>
           </div>
@@ -93,11 +94,11 @@ export default async function MovieWatchPage({ params }: any) {
           <div className="space-y-4">
             <div className="border border-[hsl(var(--border))] p-4 space-y-3">
               <p className="text-[0.55rem] tracking-[0.2em] text-[var(--neon-pink)]/70 uppercase"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {'// OVERVIEW'}
               </p>
               <p className="text-sm leading-relaxed text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.95rem' }}>
+                style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.95rem' }}>
                 {data.overview}
               </p>
               {director && (
@@ -111,7 +112,7 @@ export default async function MovieWatchPage({ params }: any) {
             {topCast.length > 0 && (
               <div className="space-y-3">
                 <p className="text-[0.55rem] tracking-[0.2em] text-[var(--neon-pink)]/70 uppercase"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   {'// CAST'}
                 </p>
                 <div className="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8">
@@ -141,7 +142,7 @@ export default async function MovieWatchPage({ params }: any) {
             {/* Movie details */}
             <div className="border border-[hsl(var(--border))] p-4 space-y-3">
               <p className="text-[0.55rem] tracking-[0.2em] text-[var(--neon-pink)]/70 uppercase"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {'// DETAILS'}
               </p>
               <div className="space-y-2">
@@ -155,8 +156,8 @@ export default async function MovieWatchPage({ params }: any) {
                 ].map(d => (
                   <div key={d.label} className="flex items-center justify-between gap-2">
                     <span className="text-[0.5rem] tracking-widest text-[hsl(var(--muted-foreground))]"
-                      style={{ fontFamily: 'Share Tech Mono, monospace' }}>{d.label}</span>
-                    <span className="text-xs font-medium text-right" style={{ fontFamily: 'Rajdhani, sans-serif' }}>{d.value}</span>
+                      style={{ fontFamily: 'var(--font-geist-mono)' }}>{d.label}</span>
+                    <span className="text-xs font-medium text-right" style={{ fontFamily: 'var(--font-geist-sans)' }}>{d.value}</span>
                   </div>
                 ))}
               </div>
@@ -166,14 +167,14 @@ export default async function MovieWatchPage({ params }: any) {
             <div className="space-y-2">
               <Link href={`/movie/${id}`}>
                 <button className="w-full flex items-center justify-center gap-2 border border-[hsl(var(--border))] py-2.5 text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)] transition-all"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   <Info size={11} /> FULL INFO PAGE
                 </button>
               </Link>
               {trailer && (
                 <a href={`https://youtube.com/watch?v=${trailer.key}`} target="_blank" rel="noopener noreferrer">
                   <button className="w-full flex items-center justify-center gap-2 border border-[hsl(var(--border))] py-2.5 text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] hover:border-[var(--neon-blue)] hover:text-[var(--neon-blue)] transition-all"
-                    style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                    style={{ fontFamily: 'var(--font-geist-mono)' }}>
                     <Play size={11} /> WATCH TRAILER
                   </button>
                 </a>
@@ -190,13 +191,13 @@ export default async function MovieWatchPage({ params }: any) {
             <div className="flex items-center gap-3">
               <TrendingUp size={14} style={{ color: 'var(--neon-pink)' }} />
               <span className="text-[0.6rem] tracking-[0.25em] text-[var(--neon-pink)]/70 uppercase"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {'// MORE LIKE THIS'}
               </span>
               <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(255,0,111,0.3), transparent)' }} />
             </div>
             <Link href="/movie" className="text-[0.55rem] tracking-widest text-[var(--neon-pink)]/50 hover:text-[var(--neon-pink)] transition-colors"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>VIEW ALL →</Link>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>VIEW ALL →</Link>
           </div>
           <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
             {similar.map((s: any) => (
@@ -215,7 +216,7 @@ export default async function MovieWatchPage({ params }: any) {
                   {s.vote_average > 0 && (
                     <div className="absolute top-1 right-1 flex items-center gap-0.5 bg-black/80 rounded-full px-1.5 py-0.5">
                       <Star size={7} className="text-yellow-400 fill-yellow-400" />
-                      <span className="text-[0.5rem] text-yellow-300 font-bold" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                      <span className="text-[0.5rem] text-yellow-300 font-bold" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                         {s.vote_average.toFixed(1)}
                       </span>
                     </div>
@@ -223,9 +224,9 @@ export default async function MovieWatchPage({ params }: any) {
                 </div>
                 <div className="px-0.5 space-y-0.5">
                   <p className="text-[0.7rem] font-semibold leading-tight line-clamp-2 group-hover:text-[var(--neon-pink)] transition-colors"
-                    style={{ fontFamily: 'Rajdhani, sans-serif' }}>{s.title}</p>
+                    style={{ fontFamily: 'var(--font-geist-sans)' }}>{s.title}</p>
                   {s.release_date && (
-                    <p className="text-[0.55rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                    <p className="text-[0.55rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                       {s.release_date.slice(0, 4)}
                     </p>
                   )}
@@ -238,6 +239,9 @@ export default async function MovieWatchPage({ params }: any) {
 
       {/* Watch Together floating button */}
       <WatchTogether />
+
+      {/* Community Chat */}
+      <CommunityChat />
     </div>
   );
 }

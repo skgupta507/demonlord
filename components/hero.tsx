@@ -35,7 +35,7 @@ export function Card({ item, type }: { item: Movie | TvSerie; type: string }) {
         {item.vote_average > 0 && (
           <div className="absolute top-2 right-2 flex items-center gap-1 bg-black/80 px-1.5 py-0.5 border border-[hsl(350_100%_58%/0.4)]">
             <Star size={8} className="text-[hsl(350_100%_58%)] fill-current" />
-            <span className="text-[0.6rem] text-[hsl(350_100%_62%)]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <span className="text-[0.6rem] text-[hsl(350_100%_62%)]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {item.vote_average.toFixed(1)}
             </span>
           </div>
@@ -47,8 +47,8 @@ export function Card({ item, type }: { item: Movie | TvSerie; type: string }) {
         </div>
       </div>
       <div className="p-3 space-y-1 bg-[hsl(var(--card))]">
-        <p className="truncate text-xs font-semibold tracking-wide" style={{ fontFamily: 'Rajdhani, sans-serif', fontWeight: 600 }}>{title}</p>
-        <p className="line-clamp-2 text-[0.65rem] leading-relaxed text-muted-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+        <p className="truncate text-xs font-semibold tracking-wide" style={{ fontFamily: 'var(--font-geist-sans)', fontWeight: 600 }}>{title}</p>
+        <p className="line-clamp-2 text-[0.65rem] leading-relaxed text-muted-foreground" style={{ fontFamily: 'var(--font-geist-sans)' }}>
           {item.overview || 'NO DATA AVAILABLE'}
         </p>
       </div>
@@ -77,7 +77,7 @@ export default function HeroSection() {
     <div className="flex h-48 items-center justify-center">
       <div className="flex flex-col items-center gap-3">
         <div className="h-6 w-6 border-2 border-[hsl(350_100%_58%)] border-t-transparent rounded-full animate-spin" />
-        <span className="text-[0.6rem] tracking-widest text-muted-foreground" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+        <span className="text-[0.6rem] tracking-widest text-muted-foreground" style={{ fontFamily: 'var(--font-geist-mono)' }}>
           FETCHING TRANSMISSIONS...
         </span>
       </div>
@@ -87,7 +87,7 @@ export default function HeroSection() {
   if (error) return (
     <div className="flex h-32 items-center justify-center gap-3 text-[hsl(0_85%_60%)]">
       <AlertCircle size={16} />
-      <span className="text-[0.65rem] tracking-widest" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+      <span className="text-[0.65rem] tracking-widest" style={{ fontFamily: 'var(--font-geist-mono)' }}>
         TMDB_API_KEY not set — add it to .env.local
       </span>
     </div>
@@ -98,7 +98,7 @@ export default function HeroSection() {
       {movieData?.results && (
         <div className="space-y-3">
           <div className="flex items-center gap-3 px-6">
-            <span className="text-[0.6rem] tracking-[0.25em] text-[hsl(350_100%_58%)] uppercase flex items-center gap-2" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <span className="text-[0.6rem] tracking-[0.25em] text-[hsl(350_100%_58%)] uppercase flex items-center gap-2" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               <span className="h-1.5 w-1.5 rounded-full bg-[hsl(350_100%_58%)] animate-pulse inline-block" />
               MOVIES
             </span>
@@ -112,7 +112,7 @@ export default function HeroSection() {
       {tvData?.results && (
         <div className="space-y-3">
           <div className="flex items-center gap-3 px-6">
-            <span className="text-[0.6rem] tracking-[0.25em] text-[hsl(185_100%_48%)] uppercase flex items-center gap-2" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <span className="text-[0.6rem] tracking-[0.25em] text-[hsl(185_100%_48%)] uppercase flex items-center gap-2" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               <span className="h-1.5 w-1.5 rounded-full bg-[hsl(185_100%_48%)] animate-pulse inline-block" />
               TV SHOWS
             </span>

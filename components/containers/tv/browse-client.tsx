@@ -21,8 +21,8 @@ export default function TVBrowseClient() {
           <Tv2 size={16} className="text-white" />
         </div>
         <div>
-          <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>TV Shows</h1>
-          <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          <h1 className="text-xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>TV Shows</h1>
+          <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
             Powered by TMDB · Stream every season
           </p>
         </div>

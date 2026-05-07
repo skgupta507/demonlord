@@ -16,18 +16,18 @@ export default function Removed() {
           </div>
         </div>
         <div>
-          <h1 className="text-3xl font-black tracking-[0.1em] uppercase mb-2" style={{ fontFamily: 'Orbitron, monospace' }}>DMCA TAKEDOWN</h1>
-          <p className="text-[0.6rem] tracking-widest text-[hsl(0_85%_60%)] uppercase" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          <h1 className="text-3xl font-black tracking-[0.1em] uppercase mb-2" style={{ fontFamily: 'var(--font-geist-mono)' }}>DMCA TAKEDOWN</h1>
+          <p className="text-[0.6rem] tracking-widest text-[hsl(0_85%_60%)] uppercase" style={{ fontFamily: 'var(--font-geist-mono)' }}>
             CONTENT REMOVED — NODE OFFLINE
           </p>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+        <p className="text-sm text-muted-foreground leading-relaxed" style={{ fontFamily: 'var(--font-geist-sans)' }}>
           This content has been removed in compliance with a DMCA takedown request. Under the Digital Millennium Copyright Act, we are required to remove content upon valid copyright complaints.
         </p>
         <div className="flex justify-center gap-3">
           <Link href="/"><button className="btn-neon">HOME BASE</button></Link>
           <Link href="/list/mtv">
-            <button className="border border-[hsl(var(--border))] px-5 py-2 text-[0.65rem] tracking-widest text-muted-foreground hover:border-muted-foreground transition-colors" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <button className="border border-[hsl(var(--border))] px-5 py-2 text-[0.65rem] tracking-widest text-muted-foreground hover:border-muted-foreground transition-colors" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               OTHER NODES
             </button>
           </Link>

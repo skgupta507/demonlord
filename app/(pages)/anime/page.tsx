@@ -14,8 +14,8 @@ export default function AnimePage() {
             <Antenna size={16} className="text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>Anime</h1>
-            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <h1 className="text-xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>Anime</h1>
+            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               Powered by AniList · Sub & Dub
             </p>
           </div>

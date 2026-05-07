@@ -56,9 +56,9 @@ export default function AuthModal({ open, onClose }: Props) {
         <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/5">
           <div>
             <div className="text-[0.5rem] tracking-[0.3em] text-[#FF006F]/60 mb-1"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>DEMONLORD // AUTH PORTAL</div>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>DEMONLORD // AUTH PORTAL</div>
             <h2 className="text-lg font-black tracking-[0.15em] text-white"
-              style={{ fontFamily: 'Orbitron, monospace' }}>{titles[mode]}</h2>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>{titles[mode]}</h2>
           </div>
           <button onClick={onClose} className="text-white/30 hover:text-white p-1"><X size={18} /></button>
         </div>
@@ -69,12 +69,12 @@ export default function AuthModal({ open, onClose }: Props) {
               <div className="flex items-center gap-2">
                 <AlertTriangle size={14} style={{ color: '#F9F002' }} />
                 <span className="text-[0.6rem] tracking-widest text-[#F9F002]"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>FIREBASE NOT CONFIGURED</span>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>FIREBASE NOT CONFIGURED</span>
               </div>
-              <p className="text-xs text-white/40" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+              <p className="text-xs text-white/40" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                 Add these to your <code className="text-[#F9F002]">.env.local</code> to enable auth:
               </p>
-              <div className="text-[0.55rem] text-white/30 space-y-0.5" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              <div className="text-[0.55rem] text-white/30 space-y-0.5" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 <div>NEXT_PUBLIC_FIREBASE_API_KEY</div>
                 <div>NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN</div>
                 <div>NEXT_PUBLIC_FIREBASE_PROJECT_ID</div>
@@ -82,7 +82,7 @@ export default function AuthModal({ open, onClose }: Props) {
               </div>
               <a href="https://console.firebase.google.com" target="_blank" rel="noopener noreferrer"
                 className="text-[0.55rem] tracking-widest text-[#00D4FF] underline"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 Get config at console.firebase.google.com →
               </a>
             </div>
@@ -91,7 +91,7 @@ export default function AuthModal({ open, onClose }: Props) {
           {configured && (mode === 'signin' || mode === 'signup') && (
             <button onClick={handleGoogle} disabled={loading}
               className="w-full flex items-center justify-center gap-3 border border-white/10 py-3 hover:border-[#00D4FF]/40 hover:bg-[#00D4FF]/5 transition-all text-white/60 hover:text-white"
-              style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: '0.65rem', letterSpacing: '0.2em' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '0.65rem', letterSpacing: '0.2em' }}>
               <svg viewBox="0 0 24 24" width="16" height="16">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -106,7 +106,7 @@ export default function AuthModal({ open, onClose }: Props) {
             <div className="flex items-center gap-3">
               <div className="flex-1 h-px bg-white/8" />
               <span className="text-[0.5rem] tracking-widest text-white/20"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>OR</span>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>OR</span>
               <div className="flex-1 h-px bg-white/8" />
             </div>
           )}
@@ -118,7 +118,7 @@ export default function AuthModal({ open, onClose }: Props) {
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)}
                   placeholder="EMAIL ADDRESS"
                   className="flex-1 bg-transparent px-3 py-3 text-sm outline-none placeholder:text-white/20"
-                  style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: '0.7rem', letterSpacing: '0.08em' }} />
+                  style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '0.7rem', letterSpacing: '0.08em' }} />
               </div>
               {(mode === 'signin' || mode === 'signup') && (
                 <div className="flex items-center border border-white/10 focus-within:border-[#FF006F]/50 transition-colors">
@@ -127,7 +127,7 @@ export default function AuthModal({ open, onClose }: Props) {
                     onChange={e => setPassword(e.target.value)} placeholder="PASSWORD"
                     onKeyDown={e => e.key === 'Enter' && handle()}
                     className="flex-1 bg-transparent px-3 py-3 text-sm outline-none placeholder:text-white/20"
-                    style={{ fontFamily: 'Share Tech Mono, monospace', fontSize: '0.7rem', letterSpacing: '0.08em' }} />
+                    style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '0.7rem', letterSpacing: '0.08em' }} />
                   <button onClick={() => setShowPw(!showPw)} className="mr-3 text-white/20 hover:text-white/50">
                     {showPw ? <EyeOff size={13} /> : <Eye size={13} />}
                   </button>
@@ -139,16 +139,16 @@ export default function AuthModal({ open, onClose }: Props) {
           {(error || success) && (
             <div className={`p-3 border text-[0.6rem] space-y-1 ${error ? 'border-[#FF006F]/30 bg-[#FF006F]/5' : 'border-[#39FF14]/30 bg-[#39FF14]/5'}`}>
               <p className={error ? 'text-[#FF006F]' : 'text-[#39FF14]'}
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {error || success}
               </p>
               {error?.includes('configuration-not-found') && (
-                <p className="text-white/40 text-[0.55rem]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                <p className="text-white/40 text-[0.55rem]" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                   Fix: In Firebase Console → Authentication → Sign-in method → enable Email/Password and Google providers.
                 </p>
               )}
               {error?.includes('auth/invalid-api-key') && (
-                <p className="text-white/40 text-[0.55rem]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                <p className="text-white/40 text-[0.55rem]" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                   Fix: Check your NEXT_PUBLIC_FIREBASE_API_KEY in .env — do not wrap in quotes.
                 </p>
               )}
@@ -158,7 +158,7 @@ export default function AuthModal({ open, onClose }: Props) {
           {configured && (
             <button onClick={handle} disabled={loading}
               className="w-full flex items-center justify-center gap-2 py-3 font-black tracking-[0.2em] transition-all disabled:opacity-50 text-white"
-              style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.65rem',
+              style={{ fontFamily: 'var(--font-geist-mono)', fontSize: '0.65rem',
                 background: 'linear-gradient(90deg, #FF006F, #BD00FF)',
                 boxShadow: '0 0 20px rgba(255,0,111,0.3)' }}>
               {loading
@@ -171,24 +171,24 @@ export default function AuthModal({ open, onClose }: Props) {
             {mode !== 'signin' && (
               <button onClick={() => { setMode('signin'); setSuccess(''); }}
                 className="text-[0.55rem] tracking-widest text-white/30 hover:text-[#00D4FF] transition-colors"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>SIGN IN</button>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>SIGN IN</button>
             )}
             {mode !== 'signup' && (
               <button onClick={() => { setMode('signup'); setSuccess(''); }}
                 className="text-[0.55rem] tracking-widest text-white/30 hover:text-[#BD00FF] transition-colors"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>CREATE ACCOUNT</button>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>CREATE ACCOUNT</button>
             )}
             {mode !== 'magic' && (
               <button onClick={() => { setMode('magic'); setSuccess(''); }}
                 className="text-[0.55rem] tracking-widest text-white/30 hover:text-[#F9F002] transition-colors flex items-center gap-1"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 <Zap size={9} /> MAGIC LINK
               </button>
             )}
             {mode === 'signin' && (
               <button onClick={() => { setMode('reset'); setSuccess(''); }}
                 className="text-[0.55rem] tracking-widest text-white/30 hover:text-[#39FF14] transition-colors"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>FORGOT PASSWORD</button>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>FORGOT PASSWORD</button>
             )}
           </div>
         </div>

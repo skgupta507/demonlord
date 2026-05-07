@@ -18,15 +18,15 @@ export default async function MangaSearch({ params }: any) {
     <div className="space-y-6 p-6">
       <div className="space-y-2">
         <Link href="/manga" className="inline-flex items-center gap-2 text-[0.6rem] tracking-widest text-white/30 hover:text-[#F9F002] transition-colors"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          style={{ fontFamily: 'var(--font-geist-mono)' }}>
           <ArrowLeft size={10} /> BACK TO MANGA
         </Link>
         <div>
-          <h1 className="text-xl font-black tracking-[0.12em] uppercase" style={{ fontFamily: 'Orbitron, monospace' }}>
+          <h1 className="text-xl font-black tracking-[0.12em] uppercase" style={{ fontFamily: 'var(--font-geist-mono)' }}>
             RESULTS FOR: <span style={{ color: '#F9F002' }}>{title.toUpperCase()}</span>
           </h1>
           <p className="text-[0.55rem] tracking-widest text-white/25 mt-1"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             {results.length} TITLES FOUND VIA ANILIST
           </p>
         </div>
@@ -35,7 +35,7 @@ export default async function MangaSearch({ params }: any) {
       {error && (
         <div className="border border-[#FF006F]/30 bg-[#FF006F]/5 p-4">
           <span className="text-[0.6rem] tracking-widest text-[#FF006F]"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             SEARCH FAILED — AniList API error
           </span>
         </div>
@@ -45,7 +45,7 @@ export default async function MangaSearch({ params }: any) {
         <div className="flex flex-col items-center py-16 gap-3">
           <Book size={32} className="text-white/10" />
           <span className="text-[0.6rem] tracking-widest text-white/30"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             NO RESULTS FOR &quot;{title.toUpperCase()}&quot;
           </span>
         </div>
@@ -64,17 +64,17 @@ export default async function MangaSearch({ params }: any) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute bottom-0 inset-x-0 p-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <p className="text-xs font-semibold text-white truncate"
-                    style={{ fontFamily: 'Rajdhani, sans-serif' }}>{t}</p>
+                    style={{ fontFamily: 'var(--font-geist-sans)' }}>{t}</p>
                   <div className="flex gap-1.5 mt-0.5">
                     {item.chapters && (
                       <span className="text-[0.5rem] tracking-widest text-[#F9F002]/60"
-                        style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                        style={{ fontFamily: 'var(--font-geist-mono)' }}>
                         {item.chapters}CH
                       </span>
                     )}
                     {item.status && (
                       <span className="text-[0.5rem] tracking-widest text-white/40"
-                        style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                        style={{ fontFamily: 'var(--font-geist-mono)' }}>
                         {item.status}
                       </span>
                     )}

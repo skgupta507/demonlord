@@ -24,10 +24,10 @@ export default function NavUserClient() {
             </div>
           )}
           <div className="flex flex-col leading-none flex-1 min-w-0">
-            <span className="text-xs text-white/60 truncate" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+            <span className="text-xs text-white/60 truncate" style={{ fontFamily: 'var(--font-geist-sans)' }}>
               {user.displayName || user.email?.split('@')[0] || 'User'}
             </span>
-            <span className="text-[0.45rem] tracking-widest text-white/25" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <span className="text-[0.45rem] tracking-widest text-white/25" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               AUTHENTICATED
             </span>
           </div>
@@ -41,7 +41,7 @@ export default function NavUserClient() {
           className="flex items-center gap-2 px-3 py-2 border border-white/8 hover:border-[#FF006F]/40 transition-colors w-full"
         >
           <LogIn size={13} className="text-white/30" />
-          <span className="text-[0.6rem] tracking-widest text-white/30 hover:text-white/60" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          <span className="text-[0.6rem] tracking-widest text-white/30 hover:text-white/60" style={{ fontFamily: 'var(--font-geist-mono)' }}>
             SIGN IN
           </span>
         </button>

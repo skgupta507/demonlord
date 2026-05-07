@@ -76,7 +76,7 @@ export default function VideoPlayer({ id }: { id: string }) {
 
   const borderClass = isLight ? 'border-gray-200' : 'border-white/10';
   const textClass = isLight ? 'text-gray-600' : 'text-white/40';
-  const monoStyle = { fontFamily: 'Share Tech Mono, monospace' };
+  const monoStyle = { fontFamily: 'var(--font-geist-mono)' };
 
   if (isLoading && seasons.length === 0) return (
     <div className="flex h-64 items-center justify-center">
@@ -246,7 +246,7 @@ export default function VideoPlayer({ id }: { id: string }) {
                   E{String(ep.episode_number).padStart(2, '0')}
                 </span>
                 <span className={`text-xs truncate w-full mt-0.5 ${isLight ? 'text-gray-600' : 'text-white/60'}`}
-                  style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                  style={{ fontFamily: 'var(--font-geist-sans)' }}>
                   {ep.name || `Episode ${ep.episode_number}`}
                 </span>
               </button>

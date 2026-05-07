@@ -44,13 +44,13 @@ export default function PrivacyPage() {
             </div>
           </FadeIn>
           <FadeIn delay={100}>
-            <h1 className="text-4xl font-black tracking-tight md:text-5xl" style={{ fontFamily: 'Orbitron, monospace' }}>Privacy Policy</h1>
+            <h1 className="text-4xl font-black tracking-tight md:text-5xl" style={{ fontFamily: 'var(--font-geist-mono)' }}>Privacy Policy</h1>
             <p className="text-[0.6rem] tracking-[0.25em] text-[hsl(var(--muted-foreground))] uppercase"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
             </p>
             <p className="text-sm text-[hsl(var(--muted-foreground))] max-w-lg mx-auto leading-relaxed"
-              style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+              style={{ fontFamily: 'var(--font-geist-sans)' }}>
               We believe in radical transparency. Here&apos;s exactly what we collect, why, and how you can control it.
             </p>
           </FadeIn>
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
                   <h2 className="font-bold text-sm">{s.title}</h2>
                 </div>
                 <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed pl-11"
-                  style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.9rem' }}>{s.content}</p>
+                  style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.9rem' }}>{s.content}</p>
               </div>
             </FadeIn>
           ))}
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
           <div className="card-cyber p-6 text-center space-y-3"
             style={{ background: 'color-mix(in srgb, var(--neon-blue) 4%, transparent)' }}>
             <p className="font-bold text-sm">Questions about your privacy?</p>
-            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-sans)' }}>
               Reach out via GitHub or Discord. We respond to all privacy requests.
             </p>
             <div className="flex justify-center gap-3">
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
           </div>
         </FadeIn>
         <Link href="/" className="inline-flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))] hover:text-[var(--neon-pink)] transition-colors"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          style={{ fontFamily: 'var(--font-geist-mono)' }}>
           <ArrowLeft size={12} /> Back to Home
         </Link>
       </div>

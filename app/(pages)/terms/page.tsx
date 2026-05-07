@@ -46,13 +46,13 @@ export default function TermsPage() {
             </div>
           </FadeIn>
           <FadeIn delay={100}>
-            <h1 className="text-4xl font-black tracking-tight md:text-5xl" style={{ fontFamily: 'Orbitron, monospace' }}>Terms of Service</h1>
+            <h1 className="text-4xl font-black tracking-tight md:text-5xl" style={{ fontFamily: 'var(--font-geist-mono)' }}>Terms of Service</h1>
             <p className="text-[0.6rem] tracking-[0.25em] text-[hsl(var(--muted-foreground))] uppercase"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
             </p>
             <p className="text-sm text-[hsl(var(--muted-foreground))] max-w-lg mx-auto leading-relaxed"
-              style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+              style={{ fontFamily: 'var(--font-geist-sans)' }}>
               Plain English terms. We keep them short, fair, and easy to understand.
             </p>
           </FadeIn>
@@ -66,7 +66,7 @@ export default function TermsPage() {
                 <CheckCircle size={13} style={{ color: 'var(--neon-pink)', flexShrink: 0 }} />{t.title}
               </h2>
               <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed pl-5"
-                style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.9rem' }}>{t.content}</p>
+                style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.9rem' }}>{t.content}</p>
             </div>
           </FadeIn>
         ))}
@@ -80,7 +80,7 @@ export default function TermsPage() {
           </div>
         </FadeIn>
         <Link href="/" className="inline-flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))] hover:text-[var(--neon-pink)] transition-colors"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          style={{ fontFamily: 'var(--font-geist-mono)' }}>
           <ArrowLeft size={12} /> Back to Home
         </Link>
       </div>

@@ -18,7 +18,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <div className="space-y-3">
       <p className="text-[0.55rem] tracking-[0.25em] uppercase text-[hsl(var(--muted-foreground))]"
-        style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+        style={{ fontFamily: 'var(--font-geist-mono)' }}>
         {title}
       </p>
       <div className="card-cyber divide-y divide-[hsl(var(--border))]">{children}</div>
@@ -35,7 +35,7 @@ function Row({ icon: Icon, label, desc, children }: { icon: any; label: string; 
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium">{label}</p>
-        {desc && <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>{desc}</p>}
+        {desc && <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-sans)' }}>{desc}</p>}
       </div>
       {children}
     </div>
@@ -108,8 +108,8 @@ export default function SettingsPage() {
           <Settings size={18} />
         </div>
         <div>
-          <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>Settings</h1>
-          <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          <h1 className="text-xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>Settings</h1>
+          <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
             Preferences & account
           </p>
         </div>
@@ -148,7 +148,7 @@ export default function SettingsPage() {
                     : 'text-[hsl(var(--muted-foreground))] border border-[hsl(var(--border))]'
                 }`}
                 style={{ background: prefs.quality === q ? 'var(--neon-pink)' : undefined,
-                  fontFamily: 'Share Tech Mono, monospace' }}>
+                  fontFamily: 'var(--font-geist-mono)' }}>
                 {q}
               </button>
             ))}
@@ -186,21 +186,21 @@ export default function SettingsPage() {
         <Row icon={Download} label="Export My Data" desc="Download watchlist & history as JSON">
           <button onClick={exportData}
             className="text-xs border border-[hsl(var(--border))] rounded-lg px-3 py-1.5 hover:border-[var(--neon-blue)] hover:text-[var(--neon-blue)] transition-all"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             Export
           </button>
         </Row>
         <Row icon={Trash2} label="Clear Watch History" desc="Remove all watched items">
           <button onClick={() => clearData('demonlord_history', 'watch history')}
             className="text-xs border border-[hsl(var(--border))] rounded-lg px-3 py-1.5 hover:border-red-400 hover:text-red-400 transition-all"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             Clear
           </button>
         </Row>
         <Row icon={Trash2} label="Clear Watchlist" desc="Remove all saved items">
           <button onClick={() => clearData('demonlord_watchlist', 'watchlist')}
             className="text-xs border border-[hsl(var(--border))] rounded-lg px-3 py-1.5 hover:border-red-400 hover:text-red-400 transition-all"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             Clear
           </button>
         </Row>
@@ -212,7 +212,7 @@ export default function SettingsPage() {
           <Row icon={Settings} label={user.email ?? 'Signed in'} desc={user.displayName ?? 'Firebase user'}>
             <button onClick={signOut}
               className="text-xs border border-red-400/40 text-red-400 rounded-lg px-3 py-1.5 hover:bg-red-400/10 transition-all"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               Sign Out
             </button>
           </Row>
@@ -221,7 +221,7 @@ export default function SettingsPage() {
 
       {/* Version */}
       <p className="text-center text-[0.55rem] text-[hsl(var(--muted-foreground))] opacity-50"
-        style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+        style={{ fontFamily: 'var(--font-geist-mono)' }}>
         DemonLord v5.0 · Neural Cinema · demonlord.pp.ua
       </p>
     </div>

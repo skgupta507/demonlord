@@ -30,7 +30,7 @@ export default async function MangaInfo({ params }: any) {
 
       <div className="mx-auto max-w-5xl px-6 -mt-24 relative z-10 pb-12 space-y-8">
         <Link href="/manga" className="inline-flex items-center gap-2 text-[0.6rem] tracking-widest text-white/30 hover:text-[#F9F002] transition-colors"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          style={{ fontFamily: 'var(--font-geist-mono)' }}>
           <ArrowLeft size={10} /> BACK
         </Link>
 
@@ -49,7 +49,7 @@ export default async function MangaInfo({ params }: any) {
           {/* Info */}
           <article className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center gap-2 text-[0.6rem] tracking-widest text-white/40 uppercase"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {data.format && <span>{data.format.replace(/_/g, ' ')}</span>}
               {data.chapters && <><span className="opacity-30">|</span><span className="flex items-center gap-1"><Hash size={9} />{data.chapters} CH</span></>}
               {data.volumes && <><span className="opacity-30">|</span><span>{data.volumes} VOL</span></>}
@@ -57,12 +57,12 @@ export default async function MangaInfo({ params }: any) {
             </div>
 
             <h1 className="text-2xl font-black tracking-wide uppercase md:text-4xl"
-              style={{ fontFamily: 'Orbitron, monospace', lineHeight: 1.1 }}>
+              style={{ fontFamily: 'var(--font-geist-mono)', lineHeight: 1.1 }}>
               {title}
             </h1>
             {data.title?.romaji && data.title?.english && (
               <p className="text-[0.65rem] tracking-wide text-white/30"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>{data.title.romaji}</p>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>{data.title.romaji}</p>
             )}
 
             <div className="flex flex-wrap items-center gap-2">
@@ -70,17 +70,17 @@ export default async function MangaInfo({ params }: any) {
                 <div className="flex items-center gap-1.5 bg-[#F9F002]/10 border border-[#F9F002]/30 px-2 py-1">
                   <Star size={10} className="text-[#F9F002] fill-current" />
                   <span className="text-[0.7rem] font-bold text-[#F9F002]"
-                    style={{ fontFamily: 'Share Tech Mono, monospace' }}>{score}</span>
+                    style={{ fontFamily: 'var(--font-geist-mono)' }}>{score}</span>
                 </div>
               )}
               {data.genres?.slice(0, 5).map((g: string) => (
                 <span key={g} className="border border-white/10 px-2 py-0.5 text-[0.6rem] tracking-widest text-white/40 uppercase"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}>{g}</span>
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}>{g}</span>
               ))}
             </div>
 
             <p className="max-w-2xl text-sm leading-relaxed text-white/60 line-clamp-5"
-              style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.9rem' }}>
+              style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.9rem' }}>
               {desc}
             </p>
           </article>
@@ -90,7 +90,7 @@ export default async function MangaInfo({ params }: any) {
         {data.relations?.edges?.length > 0 && (
           <div className="space-y-3">
             <span className="text-[0.6rem] tracking-[0.25em] text-[#F9F002]/60 uppercase"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>{'// RELATED'}</span>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>{'// RELATED'}</span>
             <div className="flex flex-wrap gap-3">
               {data.relations.edges.slice(0, 6).map((edge: any) => (
                 edge.node && (
@@ -103,11 +103,11 @@ export default async function MangaInfo({ params }: any) {
                     )}
                     <div>
                       <p className="text-xs text-white/60 truncate max-w-[120px]"
-                        style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                        style={{ fontFamily: 'var(--font-geist-sans)' }}>
                         {edge.node.title?.english || edge.node.title?.romaji}
                       </p>
                       <p className="text-[0.5rem] tracking-widest text-white/25"
-                        style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                        style={{ fontFamily: 'var(--font-geist-mono)' }}>
                         {edge.relationType} · {edge.node.type}
                       </p>
                     </div>

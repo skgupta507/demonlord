@@ -61,9 +61,9 @@ export default function CarousalCard({ show, type, banner }: Props) {
       <div className="absolute top-4 right-4 flex flex-col items-end gap-1 pointer-events-none">
         <div className="flex items-center gap-1.5">
           <div className="h-1 w-1 rounded-full animate-pulse" style={{ background: '#39FF14', boxShadow: '0 0 6px #39FF14' }} />
-          <span className="text-[0.5rem] tracking-widest" style={{ fontFamily: 'Share Tech Mono, monospace', color: '#39FF14' }}>STREAMING</span>
+          <span className="text-[0.5rem] tracking-widest" style={{ fontFamily: 'var(--font-geist-mono)', color: '#39FF14' }}>STREAMING</span>
         </div>
-        <span className="text-[0.45rem] tracking-widest text-white/20" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+        <span className="text-[0.45rem] tracking-widest text-white/20" style={{ fontFamily: 'var(--font-geist-mono)' }}>
           NEURAL_CINEMA
         </span>
       </div>
@@ -74,14 +74,14 @@ export default function CarousalCard({ show, type, banner }: Props) {
           {/* Type tag + year */}
           <div className="flex items-center gap-3">
             <span className="border px-2 py-0.5 text-[0.55rem] tracking-[0.2em] uppercase"
-              style={{ fontFamily: 'Share Tech Mono, monospace', color, borderColor: `${color}66` }}>
+              style={{ fontFamily: 'var(--font-geist-mono)', color, borderColor: `${color}66` }}>
               {type?.toUpperCase() || 'CONTENT'}
             </span>
-            {year && <span className="text-[0.55rem] tracking-widest text-white/40" style={{ fontFamily: 'Share Tech Mono, monospace' }}>{year}</span>}
+            {year && <span className="text-[0.55rem] tracking-widest text-white/40" style={{ fontFamily: 'var(--font-geist-mono)' }}>{year}</span>}
             {show.vote_average > 0 && (
               <div className="flex items-center gap-1 bg-black/60 border px-1.5 py-0.5" style={{ borderColor: `${color}33` }}>
                 <Star size={8} style={{ color, fill: color }} />
-                <span className="text-[0.55rem]" style={{ fontFamily: 'Share Tech Mono, monospace', color }}>
+                <span className="text-[0.55rem]" style={{ fontFamily: 'var(--font-geist-mono)', color }}>
                   {show.vote_average?.toFixed(1)}
                 </span>
               </div>
@@ -90,13 +90,13 @@ export default function CarousalCard({ show, type, banner }: Props) {
 
           {/* Title */}
           <h2 className="text-3xl font-black uppercase tracking-wide text-white leading-tight md:text-5xl"
-            style={{ fontFamily: 'Orbitron, monospace', textShadow: `0 0 40px ${color}44` }}>
+            style={{ fontFamily: 'var(--font-geist-mono)', textShadow: `0 0 40px ${color}44` }}>
             {title}
           </h2>
 
           {/* Overview */}
           {show.overview && (
-            <p className="line-clamp-2 text-sm leading-relaxed text-white/60 max-w-lg" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+            <p className="line-clamp-2 text-sm leading-relaxed text-white/60 max-w-lg" style={{ fontFamily: 'var(--font-geist-sans)' }}>
               {show.overview}
             </p>
           )}
@@ -110,7 +110,7 @@ export default function CarousalCard({ show, type, banner }: Props) {
             </Link>
             <Link href={href}>
               <button className="flex items-center gap-2 border border-white/15 px-4 py-2 text-[0.6rem] tracking-widest text-white/50 hover:border-white/30 hover:text-white/80 transition-all"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 <Info size={10} /> MORE INFO
               </button>
             </Link>

@@ -43,7 +43,7 @@ function ResultCard({ item, category }: { item: any; category: Category }) {
           <p className="text-sm font-semibold truncate leading-tight">{title}</p>
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-[0.55rem] tracking-wider px-1.5 py-0.5 rounded-full text-white font-medium"
-              style={{ background: cat.color, fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ background: cat.color, fontFamily: 'var(--font-geist-mono)' }}>
               {cat.label}
             </span>
             {year && <span className="text-[0.6rem] text-[hsl(var(--muted-foreground))]">{year}</span>}
@@ -82,10 +82,10 @@ export default function SearchContent() {
 
       {/* Page header — Rive-style minimal */}
       <div className="space-y-1">
-        <h1 className="text-2xl font-black tracking-tight" style={{ fontFamily: 'Orbitron, monospace' }}>
+        <h1 className="text-2xl font-black tracking-tight" style={{ fontFamily: 'var(--font-geist-mono)' }}>
           Search
         </h1>
-        <p className="text-sm text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+        <p className="text-sm text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-sans)' }}>
           Find movies, TV shows and anime instantly.
         </p>
       </div>
@@ -127,7 +127,7 @@ export default function SearchContent() {
             onChange={e => setQuery(e.target.value)}
             placeholder={`Search ${cat.label.toLowerCase()}...`}
             className="flex-1 bg-transparent text-base outline-none placeholder:text-[hsl(var(--muted-foreground))]"
-            style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '1rem', fontWeight: 500 }}
+            style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '1rem', fontWeight: 500 }}
           />
           {query && (
             <button onClick={() => setQuery('')}
@@ -144,14 +144,14 @@ export default function SearchContent() {
           {/* Trending suggestions */}
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))]"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               <TrendingUp size={12} /> TRENDING SEARCHES
             </div>
             <div className="flex flex-wrap gap-2">
               {TRENDING_SEARCHES.map(s => (
                 <button key={s} onClick={() => setQuery(s)}
                   className="px-3 py-1.5 rounded-full border border-[hsl(var(--border))] text-sm text-[hsl(var(--muted-foreground))] hover:border-[hsl(var(--foreground)/0.4)] hover:text-[hsl(var(--foreground))] transition-all"
-                  style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                  style={{ fontFamily: 'var(--font-geist-sans)' }}>
                   {s}
                 </button>
               ))}
@@ -161,7 +161,7 @@ export default function SearchContent() {
           {/* Quick browse links */}
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))]"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               <Clock size={12} /> BROWSE BY CATEGORY
             </div>
             <div className="grid grid-cols-3 gap-3">
@@ -190,7 +190,7 @@ export default function SearchContent() {
           {/* Count */}
           {!isLoading && results !== null && (
             <p className="text-xs text-[hsl(var(--muted-foreground))] px-1"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {results.length > 0
                 ? `${results.length} results for "${query}"`
                 : `No results for "${query}"`}
@@ -230,7 +230,7 @@ export default function SearchContent() {
               </div>
               <div className="space-y-1">
                 <p className="font-bold">No results found</p>
-                <p className="text-sm text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                <p className="text-sm text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-sans)' }}>
                   Try a different spelling or search for something else.
                 </p>
               </div>

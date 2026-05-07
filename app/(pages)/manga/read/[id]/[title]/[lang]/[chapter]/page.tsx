@@ -40,13 +40,13 @@ export default function Read() {
       <div className="sticky top-0 z-20 flex items-center justify-between px-4 py-3 border-b border-white/8 bg-[#080B14]/95 backdrop-blur-sm">
         <Link href={`/manga/info/${id}`}
           className="flex items-center gap-2 text-[0.6rem] tracking-widest text-white/30 hover:text-[#F9F002] transition-colors"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          style={{ fontFamily: 'var(--font-geist-mono)' }}>
           <ArrowLeft size={10} /> BACK TO INFO
         </Link>
-        <span className="text-[0.55rem] tracking-widest text-white/30" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+        <span className="text-[0.55rem] tracking-widest text-white/30" style={{ fontFamily: 'var(--font-geist-mono)' }}>
           {decodeURIComponent(title || '')} · {lang?.toUpperCase()} · CH. {chapter?.slice(0, 8)}
         </span>
-        <span className="text-[0.55rem] tracking-widest text-white/20" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+        <span className="text-[0.55rem] tracking-widest text-white/20" style={{ fontFamily: 'var(--font-geist-mono)' }}>
           {images.length} PAGES
         </span>
       </div>
@@ -54,7 +54,7 @@ export default function Read() {
       {loading && (
         <div className="flex flex-col items-center justify-center py-32 gap-4">
           <div className="h-8 w-8 border-2 border-[#F9F002] border-t-transparent rounded-full animate-spin" />
-          <span className="text-[0.6rem] tracking-widest text-white/30" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          <span className="text-[0.6rem] tracking-widest text-white/30" style={{ fontFamily: 'var(--font-geist-mono)' }}>
             FETCHING CHAPTER...
           </span>
         </div>
@@ -62,7 +62,7 @@ export default function Read() {
 
       {error && (
         <div className="flex flex-col items-center justify-center py-32 gap-4">
-          <span className="text-[0.6rem] tracking-widest text-[#FF006F]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+          <span className="text-[0.6rem] tracking-widest text-[#FF006F]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
             FAILED TO LOAD CHAPTER — MangaDex may be unavailable
           </span>
           <button onClick={fetchData} className="btn-neon text-xs">RETRY</button>
@@ -85,7 +85,7 @@ export default function Read() {
           {images.length > 0 && (
             <div className="flex items-center gap-3 py-8">
               <span className="text-[0.6rem] tracking-widest text-white/30"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 END OF CHAPTER · {images.length} PAGES
               </span>
             </div>

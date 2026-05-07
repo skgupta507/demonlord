@@ -83,8 +83,8 @@ export default function HistoryPage() {
             <Clock size={18} className="text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-black" style={{ fontFamily: 'Orbitron, monospace' }}>Watch History</h1>
-            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            <h1 className="text-xl font-black" style={{ fontFamily: 'var(--font-geist-mono)' }}>Watch History</h1>
+            <p className="text-xs text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {items.length} titles watched
             </p>
           </div>
@@ -92,7 +92,7 @@ export default function HistoryPage() {
         {items.length > 0 && (
           <button onClick={clearAll}
             className="flex items-center gap-1.5 text-xs text-[hsl(var(--muted-foreground))] hover:text-red-400 transition-colors"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             <Trash2 size={12} /> Clear history
           </button>
         )}
@@ -105,7 +105,7 @@ export default function HistoryPage() {
               className={`px-3 py-1.5 rounded-lg text-[0.65rem] tracking-wider transition-all ${
                 filter === f ? 'text-white font-bold' : 'text-[hsl(var(--muted-foreground))]'
               }`}
-              style={{ fontFamily: 'Share Tech Mono, monospace', background: filter === f ? 'var(--neon-blue)' : 'transparent' }}>
+              style={{ fontFamily: 'var(--font-geist-mono)', background: filter === f ? 'var(--neon-blue)' : 'transparent' }}>
               {f === 'all' ? 'All' : TYPE_LABEL[f]}
             </button>
           ))}
@@ -115,7 +115,7 @@ export default function HistoryPage() {
       {Object.entries(grouped).map(([date, dateItems]) => (
         <div key={date} className="space-y-2">
           <p className="text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))] uppercase"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+            style={{ fontFamily: 'var(--font-geist-mono)' }}>
             {date}
           </p>
           <div className="space-y-2">
@@ -146,7 +146,7 @@ export default function HistoryPage() {
                     <p className="font-semibold text-sm truncate">{item.title}</p>
                     <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                       <span className="text-[0.5rem] tracking-wider px-1.5 py-0.5 rounded-full text-white font-bold"
-                        style={{ background: color, fontFamily: 'Share Tech Mono, monospace' }}>
+                        style={{ background: color, fontFamily: 'var(--font-geist-mono)' }}>
                         {TYPE_LABEL[item.type]}
                       </span>
                       {item.season && <span className="text-xs text-[hsl(var(--muted-foreground))]">S{item.season} E{item.episode}</span>}
@@ -185,8 +185,8 @@ export default function HistoryPage() {
             style={{ background: 'var(--neon-blue)' }}>
             <Clock size={28} className="text-white" />
           </div>
-          <p className="font-bold text-lg" style={{ fontFamily: 'Orbitron, monospace' }}>No history yet</p>
-          <p className="text-sm text-[hsl(var(--muted-foreground))] text-center max-w-xs" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+          <p className="font-bold text-lg" style={{ fontFamily: 'var(--font-geist-mono)' }}>No history yet</p>
+          <p className="text-sm text-[hsl(var(--muted-foreground))] text-center max-w-xs" style={{ fontFamily: 'var(--font-geist-sans)' }}>
             Start watching and your history will appear here automatically.
           </p>
           <Link href="/movie"><button className="btn-neon text-xs px-5 py-2">Start Watching</button></Link>

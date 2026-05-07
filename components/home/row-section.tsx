@@ -55,12 +55,12 @@ export default function HomeRowSection({ title, subtitle, icon, color, href, ite
             <Icon size={15} style={{ color }} />
           </div>
           <div>
-            <h2 className="text-base font-black tracking-wide" style={{ fontFamily: 'Orbitron, monospace' }}>
+            <h2 className="text-base font-black tracking-wide" style={{ fontFamily: 'var(--font-geist-mono)' }}>
               {title}
             </h2>
             {subtitle && (
               <p className="text-[0.6rem] tracking-widest text-[hsl(var(--muted-foreground))]"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                style={{ fontFamily: 'var(--font-geist-mono)' }}>
                 {subtitle}
               </p>
             )}
@@ -68,7 +68,7 @@ export default function HomeRowSection({ title, subtitle, icon, color, href, ite
         </div>
         <Link href={href}
           className="flex items-center gap-1.5 text-[0.6rem] tracking-widest transition-colors hover:opacity-80 shrink-0"
-          style={{ color, fontFamily: 'Share Tech Mono, monospace' }}>
+          style={{ color, fontFamily: 'var(--font-geist-mono)' }}>
           VIEW ALL <ArrowRight size={10} />
         </Link>
       </div>
@@ -97,7 +97,7 @@ export default function HomeRowSection({ title, subtitle, icon, color, href, ite
               {(item.rating ?? 0) > 0 && (
                 <div className="absolute top-1 right-1 flex items-center gap-0.5 bg-black/80 rounded-full px-1.5 py-0.5">
                   <Star size={7} className="text-yellow-400 fill-yellow-400" />
-                  <span className="text-[0.5rem] text-yellow-300 font-bold" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                  <span className="text-[0.5rem] text-yellow-300 font-bold" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                     {item.rating?.toFixed(1)}
                   </span>
                 </div>
@@ -105,11 +105,11 @@ export default function HomeRowSection({ title, subtitle, icon, color, href, ite
             </div>
             <div className="px-0.5 space-y-0.5">
               <p className={`text-[0.7rem] font-semibold leading-tight line-clamp-2 transition-colors ${TYPE_TEXT[item.type] || ''}`}
-                style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                style={{ fontFamily: 'var(--font-geist-sans)' }}>
                 {item.title}
               </p>
               {item.year && (
-                <p className="text-[0.55rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                <p className="text-[0.55rem] text-[hsl(var(--muted-foreground))]" style={{ fontFamily: 'var(--font-geist-mono)' }}>
                   {item.year}
                 </p>
               )}

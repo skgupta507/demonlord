@@ -56,14 +56,14 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
           <div className="flex items-center gap-2">
             <span
               className="border border-[hsl(350_100%_58%/0.6)] px-2 py-0.5 text-[0.6rem] tracking-[0.2em] text-[hsl(350_100%_62%)] uppercase"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}
+              style={{ fontFamily: 'var(--font-geist-mono)' }}
             >
               {type?.toUpperCase() || 'CONTENT'}
             </span>
             {year && (
               <span
                 className="text-[0.6rem] tracking-widest text-white/50"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}
+                style={{ fontFamily: 'var(--font-geist-mono)' }}
               >
                 {year}
               </span>
@@ -73,7 +73,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
                 <Star size={8} className="text-[hsl(350_100%_58%)] fill-current" />
                 <span
                   className="text-[0.6rem] text-[hsl(350_100%_62%)]"
-                  style={{ fontFamily: 'Share Tech Mono, monospace' }}
+                  style={{ fontFamily: 'var(--font-geist-mono)' }}
                 >
                   {show.vote_average?.toFixed(1)}
                 </span>
@@ -84,7 +84,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
           {/* Title */}
           <h2
             className="text-3xl font-black uppercase tracking-wide text-white leading-tight md:text-5xl"
-            style={{ fontFamily: 'Orbitron, monospace', textShadow: '0 0 30px rgba(0,0,0,0.8)' }}
+            style={{ fontFamily: 'var(--font-geist-mono)', textShadow: '0 0 30px rgba(0,0,0,0.8)' }}
           >
             {title}
           </h2>
@@ -92,7 +92,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
           {/* Overview */}
           <p
             className="line-clamp-2 text-sm leading-relaxed text-white/70 max-w-lg"
-            style={{ fontFamily: 'Rajdhani, sans-serif' }}
+            style={{ fontFamily: 'var(--font-geist-sans)' }}
           >
             {show.overview}
           </p>
@@ -108,7 +108,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
             <Link href={`/${type}/${show.id}`}>
               <button
                 className="flex items-center gap-2 border border-white/20 px-4 py-2 text-[0.65rem] tracking-widest text-white/70 hover:border-white/40 hover:text-white transition-all"
-                style={{ fontFamily: 'Share Tech Mono, monospace' }}
+                style={{ fontFamily: 'var(--font-geist-mono)' }}
               >
                 <Info size={11} />
                 MORE INFO
@@ -122,7 +122,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
       <div className="absolute top-4 right-4 flex flex-col items-end gap-1 pointer-events-none">
         <div
           className="text-[0.55rem] tracking-widest text-white/30"
-          style={{ fontFamily: 'Share Tech Mono, monospace' }}
+          style={{ fontFamily: 'var(--font-geist-mono)' }}
         >
           NEURAL_CINEMA // LIVE
         </div>
@@ -130,7 +130,7 @@ export default function CarousalCard({ show, type }: CarousalCardProps) {
           <div className="h-1 w-1 rounded-full bg-[hsl(350_100%_58%)] animate-pulse" />
           <span
             className="text-[0.55rem] tracking-widest text-[hsl(350_100%_58%)]"
-            style={{ fontFamily: 'Share Tech Mono, monospace' }}
+            style={{ fontFamily: 'var(--font-geist-mono)' }}
           >
             STREAMING
           </span>
