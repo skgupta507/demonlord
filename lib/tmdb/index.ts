@@ -43,3 +43,4 @@ export const tmdb = {
 };
 
 export * from './models';
+export type { MovieRelatedType } from '@/lib/tmdb/api/movies';
