@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import AnimePlayerClient from '@/components/containers/anime/player-client';
 import WatchContainer from '@/components/containers/anime/watch';
+import WatchTogether from '@/components/watch-together';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Star, Tv, Clock, Users, Info, Play } from 'lucide-react';
@@ -196,6 +197,9 @@ export default async function Watch({
           </div>
         </div>
       )}
+
+      {/* Watch Together floating button */}
+      <WatchTogether />
     </div>
   );
 }

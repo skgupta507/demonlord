@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Play, Star, Clock, Tv, ExternalLink, Users, Hash, Calendar, BookOpen } from 'lucide-react';
 import { anilist } from '@/lib/anilist';
 import AddToWatchlistButton from '@/components/add-to-watchlist';
+import CommunityChat from '@/components/community-chat';
 
 export default async function DetailsContainer({ data }: { data: any }) {
   const title = data.title?.english || data.title?.romaji || 'Unknown';
@@ -250,6 +251,10 @@ export default async function DetailsContainer({ data }: { data: any }) {
             </div>
           </div>
         )}
+
+        {/* ── Community Chat ── */}
+        <CommunityChat />
+
       </div>
     </div>
   );
