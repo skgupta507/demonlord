@@ -32,8 +32,9 @@ export default function ScreenScapePage() {
   const ResultCard = ({ item }: { item: Result }) => (
     <div className="group flex gap-3 border border-[hsl(var(--border))] p-3 hover:border-[hsl(350_100%_58%/0.4)] transition-all bg-[hsl(var(--card))]">
       {item.image && (
+        // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={item.image} alt={item.title || item.name}
+          src={item.image} alt={item.title || item.name || ''}
           className="w-14 h-20 object-cover shrink-0 border border-[hsl(var(--border))]"
           onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
         />

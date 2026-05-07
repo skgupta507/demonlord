@@ -5,176 +5,109 @@ import * as React from 'react';
 import {
   Sidebar, SidebarContent, SidebarFooter, SidebarHeader,
   SidebarMenu, SidebarMenuButton, SidebarRail, SidebarMenuItem,
-  useSidebar, SidebarGroup, SidebarGroupContent,
+  useSidebar, SidebarGroup, SidebarGroupContent, SidebarTrigger,
 } from '@/components/ui/sidebar';
 import {
   Home, Search, Film, Tv2, Antenna, Book, Tv,
-  Heart, Clock, Settings, Skull, Github, Twitter, Instagram, MessageCircle
+  Heart, Clock, Settings, Skull, Github, MessageCircle,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 
 const NAV_MAIN = [
-  { label: 'Home',     href: '/home',    icon: Home                 },
-  { label: 'Search',   href: '/search',  icon: Search               },
-  { label: 'Movies',   href: '/movie',   icon: Film                 },
-  { label: 'TV Shows', href: '/tv',      icon: Tv2                  },
-  { label: 'Anime',    href: '/anime',   icon: Antenna              },
-  { label: 'K-Drama',  href: '/drama',   icon: Tv                   },
-  { label: 'Manga',    href: '/manga',   icon: Book                 },
+  { label: 'Home',     href: '/home',   icon: Home    },
+  { label: 'Search',   href: '/search', icon: Search  },
+  { label: 'Movies',   href: '/movie',  icon: Film    },
+  { label: 'TV Shows', href: '/tv',     icon: Tv2     },
+  { label: 'Anime',    href: '/anime',  icon: Antenna },
+  { label: 'K-Drama',  href: '/drama',  icon: Tv      },
+  { label: 'Manga',    href: '/manga',  icon: Book    },
 ];
 
-const NAV_SYSTEM = [
+const NAV_LIBRARY = [
   { label: 'Watchlist', href: '/watchlist', icon: Heart    },
-  { label: 'History',   href: '/history',  icon: Clock    },
-  { label: 'Settings',  href: '/settings', icon: Settings },
+  { label: 'History',   href: '/history',   icon: Clock    },
+  { label: 'Settings',  href: '/settings',  icon: Settings },
 ];
 
 const SOCIALS = [
-  { label: 'GitHub',    href: 'https://github.com/skgupta507',           icon: Github,        color: '#6e40c9' },
-  { label: 'X',         href: 'https://x.com/sk_gupta143',               icon: Twitter,       color: '#1DA1F2' },
-  { label: 'Instagram', href: 'https://instagram.com/sk.gupta507',        icon: Instagram,     color: '#E1306C' },
-  { label: 'Discord',   href: 'https://discord.com/channels/@skgupta507', icon: MessageCircle, color: '#5865F2' },
+  { label: 'GitHub',  href: 'https://github.com/skgupta507',           icon: Github        },
+  { label: 'Discord', href: 'https://discord.com/channels/@skgupta507', icon: MessageCircle },
 ];
 
-const PARTNERS = [
-  { label: 'Arise Music', href: 'https://arise.pp.ua' },
-  { label: 'AnimeDex',    href: 'https://animedex.pp.ua' },
-  { label: 'Dramzy',      href: 'https://dramzy.qd.je' },
-];
-
-function isActive(pathname: string, href: string, exact = false) {
-  if (exact) return pathname === href;
-  if (href === '/') return pathname === '/';
+function isActive(pathname: string, href: string) {
+  if (href === '/home') return pathname === '/home' || pathname === '/';
   return pathname.startsWith(href);
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { state } = useSidebar();
+  const { state, toggleSidebar } = useSidebar();
   const pathname = usePathname();
   const { resolvedTheme } = useTheme();
   const collapsed = state === 'collapsed';
-  const isDark = resolvedTheme !== 'light';
+  const isLight = resolvedTheme === 'light';
 
-  const mono = { fontFamily: 'Share Tech Mono, monospace' } as const;
+  const mono  = { fontFamily: 'var(--font-geist-mono)' }  as const;
+  const sans  = { fontFamily: 'var(--font-geist-sans)' }  as const;
+
+  const activeBg   = isLight ? 'rgba(204,0,85,0.07)'  : 'rgba(255,0,111,0.10)';
+  const activeClr  = 'var(--neon-pink)';
+  const mutedClr   = isLight ? '#6b7280' : 'hsl(var(--muted-foreground))';
+  const borderClr  = isLight ? '#e5e7eb' : 'hsl(var(--border))';
 
   return (
     <Sidebar
       collapsible="icon"
       {...props}
-      style={{
-        '--sidebar-width': collapsed ? '3.5rem' : '14rem',
-      } as React.CSSProperties}
+      style={{ '--sidebar-width': '13rem' } as React.CSSProperties}
     >
-      {/* ── HEADER: Logo ── */}
-      <SidebarHeader className="pb-3 pt-4">
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              size="lg"
-              asChild
-              className="hover:bg-transparent active:bg-transparent"
+      {/* ── HEADER ── */}
+      <SidebarHeader className="px-3 py-3 border-b" style={{ borderColor: borderClr }}>
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/home" className="flex items-center gap-2.5 min-w-0">
+            <div className="h-7 w-7 shrink-0 rounded-lg flex items-center justify-center"
+              style={{ background: 'var(--neon-pink)' }}>
+              <Skull size={13} className="text-white" />
+            </div>
+            {!collapsed && (
+              <span className="text-sm font-black tracking-widest truncate"
+                style={{ ...mono, color: 'var(--neon-pink)' }}>
+                DEMONLORD
+              </span>
+            )}
+          </Link>
+
+          {/* Collapse toggle — always visible */}
+          {!collapsed && (
+            <button
+              onClick={toggleSidebar}
+              className="h-6 w-6 rounded-md flex items-center justify-center transition-colors shrink-0"
+              style={{ color: mutedClr }}
+              aria-label="Collapse sidebar"
             >
-              <Link href="/home" className="flex items-center gap-3">
-                {/* Logo diamond */}
-                <div className="relative h-8 w-8 shrink-0 flex items-center justify-center rounded-lg"
-                  style={{ background: 'var(--neon-pink)' }}>
-                  <Skull size={15} className="text-white" />
-                </div>
-                {!collapsed && (
-                  <div className="flex flex-col leading-none">
-                    <span className="text-sm font-black tracking-[0.12em] text-[var(--neon-pink)]"
-                      style={{ fontFamily: 'Orbitron, monospace' }}>
-                      DEMONLORD
-                    </span>
-                    <span className="text-[0.5rem] tracking-[0.2em] opacity-40 mt-0.5" style={mono}>
-                      NEURAL CINEMA
-                    </span>
-                  </div>
-                )}
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M9 2L4 7L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          )}
+        </div>
       </SidebarHeader>
 
-      <SidebarContent className="overflow-x-hidden px-1 gap-0">
-
-        {/* ── LIVE indicator ── */}
-        {!collapsed && (
-          <div className="mx-2 mb-3 flex items-center gap-2 rounded-md px-2 py-1.5"
-            style={{ background: 'color-mix(in srgb, var(--neon-green) 8%, transparent)' }}>
-            <div className="h-1.5 w-1.5 rounded-full animate-pulse"
-              style={{ background: 'var(--neon-green)' }} />
-            <span className="text-[0.5rem] tracking-widest" style={{ ...mono, color: 'var(--neon-green)' }}>
-              SYSTEM ONLINE
-            </span>
-          </div>
-        )}
+      <SidebarContent className="px-2 py-3 gap-0 overflow-x-hidden">
 
         {/* ── MAIN NAV ── */}
         <SidebarGroup className="p-0">
           {!collapsed && (
-            <p className="px-3 pb-1 pt-1 text-[0.48rem] tracking-[0.25em] opacity-40 uppercase" style={mono}>
-              NAVIGATION
+            <p className="px-2 pb-1.5 pt-0.5 text-[0.6rem] font-semibold uppercase tracking-widest"
+              style={{ ...mono, color: mutedClr, opacity: 0.6 }}>
+              Browse
             </p>
           )}
           <SidebarGroupContent>
             <SidebarMenu className="gap-0.5">
               {NAV_MAIN.map(item => {
-                const active = isActive(pathname, item.href, item.exact);
-                return (
-                  <SidebarMenuItem key={item.href}>
-                    <SidebarMenuButton
-                      asChild
-                      tooltip={item.label}
-                      isActive={active}
-                      className="rounded-lg transition-all duration-150 h-10"
-                      style={active ? {
-                        background: isDark ? 'rgba(255,0,111,0.12)' : 'rgba(204,0,85,0.08)',
-                        color: 'var(--neon-pink)',
-                      } : {}}
-                    >
-                      <Link href={item.href} className="flex items-center gap-3 px-2">
-                        <item.icon
-                          size={17}
-                          style={{
-                            color: active ? 'var(--neon-pink)' : undefined,
-                            strokeWidth: active ? 2.2 : 1.6,
-                          }}
-                        />
-                        {!collapsed && (
-                          <span
-                            className="text-[0.75rem] font-medium tracking-wide"
-                            style={{
-                              fontFamily: 'Rajdhani, sans-serif',
-                              fontWeight: active ? 700 : 500,
-                              color: active ? 'var(--neon-pink)' : undefined,
-                            }}
-                          >
-                            {item.label}
-                          </span>
-                        )}
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        {/* ── SYSTEM ── */}
-        <SidebarGroup className="p-0 mt-2">
-          {!collapsed && (
-            <p className="px-3 pb-1 pt-1 text-[0.48rem] tracking-[0.25em] opacity-40 uppercase" style={mono}>
-              SYSTEM
-            </p>
-          )}
-          <SidebarGroupContent>
-            <SidebarMenu className="gap-0.5">
-              {NAV_SYSTEM.map(item => {
                 const active = isActive(pathname, item.href);
                 return (
                   <SidebarMenuItem key={item.href}>
@@ -182,12 +115,22 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       asChild
                       tooltip={item.label}
                       isActive={active}
-                      className="rounded-lg h-9"
+                      className="h-9 rounded-lg transition-colors"
+                      style={active ? { background: activeBg } : {}}
                     >
-                      <Link href={item.href} className="flex items-center gap-3 px-2">
-                        <item.icon size={15} className="opacity-60" strokeWidth={1.6} />
+                      <Link href={item.href} className="flex items-center gap-2.5 px-2">
+                        <item.icon
+                          size={16}
+                          strokeWidth={active ? 2.2 : 1.6}
+                          style={{ color: active ? activeClr : mutedClr, flexShrink: 0 }}
+                        />
                         {!collapsed && (
-                          <span className="text-[0.72rem] opacity-60" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                          <span className="text-sm truncate"
+                            style={{
+                              ...sans,
+                              fontWeight: active ? 600 : 400,
+                              color: active ? activeClr : undefined,
+                            }}>
                             {item.label}
                           </span>
                         )}
@@ -200,42 +143,67 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {/* ── SOCIAL LINKS ── */}
+        {/* ── LIBRARY ── */}
+        <SidebarGroup className="p-0 mt-4">
+          {!collapsed && (
+            <p className="px-2 pb-1.5 pt-0.5 text-[0.6rem] font-semibold uppercase tracking-widest"
+              style={{ ...mono, color: mutedClr, opacity: 0.6 }}>
+              Library
+            </p>
+          )}
+          <SidebarGroupContent>
+            <SidebarMenu className="gap-0.5">
+              {NAV_LIBRARY.map(item => {
+                const active = isActive(pathname, item.href);
+                return (
+                  <SidebarMenuItem key={item.href}>
+                    <SidebarMenuButton
+                      asChild
+                      tooltip={item.label}
+                      isActive={active}
+                      className="h-9 rounded-lg transition-colors"
+                      style={active ? { background: activeBg } : {}}
+                    >
+                      <Link href={item.href} className="flex items-center gap-2.5 px-2">
+                        <item.icon
+                          size={16}
+                          strokeWidth={active ? 2.2 : 1.6}
+                          style={{ color: active ? activeClr : mutedClr, flexShrink: 0 }}
+                        />
+                        {!collapsed && (
+                          <span className="text-sm truncate"
+                            style={{
+                              ...sans,
+                              fontWeight: active ? 600 : 400,
+                              color: active ? activeClr : undefined,
+                            }}>
+                            {item.label}
+                          </span>
+                        )}
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* ── SOCIALS (GitHub + Discord only) ── */}
         {!collapsed && (
-          <SidebarGroup className="p-0 mt-2">
-            <p className="px-3 pb-1 pt-1 text-[0.48rem] tracking-[0.25em] opacity-40 uppercase" style={mono}>
-              SOCIALS
+          <SidebarGroup className="p-0 mt-4">
+            <p className="px-2 pb-1.5 pt-0.5 text-[0.6rem] font-semibold uppercase tracking-widest"
+              style={{ ...mono, color: mutedClr, opacity: 0.6 }}>
+              Community
             </p>
             <SidebarGroupContent>
-              <div className="px-2 grid grid-cols-4 gap-1">
+              <div className="flex gap-1.5 px-2">
                 {SOCIALS.map(s => (
                   <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center justify-center h-8 w-8 rounded-lg transition-all hover:scale-110"
                     title={s.label}
-                    style={{ color: s.color }}
-                  >
-                    <s.icon size={15} strokeWidth={1.8} />
-                  </a>
-                ))}
-              </div>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        )}
-
-        {/* ── PARTNERS ── */}
-        {!collapsed && (
-          <SidebarGroup className="p-0 mt-2">
-            <p className="px-3 pb-1 text-[0.48rem] tracking-[0.25em] opacity-40 uppercase" style={mono}>
-              NETWORK
-            </p>
-            <SidebarGroupContent>
-              <div className="px-2 space-y-0.5">
-                {PARTNERS.map(p => (
-                  <a key={p.href} href={p.href} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-1 py-1 rounded-md opacity-50 hover:opacity-80 transition-opacity text-[0.65rem]"
-                    style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-                    <span className="h-1 w-1 rounded-full shrink-0" style={{ background: 'var(--neon-pink)' }} />
-                    {p.label}
+                    className="h-8 w-8 rounded-lg border flex items-center justify-center transition-all hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)]"
+                    style={{ borderColor: borderClr, color: mutedClr }}>
+                    <s.icon size={14} strokeWidth={1.8} />
                   </a>
                 ))}
               </div>
@@ -245,15 +213,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       </SidebarContent>
 
-      {/* ── FOOTER: User ── */}
-      <SidebarFooter className="border-t border-[hsl(var(--border))] pt-3 pb-4 px-2">
-        <NavUserClient />
-        {!collapsed && (
-          <p className="px-1 pt-2 text-[0.45rem] tracking-widest opacity-25 uppercase" style={mono}>
-            demonlord.pp.ua
-          </p>
+      {/* ── FOOTER: expand button when collapsed + user ── */}
+      <SidebarFooter className="px-2 py-3 border-t" style={{ borderColor: borderClr }}>
+        {collapsed && (
+          <button
+            onClick={toggleSidebar}
+            className="w-full h-8 rounded-lg flex items-center justify-center mb-2 transition-colors hover:bg-[hsl(var(--muted))]"
+            style={{ color: mutedClr }}
+            aria-label="Expand sidebar"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M5 2L10 7L5 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         )}
+        <NavUserClient />
       </SidebarFooter>
+
       <SidebarRail />
     </Sidebar>
   );

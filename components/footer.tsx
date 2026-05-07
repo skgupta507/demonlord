@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 'use client';
 import Link from 'next/link';
-import { Skull, Github, Twitter, Instagram, MessageCircle, ExternalLink } from 'lucide-react';
+import { Skull, Github, MessageCircle, ExternalLink } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 import OnlineUsers from '@/components/online-users';
@@ -19,7 +19,6 @@ const COMPANY = [
   { label: 'Privacy',  href: '/privacy' },
   { label: 'Terms',    href: '/terms'   },
   { label: 'DMCA',     href: '/dmca'    },
-  { label: 'Settings', href: '/settings'},
 ];
 
 const NETWORK = [
@@ -29,10 +28,8 @@ const NETWORK = [
 ];
 
 const SOCIALS = [
-  { icon: Github,        href: 'https://github.com/skgupta507',           label: 'GitHub'    },
-  { icon: Twitter,       href: 'https://x.com/sk_gupta143',               label: 'X'         },
-  { icon: Instagram,     href: 'https://instagram.com/sk.gupta507',        label: 'Instagram' },
-  { icon: MessageCircle, href: 'https://discord.com/channels/@skgupta507', label: 'Discord'   },
+  { icon: Github,        href: 'https://github.com/skgupta507',           label: 'GitHub'  },
+  { icon: MessageCircle, href: 'https://discord.com/channels/@skgupta507', label: 'Discord' },
 ];
 
 export const Footer = () => {
@@ -41,62 +38,57 @@ export const Footer = () => {
   useEffect(() => setMounted(true), []);
   const isLight = mounted && resolvedTheme === 'light';
 
-  const bg    = isLight ? 'bg-white'                       : 'bg-[hsl(0_0%_5%)]';
-  const fg    = isLight ? 'text-gray-900'                  : 'text-white';
-  const muted = isLight ? 'text-gray-500'                  : 'text-[hsl(var(--muted-foreground))]';
-  const hover = isLight ? 'hover:text-gray-900'            : 'hover:text-white';
-  const bdr   = isLight ? 'border-gray-200'                : 'border-[hsl(var(--border))]';
-  const mono  = { fontFamily: 'var(--font-geist-mono)' } as const;
-  const sans  = { fontFamily: 'var(--font-geist-sans)'  } as const;
+  const muted  = isLight ? 'text-gray-500'  : 'text-[hsl(var(--muted-foreground))]';
+  const fg     = isLight ? 'text-gray-900'  : 'text-white';
+  const hover  = isLight ? 'hover:text-gray-900' : 'hover:text-white';
+  const bdr    = isLight ? 'border-gray-200' : 'border-[hsl(var(--border))]';
+  const bg     = isLight ? 'bg-white'        : 'bg-[hsl(0_0%_5%)]';
+  const mono   = { fontFamily: 'var(--font-geist-mono)' } as const;
+  const sans   = { fontFamily: 'var(--font-geist-sans)' } as const;
 
   return (
     <footer className={`${bg} border-t ${bdr} mt-auto`}>
-      <div className="mx-auto max-w-6xl px-6 pt-14 pb-8 space-y-12">
+      <div className="mx-auto max-w-6xl px-6 pt-8 pb-5">
 
-        {/* ── Top: brand + columns ── */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        {/* ── Main grid ── */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5 mb-8">
 
-          {/* Brand — 2 cols wide */}
-          <div className="lg:col-span-2 space-y-5">
-            <Link href="/home" className="flex items-center gap-2.5 w-fit">
-              <div className="h-9 w-9 rounded-xl flex items-center justify-center"
+          {/* Brand — 2 cols */}
+          <div className="lg:col-span-2 space-y-3">
+            <Link href="/home" className="flex items-center gap-2 w-fit">
+              <div className="h-7 w-7 rounded-lg flex items-center justify-center"
                 style={{ background: 'var(--neon-pink)' }}>
-                <Skull size={16} className="text-white" />
+                <Skull size={13} className="text-white" />
               </div>
-              <span className={`font-black text-sm tracking-widest ${fg}`}
-                style={{ fontFamily: 'var(--font-geist-mono)', letterSpacing: '0.15em' }}>
+              <span className={`text-sm font-black tracking-widest ${fg}`} style={mono}>
                 DEMONLORD
               </span>
             </Link>
 
-            <p className={`text-sm leading-relaxed max-w-xs ${muted}`} style={sans}>
-              Free streaming aggregator for movies, TV shows, anime and manga.
-              No media hosted — third-party links only.
+            <p className={`text-xs leading-relaxed max-w-[220px] ${muted}`} style={sans}>
+              Free streaming for movies, TV, anime and manga. No media hosted.
             </p>
 
-            <OnlineUsers variant="badge" />
+            <OnlineUsers variant="inline" />
 
-            {/* Socials */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 pt-0.5">
               {SOCIALS.map(s => (
                 <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer"
                   aria-label={s.label}
-                  className={`h-8 w-8 rounded-lg border ${bdr} flex items-center justify-center ${muted} ${hover} hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)] transition-all`}>
-                  <s.icon size={14} strokeWidth={1.8} />
+                  className={`h-7 w-7 rounded-lg border ${bdr} flex items-center justify-center ${muted} ${hover} hover:border-[var(--neon-pink)] hover:text-[var(--neon-pink)] transition-all`}>
+                  <s.icon size={13} strokeWidth={1.8} />
                 </a>
               ))}
             </div>
           </div>
 
           {/* Streams */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <p className={`text-xs font-semibold ${fg}`} style={mono}>Streams</p>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {STREAMS.map(l => (
                 <li key={l.href}>
-                  <Link href={l.href}
-                    className={`text-sm ${muted} ${hover} transition-colors`}
-                    style={sans}>
+                  <Link href={l.href} className={`text-xs ${muted} ${hover} transition-colors`} style={sans}>
                     {l.label}
                   </Link>
                 </li>
@@ -105,14 +97,12 @@ export const Footer = () => {
           </div>
 
           {/* Company */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <p className={`text-xs font-semibold ${fg}`} style={mono}>Company</p>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {COMPANY.map(l => (
                 <li key={l.href}>
-                  <Link href={l.href}
-                    className={`text-sm ${muted} ${hover} transition-colors`}
-                    style={sans}>
+                  <Link href={l.href} className={`text-xs ${muted} ${hover} transition-colors`} style={sans}>
                     {l.label}
                   </Link>
                 </li>
@@ -121,16 +111,16 @@ export const Footer = () => {
           </div>
 
           {/* Network */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <p className={`text-xs font-semibold ${fg}`} style={mono}>Network</p>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {NETWORK.map(l => (
                 <li key={l.href}>
                   <a href={l.href} target="_blank" rel="noopener noreferrer"
-                    className={`text-sm ${muted} ${hover} transition-colors inline-flex items-center gap-1.5 group`}
+                    className={`text-xs ${muted} ${hover} transition-colors inline-flex items-center gap-1 group`}
                     style={sans}>
                     {l.label}
-                    <ExternalLink size={10} className="opacity-0 group-hover:opacity-50 transition-opacity" />
+                    <ExternalLink size={9} className="opacity-0 group-hover:opacity-40 transition-opacity" />
                   </a>
                 </li>
               ))}
@@ -138,15 +128,12 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* ── Divider ── */}
-        <div className={`border-t ${bdr}`} />
-
         {/* ── Bottom bar ── */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className={`text-xs ${muted}`} style={mono}>
+        <div className={`border-t ${bdr} pt-4 flex flex-col sm:flex-row items-center justify-between gap-2`}>
+          <p className={`text-[0.65rem] ${muted}`} style={mono}>
             © {new Date().getFullYear()} Demonlord. All rights reserved.
           </p>
-          <p className={`text-xs ${muted}`} style={mono}>
+          <p className={`text-[0.65rem] ${muted}`} style={mono}>
             No media stored · Third-party links only
           </p>
         </div>
