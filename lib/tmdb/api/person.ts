@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Language, PersonDetails, PersonWithMediaType, axiosClient } from '..';
-import { CombinedCredits, CombinedCreditsResponse } from '@/lib/tmdb';
+import { Language, PersonDetails, PersonWithMediaType, CombinedCredits, CombinedCreditsResponse } from '../models';
+import { axiosClient } from '..';
 import { formatCombinedCredit } from '@/lib/tmdb/utils/format-combined-credit';
 import { ListResponse } from '@/lib/tmdb/utils/list-response';
 

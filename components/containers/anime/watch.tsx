@@ -21,7 +21,7 @@ export default async function WatchContainer({ id, currentEp }: { id: string; cu
       <div className="flex items-center gap-3">
         <span className="text-[0.6rem] tracking-[0.25em] text-white/30 uppercase"
           style={{ fontFamily: 'Share Tech Mono, monospace' }}>
-          // EPISODE INDEX
+          {'// EPISODE INDEX'}
         </span>
         <div className="flex-1 h-px bg-white/5" />
         <span className="text-[0.55rem] tracking-widest text-white/20"

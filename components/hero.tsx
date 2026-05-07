@@ -104,7 +104,7 @@ export default function HeroSection() {
             </span>
             <div className="flex-1 h-px bg-gradient-to-r from-[hsl(350_100%_58%/0.4)] to-transparent" />
           </div>
-          <Marquee pauseOnHover gap="gap-3" className="py-1">
+          <Marquee pauseOnHover className="py-1 [--gap:0.75rem]">
             {movieData.results.map(item => <Card key={item.id} item={item} type="Movie" />)}
           </Marquee>
         </div>
@@ -118,7 +118,7 @@ export default function HeroSection() {
             </span>
             <div className="flex-1 h-px bg-gradient-to-r from-[hsl(185_100%_48%/0.4)] to-transparent" />
           </div>
-          <Marquee pauseOnHover gap="gap-3" reverse className="py-1">
+          <Marquee pauseOnHover reverse className="py-1 [--gap:0.75rem]">
             {tvData.results.map(item => <Card key={item.id} item={item} type="Tv" />)}
           </Marquee>
         </div>

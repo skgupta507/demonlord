@@ -35,7 +35,7 @@ export default async function MangaPage() {
           <div className="flex items-center gap-3">
             <span className="text-[0.6rem] tracking-[0.25em] text-[#F9F002]/70 uppercase"
               style={{ fontFamily: 'Share Tech Mono, monospace' }}>
-              // TRENDING MANGA
+              {'// TRENDING MANGA'}
             </span>
             <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(249,240,2,0.3), transparent)' }} />
           </div>

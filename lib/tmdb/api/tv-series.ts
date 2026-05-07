@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Language } from '@/lib/tmdb';
+import { Language, TvSerie, TvSerieDetails } from '../models';
 import { axiosClient } from '../index';
-import { TvSerie, TvSerieDetails } from '@/lib/tmdb';
 import { ListResponse } from '@/lib/tmdb/utils/list-response';
 
 /*

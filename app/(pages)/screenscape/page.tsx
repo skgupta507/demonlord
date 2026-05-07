@@ -176,7 +176,7 @@ export default function ScreenScapePage() {
             <div className="flex flex-col items-center py-16 gap-3">
               <span className="text-4xl opacity-20">⚡</span>
               <span className="text-[0.65rem] tracking-widest text-muted-foreground" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
-                NO SIGNALS FOUND FOR "{query.toUpperCase()}"
+                NO SIGNALS FOUND FOR &quot;{query.toUpperCase()}&quot;
               </span>
             </div>
           )}

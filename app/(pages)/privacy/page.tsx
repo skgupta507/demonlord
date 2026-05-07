@@ -51,7 +51,7 @@ export default function PrivacyPage() {
             </p>
             <p className="text-sm text-[hsl(var(--muted-foreground))] max-w-lg mx-auto leading-relaxed"
               style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-              We believe in radical transparency. Here's exactly what we collect, why, and how you can control it.
+              We believe in radical transparency. Here&apos;s exactly what we collect, why, and how you can control it.
             </p>
           </FadeIn>
         </div>

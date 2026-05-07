@@ -227,7 +227,7 @@ export default function VideoPlayer({ id }: { id: string }) {
         <div className="space-y-2 px-2">
           <span className={`text-[0.6rem] tracking-[0.25em] uppercase ${isLight ? 'text-gray-400' : 'text-white/30'}`}
             style={monoStyle}>
-            // EPISODE INDEX — S{season.padStart(2, '0')}
+            {'// EPISODE INDEX'} — S{season.padStart(2, '0')}
           </span>
           <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {episodes.map(ep => (

@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { axiosClient } from '..';
-
 import {
   Language,
   MovieWithMediaType,
   TvSerieWithMediaType,
   PersonWithMediaType,
-} from '@/lib/tmdb';
+} from '../models';
 import { ListResponse } from '@/lib/tmdb/utils/list-response';
 
 const multi = async (query: string, language: Language) => {

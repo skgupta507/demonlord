@@ -1,6 +1,4 @@
 /* eslint-disable prettier/prettier */
-import { headers } from 'next/headers';
-import { auth } from '@/lib/auth';
 import { NextRequest, NextResponse } from 'next/server';
 
 const redirects = {
@@ -97,7 +95,7 @@ const redirects = {
   redirect_to: '/removed',
 };
 
-export async function middleware(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const urlPath = request.nextUrl.pathname;
 
   const shouldRedirect = redirects.patterns.some((pattern) => urlPath.includes(pattern));
@@ -105,17 +103,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(redirects.redirect_to, request.url));
   }
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    return NextResponse.redirect(new URL('/sign-in', request.url));
-  }
-
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/profile/[id]'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 };

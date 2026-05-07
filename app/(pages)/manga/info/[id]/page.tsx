@@ -90,7 +90,7 @@ export default async function MangaInfo({ params }: any) {
         {data.relations?.edges?.length > 0 && (
           <div className="space-y-3">
             <span className="text-[0.6rem] tracking-[0.25em] text-[#F9F002]/60 uppercase"
-              style={{ fontFamily: 'Share Tech Mono, monospace' }}>// RELATED</span>
+              style={{ fontFamily: 'Share Tech Mono, monospace' }}>{'// RELATED'}</span>
             <div className="flex flex-wrap gap-3">
               {data.relations.edges.slice(0, 6).map((edge: any) => (
                 edge.node && (

@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { axiosClient, Language, Movie, MovieDetails } from '@/lib/tmdb';
+import { axiosClient } from '..';
+import { Language, Movie, MovieDetails } from '../models';
 import { ListResponse } from '@/lib/tmdb/utils/list-response';
 
 /*

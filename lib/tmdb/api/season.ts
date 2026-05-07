@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { axiosClient } from '..';
-import { Language } from '@/lib/tmdb';
-import { SeasonDetails } from '@/lib/tmdb';
+import { Language, SeasonDetails } from '../models';
 
 const details = async (seriesId: number, seasonNumber: number, language: Language) => {
   const { data } = await axiosClient.get<SeasonDetails>(`/tv/${seriesId}/season/${seasonNumber}`, {

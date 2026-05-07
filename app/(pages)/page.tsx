@@ -198,7 +198,7 @@ export default function Home() {
       <section className={`w-full py-20 px-6 border-t ${border}`}>
         <div className="max-w-5xl mx-auto space-y-10">
           <div className="text-center space-y-3">
-            <p className={`text-[0.55rem] tracking-[0.25em] uppercase ${muted}`} style={{ fontFamily: 'Share Tech Mono, monospace' }}>WHAT'S INSIDE</p>
+            <p className={`text-[0.55rem] tracking-[0.25em] uppercase ${muted}`} style={{ fontFamily: 'Share Tech Mono, monospace' }}>WHAT&apos;S INSIDE</p>
             <h2 className="text-2xl font-black tracking-tight md:text-3xl" style={{ fontFamily: 'Orbitron, monospace' }}>Everything you need.</h2>
             <p className={`text-sm max-w-sm mx-auto ${muted}`} style={{ fontFamily: 'Rajdhani, sans-serif' }}>One platform for all your entertainment.</p>
           </div>

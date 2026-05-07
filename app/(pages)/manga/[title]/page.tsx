@@ -46,7 +46,7 @@ export default async function MangaSearch({ params }: any) {
           <Book size={32} className="text-white/10" />
           <span className="text-[0.6rem] tracking-widest text-white/30"
             style={{ fontFamily: 'Share Tech Mono, monospace' }}>
-            NO RESULTS FOR "{title.toUpperCase()}"
+            NO RESULTS FOR &quot;{title.toUpperCase()}&quot;
           </span>
         </div>
       )}

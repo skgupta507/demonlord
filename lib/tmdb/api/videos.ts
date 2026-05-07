@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { axiosClient } from '..';
-import { GetVideosResponse } from '@/lib/tmdb';
+import { GetVideosResponse } from '../models';
 
 type Variant = 'movie' | 'tv';
 

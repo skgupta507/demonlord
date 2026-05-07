@@ -55,7 +55,7 @@ export default function List() {
             <div>
               <h2 className="font-bold text-base">Watch History</h2>
               <p className="text-xs text-[hsl(var(--muted-foreground))] mt-1" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-                Everything you've watched recently.
+                Everything you&apos;ve watched recently.
               </p>
             </div>
             <span className="text-xs" style={{ color: 'var(--neon-blue)', fontFamily: 'Share Tech Mono, monospace' }}>

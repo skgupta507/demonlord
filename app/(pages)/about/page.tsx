@@ -115,7 +115,7 @@ export default function AboutPage() {
               </h2>
               <p className="text-sm leading-relaxed text-[hsl(var(--muted-foreground))]"
                 style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: '0.95rem' }}>
-                DemonLord was built on a simple belief: great content shouldn't be locked behind
+                DemonLord was built on a simple belief: great content shouldn&apos;t be locked behind
                 paywalls. We aggregate publicly available streams and present them in a beautiful,
                 fast, modern interface — no account needed, no credit card, no region locks.
               </p>

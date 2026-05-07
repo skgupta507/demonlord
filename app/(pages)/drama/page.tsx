@@ -35,7 +35,7 @@ export default function DramaPage() {
             className="text-[0.55rem] tracking-widest text-[hsl(280_100%_68%)]"
             style={{ fontFamily: 'Share Tech Mono, monospace' }}
           >
-            // INCIDENT REPORT
+            {'// INCIDENT REPORT'}
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
             The Drama streaming node has been taken offline. Our previous provider
