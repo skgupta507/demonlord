@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import VideoPlayer from '@/components/containers/tv/videoplayer';
+import WatchTogether from '@/components/watch-together';
 import { tmdb } from '@/lib/tmdb';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -256,6 +257,9 @@ export default async function TVWatchPage({ params }: any) {
           </div>
         </div>
       )}
+
+      {/* Watch Together floating button */}
+      <WatchTogether />
     </div>
   );
 }

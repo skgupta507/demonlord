@@ -1,44 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
 
 /* ═══════════════════════════════════════════════════════════
-   DEMONLORD — NEURAL CINEMA — v5.0
-   Inspired by Rive's clean minimal aesthetic + cyberpunk neons
+   DEMONLORD — NEURAL CINEMA — v6.0
+   Cosmic × DemonLord merged theme
+   Base: pure black (#000) + white/opacity hierarchy (Cosmic)
+   Accent: neon pink/purple/blue/green (DemonLord)
+   Font: GeistMono (Cosmic) + Orbitron for display
    ═══════════════════════════════════════════════════════════ */
 
 @theme {
   --font-display: 'Orbitron', monospace;
-  --font-sans: var(--font-geist-sans), 'Rajdhani', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), 'Courier New', monospace;
+  --font-sans:    var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    var(--font-geist-mono), 'Courier New', monospace;
 
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
+  --color-border:                hsl(var(--border));
+  --color-input:                 hsl(var(--input));
+  --color-ring:                  hsl(var(--ring));
+  --color-background:            hsl(var(--background));
+  --color-foreground:            hsl(var(--foreground));
+  --color-primary:               hsl(var(--primary));
+  --color-primary-foreground:    hsl(var(--primary-foreground));
+  --color-secondary:             hsl(var(--secondary));
+  --color-secondary-foreground:  hsl(var(--secondary-foreground));
+  --color-destructive:           hsl(var(--destructive));
+  --color-destructive-foreground:hsl(var(--destructive-foreground));
+  --color-muted:                 hsl(var(--muted));
+  --color-muted-foreground:      hsl(var(--muted-foreground));
+  --color-accent:                hsl(var(--accent));
+  --color-accent-foreground:     hsl(var(--accent-foreground));
+  --color-popover:               hsl(var(--popover));
+  --color-popover-foreground:    hsl(var(--popover-foreground));
+  --color-card:                  hsl(var(--card));
+  --color-card-foreground:       hsl(var(--card-foreground));
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
   @keyframes accordion-down { from{height:0} to{height:var(--radix-accordion-content-height)} }
-  @keyframes accordion-up { from{height:var(--radix-accordion-content-height)} to{height:0} }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  @keyframes accordion-up   { from{height:var(--radix-accordion-content-height)} to{height:0} }
+  @keyframes float          { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
   @keyframes glitch-1 {
     0%,100%{clip-path:inset(0 0 97% 0);transform:translate(-3px,0)}
     33%{clip-path:inset(45% 0 40% 0);transform:translate(3px,0)}
@@ -49,90 +52,87 @@
     33%{clip-path:inset(10% 0 75% 0);transform:translate(-3px,0)}
     66%{clip-path:inset(70% 0 15% 0);transform:translate(2px,0)}
   }
-  @keyframes slide-up { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes fade-in { from{opacity:0} to{opacity:1} }
-  @keyframes neon-border {
-    0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
-  }
+  @keyframes slide-up  { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fade-in   { from{opacity:0} to{opacity:1} }
   @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-  @keyframes marquee-reverse { from{transform:translateX(-50%)} to{transform:translateX(0)} }
+  @keyframes marquee         { from{transform:translateX(0)}    to{transform:translateX(-50%)} }
+  @keyframes marquee-reverse { from{transform:translateX(-50%)} to{transform:translateX(0)}   }
+  @keyframes nav-in { from{opacity:0;transform:translateY(-16px)} to{opacity:1;transform:translateY(0)} }
 }
 
 /* ══════════════════════════════════════
-   DARK THEME — DEFAULT (class="dark" or no class)
-   Rive-inspired: very dark bg, clean
+   DARK THEME — Cosmic black base
    ══════════════════════════════════════ */
 :root {
-  --background: 0 0% 7%;          /* rgb(18,18,18) — very dark like Rive */
-  --foreground: 0 0% 92%;
-  --card: 0 0% 10%;
-  --card-foreground: 0 0% 90%;
-  --popover: 0 0% 9%;
-  --popover-foreground: 0 0% 90%;
-  --primary: 327 100% 50%;        /* neon pink */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 13%;
-  --secondary-foreground: 0 0% 85%;
-  --muted: 0 0% 13%;
-  --muted-foreground: 0 0% 48%;
-  --accent: 192 100% 50%;         /* electric blue */
-  --accent-foreground: 0 0% 5%;
-  --destructive: 0 95% 60%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 16%;
-  --input: 0 0% 16%;
-  --ring: 327 100% 50%;
-  --radius: 0.75rem;
+  /* Cosmic: pure black background */
+  --background:              0 0% 0%;
+  --foreground:              0 0% 93%;
+  --card:                    0 0% 5%;
+  --card-foreground:         0 0% 93%;
+  --popover:                 0 0% 4%;
+  --popover-foreground:      0 0% 93%;
+  --primary:                 327 100% 50%;   /* neon pink — DemonLord accent */
+  --primary-foreground:      0 0% 100%;
+  --secondary:               0 0% 9%;
+  --secondary-foreground:    0 0% 80%;
+  --muted:                   0 0% 9%;
+  --muted-foreground:        0 0% 45%;       /* white/45 — Cosmic style */
+  --accent:                  0 0% 12%;
+  --accent-foreground:       0 0% 93%;
+  --destructive:             0 95% 60%;
+  --destructive-foreground:  0 0% 100%;
+  --border:                  0 0% 12%;       /* white/12 — Cosmic border */
+  --input:                   0 0% 12%;
+  --ring:                    327 100% 50%;
+  --radius:                  0.5rem;         /* Cosmic uses 0.5rem */
 
-  /* Sidebar — very dark, Rive-style pill */
-  --sidebar: 0 0% 9%;
-  --sidebar-foreground: 0 0% 88%;
-  --sidebar-primary: 327 100% 50%;
+  /* Sidebar */
+  --sidebar:                 0 0% 3%;
+  --sidebar-foreground:      0 0% 88%;
+  --sidebar-primary:         327 100% 50%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 14%;
+  --sidebar-accent:          0 0% 8%;
   --sidebar-accent-foreground: 0 0% 88%;
-  --sidebar-border: 0 0% 15%;
-  --sidebar-ring: 327 100% 50%;
+  --sidebar-border:          0 0% 10%;
+  --sidebar-ring:            327 100% 50%;
 
-  /* Neon palette */
+  /* DemonLord neon palette — kept as accent layer */
   --neon-pink:   #FF006F;
   --neon-blue:   #00D4FF;
   --neon-yellow: #F9F002;
   --neon-purple: #BD00FF;
   --neon-green:  #39FF14;
-  --neon-gold:   #FFD700;          /* Rive's gold accent */
+  --neon-gold:   #FFD700;
 }
 
-/* Explicit .dark mirrors :root so toggling works */
 .dark {
-  --background: 0 0% 7%;
-  --foreground: 0 0% 92%;
-  --card: 0 0% 10%;
-  --card-foreground: 0 0% 90%;
-  --popover: 0 0% 9%;
-  --popover-foreground: 0 0% 90%;
-  --primary: 327 100% 50%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 13%;
-  --secondary-foreground: 0 0% 85%;
-  --muted: 0 0% 13%;
-  --muted-foreground: 0 0% 48%;
-  --accent: 192 100% 50%;
-  --accent-foreground: 0 0% 5%;
-  --destructive: 0 95% 60%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 16%;
-  --input: 0 0% 16%;
-  --ring: 327 100% 50%;
-  --sidebar: 0 0% 9%;
-  --sidebar-foreground: 0 0% 88%;
-  --sidebar-primary: 327 100% 50%;
+  --background:              0 0% 0%;
+  --foreground:              0 0% 93%;
+  --card:                    0 0% 5%;
+  --card-foreground:         0 0% 93%;
+  --popover:                 0 0% 4%;
+  --popover-foreground:      0 0% 93%;
+  --primary:                 327 100% 50%;
+  --primary-foreground:      0 0% 100%;
+  --secondary:               0 0% 9%;
+  --secondary-foreground:    0 0% 80%;
+  --muted:                   0 0% 9%;
+  --muted-foreground:        0 0% 45%;
+  --accent:                  0 0% 12%;
+  --accent-foreground:       0 0% 93%;
+  --destructive:             0 95% 60%;
+  --destructive-foreground:  0 0% 100%;
+  --border:                  0 0% 12%;
+  --input:                   0 0% 12%;
+  --ring:                    327 100% 50%;
+  --sidebar:                 0 0% 3%;
+  --sidebar-foreground:      0 0% 88%;
+  --sidebar-primary:         327 100% 50%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 14%;
+  --sidebar-accent:          0 0% 8%;
   --sidebar-accent-foreground: 0 0% 88%;
-  --sidebar-border: 0 0% 15%;
-  --sidebar-ring: 327 100% 50%;
+  --sidebar-border:          0 0% 10%;
+  --sidebar-ring:            327 100% 50%;
   --neon-pink:   #FF006F;
   --neon-blue:   #00D4FF;
   --neon-yellow: #F9F002;
@@ -142,37 +142,36 @@
 }
 
 /* ══════════════════════════════════════
-   LIGHT THEME — applied via class="light"
-   Rive's light: #f4f7fe background
+   LIGHT THEME
    ══════════════════════════════════════ */
 .light {
-  --background: 220 33% 97%;      /* Rive: #f4f7fe */
-  --foreground: 222 30% 8%;
-  --card: 0 0% 100%;
-  --card-foreground: 222 30% 8%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222 30% 8%;
-  --primary: 327 100% 44%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 220 15% 92%;
-  --secondary-foreground: 222 30% 12%;
-  --muted: 220 12% 90%;
-  --muted-foreground: 220 14% 42%;
-  --accent: 192 100% 36%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 85% 52%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 220 14% 84%;
-  --input: 220 14% 84%;
-  --ring: 327 100% 44%;
-  --sidebar: 0 0% 100%;
-  --sidebar-foreground: 222 30% 12%;
-  --sidebar-primary: 327 100% 44%;
+  --background:              220 33% 97%;
+  --foreground:              222 30% 8%;
+  --card:                    0 0% 100%;
+  --card-foreground:         222 30% 8%;
+  --popover:                 0 0% 100%;
+  --popover-foreground:      222 30% 8%;
+  --primary:                 327 100% 44%;
+  --primary-foreground:      0 0% 100%;
+  --secondary:               220 15% 92%;
+  --secondary-foreground:    222 30% 12%;
+  --muted:                   220 12% 90%;
+  --muted-foreground:        220 14% 42%;
+  --accent:                  220 15% 92%;
+  --accent-foreground:       222 30% 8%;
+  --destructive:             0 85% 52%;
+  --destructive-foreground:  0 0% 100%;
+  --border:                  220 14% 84%;
+  --input:                   220 14% 84%;
+  --ring:                    327 100% 44%;
+  --sidebar:                 0 0% 100%;
+  --sidebar-foreground:      222 30% 12%;
+  --sidebar-primary:         327 100% 44%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 220 15% 95%;
+  --sidebar-accent:          220 15% 95%;
   --sidebar-accent-foreground: 222 30% 12%;
-  --sidebar-border: 220 14% 88%;
-  --sidebar-ring: 327 100% 44%;
+  --sidebar-border:          220 14% 88%;
+  --sidebar-ring:            327 100% 44%;
   --neon-pink:   #CC0055;
   --neon-blue:   #006EA0;
   --neon-yellow: #A07800;
@@ -182,37 +181,200 @@
 }
 
 /* ══════════════════════════════════════
-   BASE RESET
+   BASE — Cosmic style
    ══════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  height: 100%;
+}
 
 body {
   @apply bg-background text-foreground;
-  font-family: var(--font-geist-sans), 'Rajdhani', ui-sans-serif, system-ui, sans-serif;
-  font-size: 15px;
+  display: block;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 14px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
+  width: 100%;
 }
 
-/* Subtle dot-grid background (Rive-inspired) */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.35;
-  pointer-events: none;
-}
+/* Cosmic scrollbar */
+::-webkit-scrollbar              { width: 6px; height: 6px; background: transparent; }
+::-webkit-scrollbar-track        { background: rgba(255,255,255,0.02); border-radius: 10px; }
+::-webkit-scrollbar-thumb        { background: rgba(255,255,255,0.1); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover  { background: rgba(255,255,255,0.2); }
+::-webkit-scrollbar-button       { display: none; width: 0; height: 0; }
+::-webkit-scrollbar-corner       { background: transparent; }
+* { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) rgba(255,255,255,0.02); }
+
+/* Scrollbar utilities */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
 
 /* ══════════════════════════════════════
    TYPOGRAPHY
    ══════════════════════════════════════ */
 .font-display { font-family: var(--font-display) !important; }
-.font-cyber   { font-family: var(--font-mono) !important; }
+.font-mono    { font-family: var(--font-mono) !important; }
+
+/* ══════════════════════════════════════
+   FLOATING PILL NAV — Cosmic style
+   ══════════════════════════════════════ */
+.nav-pill {
+  background: rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 9999px;
+  animation: nav-in 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+
+.nav-item {
+  position: relative;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.15s;
+  font-family: var(--font-geist-mono), monospace;
+}
+.nav-item:hover { color: rgba(255,255,255,0.9); }
+.nav-item.active { color: #fff; }
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ══════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════ */
+.btn-neon {
+  background: var(--neon-pink);
+  border: none;
+  color: #fff;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.18s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-neon:hover {
+  background: color-mix(in srgb, var(--neon-pink) 82%, #fff);
+  box-shadow: 0 4px 24px color-mix(in srgb, var(--neon-pink) 45%, transparent);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.18s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-outline:hover {
+  border-color: rgba(255,255,255,0.4);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.light .btn-outline {
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+.light .btn-outline:hover {
+  border-color: var(--neon-pink);
+  color: var(--neon-pink);
+}
+
+/* Legacy */
+.btn-cyber-blue {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.18s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-cyber-blue:hover { border-color: var(--neon-blue); color: var(--neon-blue); }
+
+/* ══════════════════════════════════════
+   CARDS — Cosmic style
+   ══════════════════════════════════════ */
+.card-cyber {
+  background: hsl(var(--card));
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius);
+  transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+.card-cyber:hover {
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* ══════════════════════════════════════
+   PLAYER
+   ══════════════════════════════════════ */
+.player-container {
+  width: 100%;
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ══════════════════════════════════════
+   SELECTION + FOCUS
+   ══════════════════════════════════════ */
+::selection { background: rgba(255,0,111,0.25); }
+*:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 2px; border-radius: 2px; }
+
+/* ══════════════════════════════════════
+   ANIMATION UTILITIES
+   ══════════════════════════════════════ */
+.animate-float           { animation: float 5s ease-in-out infinite; }
+.animate-slide-up        { animation: slide-up 0.5s ease forwards; }
+.animate-fade-in         { animation: fade-in 0.4s ease forwards; }
+.animate-spin-slow       { animation: spin-slow 8s linear infinite; }
+.animate-marquee         { animation: marquee 30s linear infinite; }
+.animate-marquee-reverse { animation: marquee-reverse 30s linear infinite; }
 
 /* ══════════════════════════════════════
    GRADIENT TEXT
@@ -225,128 +387,27 @@ body::before {
 }
 
 /* ══════════════════════════════════════
-   BUTTONS — Rive uses rounded, filled style
+   COSMIC DOT — small status indicator
    ══════════════════════════════════════ */
-.btn-neon {
-  position: relative;
-  background: var(--neon-pink);
-  border: none;
-  color: white;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.65rem 1.5rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.btn-neon:hover {
-  background: color-mix(in srgb, var(--neon-pink) 85%, white);
-  box-shadow: 0 4px 20px color-mix(in srgb, var(--neon-pink) 50%, transparent);
-  transform: translateY(-1px);
-}
-
-.btn-outline {
-  background: transparent;
-  border: 1px solid hsl(var(--border));
-  color: hsl(var(--foreground));
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.65rem 1.5rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.btn-outline:hover {
-  border-color: var(--neon-pink);
-  color: var(--neon-pink);
-  transform: translateY(-1px);
-}
-
-/* Legacy compat */
-.btn-cyber-blue {
-  background: transparent;
-  border: 1px solid hsl(var(--border));
-  color: hsl(var(--foreground));
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.65rem 1.5rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.btn-cyber-blue:hover {
-  border-color: var(--neon-blue);
-  color: var(--neon-blue);
-  transform: translateY(-1px);
+.dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  display: inline-block;
 }
 
 /* ══════════════════════════════════════
-   CARD — Rive-style clean cards with hover lift
+   LIGHT THEME OVERRIDES
    ══════════════════════════════════════ */
-.card-cyber {
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
-  border-radius: var(--radius);
-  transition: all 0.2s;
-}
-.card-cyber:hover {
-  border-color: hsl(var(--primary) / 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px hsl(var(--primary) / 0.08);
-}
-
-/* ══════════════════════════════════════
-   PLAYER
-   ══════════════════════════════════════ */
-.player-container {
-  width: 100%;
-  background: #000;
-  border: 1px solid hsl(var(--border));
-  border-radius: var(--radius);
-  overflow: hidden;
-  position: relative;
-}
-
-/* ══════════════════════════════════════
-   SCROLLBAR — hidden like Rive
-   ══════════════════════════════════════ */
-::-webkit-scrollbar { width: 0; display: none; }
-
-/* ══════════════════════════════════════
-   SELECTION + FOCUS
-   ══════════════════════════════════════ */
-::selection { background: hsl(var(--primary) / 0.2); }
-*:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 2px; border-radius: 2px; }
-
-/* ══════════════════════════════════════
-   ANIMATION UTILITIES
-   ══════════════════════════════════════ */
-.animate-float     { animation: float 5s ease-in-out infinite; }
-.animate-slide-up  { animation: slide-up 0.5s ease forwards; }
-.animate-fade-in   { animation: fade-in 0.4s ease forwards; }
-.animate-spin-slow { animation: spin-slow 8s linear infinite; }
-.animate-marquee   { animation: marquee 30s linear infinite; }
-.animate-marquee-reverse { animation: marquee-reverse 30s linear infinite; }
-
-/* ══════════════════════════════════════
-   LIGHT THEME TEXT OVERRIDES
-   Fix white-on-white issues
-   ══════════════════════════════════════ */
+.light body { color: hsl(222 30% 8%); }
+.light .card-cyber { border-color: hsl(var(--border)); }
+.light .card-cyber:hover { border-color: hsl(var(--primary) / 0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+.light .player-container { border-color: hsl(var(--border)); }
+.light .nav-pill { background: rgba(255,255,255,0.85); border-color: rgba(0,0,0,0.1); }
+.light .nav-item { color: rgba(0,0,0,0.5); }
+.light .nav-item:hover { color: rgba(0,0,0,0.9); }
+.light .nav-item.active { color: #000; }
+.light .nav-item.active::before { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.1); }
 .light .text-white\/30 { color: rgba(0,0,0,0.4) !important; }
 .light .text-white\/40 { color: rgba(0,0,0,0.5) !important; }
 .light .text-white\/50 { color: rgba(0,0,0,0.58) !important; }
@@ -358,6 +419,3 @@ body::before {
 .light .border-white\/8  { border-color: rgba(0,0,0,0.09) !important; }
 .light .border-white\/10 { border-color: rgba(0,0,0,0.12) !important; }
 .light .bg-white\/5      { background-color: rgba(0,0,0,0.03) !important; }
-
-/* Dot grid lighter in light mode */
-.light body::before { opacity: 0.15; }
